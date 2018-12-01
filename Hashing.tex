@@ -1,0 +1,136 @@
+\documentclass[12pt, a4paper]{article}
+
+% Text languages
+\usepackage[spanish, english, UKenglish, USenglish, american, british]{babel}
+
+% Accents
+\usepackage[latin1]{inputenc}
+
+% Maths
+\usepackage{mathtools}
+\usepackage{amsmath}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+
+% https://www.overleaf.com/learn/latex/Page_size_and_margins
+\usepackage{geometry}
+\topmargin = -23pt
+\oddsidemargin = 13pt
+\headheight = 12pt
+\headsep = 25pt
+\textheight = 674pt
+\textwidth = 426pt
+\marginparsep = 10pt
+\marginparwidth = 50pt
+\footskip = 30pt
+\marginparpush = 5pt
+\hoffset = 0pt
+\voffset = 0pt
+\paperwidth = 597pt
+\paperheight = 845pt
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Figure
+\usepackage{graphicx}
+% \usepackage{subcaption}
+
+% Example
+\newtheorem{exmp}{Example}[section]
+%--------------------------------------------------------------------------
+\title{Detection of/between similarity of documents with hashing}
+\author{Roger Vilaseca Darné, Xavier Lacasa Curto and Xavier Martín Ballesteros\\
+  \small Algorithms\\
+}
+\date{1st December 2018}
+
+\begin{document}
+% Images
+\graphicspath{ {./images/} }
+
+\maketitle
+%\abstract{Esto es una plantilla simple para un articulo en \LaTeX.}
+
+
+\section{Introduction}
+
+% Referència a una equació \ref{eq:area}).
+% Referència a una secció \ref{sec:nada}
+% Referència a una cita \cite{Cd94}.
+
+\section{Jaccard Index}
+The Jaccard Index, also known as Intersection Over Union (IOU), calculates the percentage of similarity between two sets.
+
+For any pair of sets S and T, the Jaccard Index is defined as:
+% For any pair of sets S and T, we can define the Jaccard Index as shown:
+\begin{equation}
+J(S, T) = \frac{\abs{S \cap T}}{\abs{S \cup T}}
+\end{equation}
+
+We can easily deduce that the more common words, the bigger the Jaccard Index, which means that it is more probable that one set is a duplicate of the other.
+
+\begin{exmp}
+In {Figure} we see two sets S and T. There are X elements in the intersection and Y in their union. Thus, J(S, T) = X.
+
+\begin{center}
+	\includegraphics[width=3in]{JaccardExample}
+	\label{fig:JaccardExample}
+	
+	Figure \ref{fig:JaccardExample}: Two sets with Jaccard Index 3/6.
+\end{center}
+
+\end{exmp}
+
+\section{Shingling}
+
+Mas texto.
+
+\section{Minhashing}
+
+Mas texto.
+
+\section{Locality Sensitive Hashing (LSH)}
+
+Mas texto.
+
+\subsection{Referencies}
+
+\url{https://towardsdatascience.com/understanding-locality-sensitive-hashing-49f6d1f6134}
+
+
+\url{https://santhoshhari.github.io/Locality-Sensitive-Hashing/}
+
+\url{https://www.youtube.com/watch?v=96WOGPUgMfw}
+
+\url{https://www.youtube.com/watch?v=_1D35bN95Go}
+
+\url{https://medium.com/engineering-brainly/locality-sensitive-hashing-explained-304eb39291e4}
+
+\url{http://www.mit.edu/~andoni/LSH/}
+
+\url{http://infolab.stanford.edu/~ullman/mmds/ch3.pdf}
+
+
+% Bibliografía.
+%-----------------------------------------------------------------
+\begin{thebibliography}{99}
+
+\bibitem{Cd94} Author, \emph{Title}, Editor, (year)
+
+\end{thebibliography}
+
+\end{document}
