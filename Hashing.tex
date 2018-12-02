@@ -84,7 +84,7 @@ J(S, T) = \frac{\abs{S \cap T}}{\abs{S \cup T}}
 We can easily deduce that the more common words, the bigger the Jaccard Index, which means that it is more probable that one set is a duplicate of the other.
 
 \begin{exmp}
-In Figure \ref{fig:JaccardExample} we see two sets S and T. There are 3 elements in their intersection and 6 in their union. Thus, J(S, T) = 3/6.
+In Figure \ref{fig:JaccardExample} we see two sets S and T. There are 3 elements in their intersection ("I", "love", "chocolate") and 6 in their union ("I", "love", "chocolate", "and", "pizza", "white"). Thus, J(S, T) = 3/6.
 
 \begin{center}
 	\includegraphics[width=3in]{JaccardExample}
@@ -93,11 +93,25 @@ In Figure \ref{fig:JaccardExample} we see two sets S and T. There are 3 elements
 	Figure \ref{fig:JaccardExample}: Two sets with Jaccard Index 3/6.
 \end{center}
 
+% Falta dir què passa si hi ha poques paraules? Fals positiu...?
+
 \end{exmp}
 
-\section{Shingling}
+\section{Shingling of Documents}
 
-Mas texto.
+Any pair of documents can be compared by watching the number of repeated strings they have.
+\underline{The more common strings, the more probable is that one is a duplicate from the other.}
+One way to represent a document as a set is to insert in the set each string that appears in it. If we do so, then duplicated documents that have reorganized the sentences or even the entire text will have plenty of common strings, and will be \underline{caught}.
+
+\subsection{k-Shingles}
+
+The idea is not to insert in the set all the words, but a set of characters of size \textit{k}. Thus, each element of the set will have the same size as the others.
+
+The question now is how big \textit{k} should be? If we take a small value of \textit{k}, this will result in many shingles that are present in all documents. Suppose we choose the extreme case (\textit{k} = 1). Then, all documents would result to be similar, as the most used characters are present in all documents. However, if we take a big value of \textit{k}, then any pair of documents would not share a shingle.
+
+The value of \textit{k} depends on the size of the documents. A poem will not have the same \textit{k} value than an article. Otherwise, we could have the problems mentioned before.
+The important idea in order to choose a good \textit{k} is:
+\emph{k should be picked large enough that the probability of any given shingle appearing in any given document is low.}
 
 \section{Minhashing}
 
