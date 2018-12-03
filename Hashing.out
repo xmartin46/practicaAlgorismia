@@ -2,6 +2,8 @@
 \BOOKMARK [1][-]{section.2}{Jaccard Index}{}% 2
 \BOOKMARK [1][-]{section.3}{Shingling of Documents}{}% 3
 \BOOKMARK [2][-]{subsection.3.1}{k-Shingles}{section.3}% 4
-\BOOKMARK [1][-]{section.4}{Minhashing}{}% 5
-\BOOKMARK [1][-]{section.5}{Locality Sensitive Hashing \(LSH\)}{}% 6
-\BOOKMARK [2][-]{subsection.5.1}{Referencies}{section.5}% 7
+\BOOKMARK [1][-]{section.4}{Intro to Minhashing \(nom?\)}{}% 5
+\BOOKMARK [2][-]{subsection.4.1}{Time Complexity}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.2}{Space Complexity}{section.4}% 7
+\BOOKMARK [1][-]{section.5}{Locality Sensitive Hashing \(LSH\)}{}% 8
+\BOOKMARK [2][-]{subsection.5.1}{Referencies}{section.5}% 9

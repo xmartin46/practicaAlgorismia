@@ -113,9 +113,35 @@ The value of \textit{k} depends on the size of the documents. A poem will not ha
 The important idea in order to choose a good \textit{k} is:
 \emph{k should be picked large enough that the probability of any given shingle appearing in any given document is low.}
 
-\section{Minhashing}
+\section{Intro to Minhashing (nom?)}
 
-Mas texto.
+If we succeed in shingling the documents using \textit{k}-singles, we only will have to compare all pairs of documents using the Jaccard Index and say if there is similarity between them or not. By doing this, we have two problems: time and space complexity.
+
+\subsection{\underline{Time Complexity}}
+
+Imagine we have \textit{n} documents. Then, we have to compare each document with all the rest. Thus, the number of comparisons we have to do is $n*(n-1)/2$ which is equal to $O$($n^2$).
+
+\begin{exmp}
+Suppose we have 1 million documents. The number of comparisons would be $5*10^{11}$ which is a huge number.
+
+\begin{equation}
+\dfrac{(1*10^{6})*999.999} {2} = 499.999,5*10^{6} \approx 5*10^{11}
+\end{equation}
+
+\end{exmp}
+
+% No s'arregla la time complexity
+
+\subsection{Space Complexity} % Falta posar-ho al lloc correcte. Encara no hem parlat de quina data structure utilitzem (matrius)
+
+In typical aplications the matrix is sparse, which means that there are more 0s than 1s. \underline{We can demonstrate this by calculating the probability of an element of the set to belong to a document D.}
+
+If we take \textit{k} shingles, then the document have relatively few of the possible shingles.
+Another way to think about this is with the toys in Christmas Day. Usually, kids would like to have an specific toy, which is very popular at that moment. Then, lots of toys would not be buyed for (a kid/anyone)?.
+
+%The document matrix is a sparse matrix and storing it as it is will be a big memory overhead. One way to solve this is hashing.
+
+%Sets of shingles are large. Even if we hash them to four bytes each, the space needed to store a set is still roughly four times the space taken by the document. If we have millions of documents, it may well not be possible to store all the shingle-sets in main memory. Our goal in this section is to replace large sets by much smaller representations called ?signatures.? The important property we need for signatures is that we can compare the signatures of two sets and estimate the Jaccard similarity of the underlying sets from the signatures alone. It is not possible that There is another serious concern: even if the sets fit in main memory, the number of pairs may be too great for us to evaluate the similarity of each pair. We take up the solution to this problem in Section 3.4. 3.3. SIMILARITY-PRESERVING SUMMARIES OF SETS 81 the signatures give the exact similarity of the sets they represent, but the estimates they provide are close, and the larger the signatures the more accurate the estimates. For example, if we replace the 200,000-byte hashed-shingle sets that derive from 50,000-byte documents by signatures of 1000 bytes, we can usually get within a few percent.
 
 \section{Locality Sensitive Hashing (LSH)}
 
