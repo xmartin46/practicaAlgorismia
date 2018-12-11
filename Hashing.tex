@@ -101,7 +101,7 @@ In Figure \ref{fig:JaccardExample} we see two sets S and T. There are 3 elements
 
 Any pair of documents can be compared by watching the number of repeated strings they have.
 \underline{The more common strings, the more probable is that one is a duplicate from the other.}
-One way to represent a document as a set is to insert in the set each string that appears in it. If we do so, then duplicated documents that have reorganized the sentences or even the entire text will have plenty of common strings, and will be \underline{caught}.
+One way to represent a document as a set is to insert in the set each string that appears in it. If we do so, then duplicated documents that have reorganized the sentences or even the entire text will have plenty of common strings, and will be detected as duplicated.
 
 \subsection{k-Shingles}
 
@@ -110,16 +110,61 @@ The idea is not to insert in the set all the words, but a set of characters of s
 The question now is how big \textit{k} should be? If we take a small value of \textit{k}, this will result in many shingles that are present in all documents. Suppose we choose the extreme case (\textit{k} = 1). Then, all documents would result to be similar, as the most used characters are present in all documents. However, if we take a big value of \textit{k}, then any pair of documents would not share a shingle.
 
 The value of \textit{k} depends on the size of the documents. A poem will not have the same \textit{k} value than an article. Otherwise, we could have the problems mentioned before.
-The important idea in order to choose a good \textit{k} is:
-\emph{k should be picked large enough that the probability of any given shingle appearing in any given document is low.}
+According to Anand Rajaraman, Jure Leskovec,
+and Jeffrey D. Ullman (2011), "k should be picked large enough that the probability of any given shingle appearing in any given document is low." (p. 78).
 
-\section{Intro to Minhashing (nom?)}
 
-If we succeed in shingling the documents using \textit{k} shingles, we only will have to compare all pairs of documents using the Jaccard Index and say if there is similarity between them or not. By doing this, we have two problems: time and space complexity.
+\section{Compairing Similarity Using The Sets}
 
-\subsection{\underline{Time Complexity}}
+If we succeed in shingling the documents by using the \textit{k}-Shingling technique, we will only have to compare all pairs of documents using the Jaccard Index and say if there is similarity between them or not. 
+In order to do this, we have to store all the information in a data structure, for instance (\underline{e.g.}), a matrix. By doing this, we have two problems: time and space complexity. $<$= \textbf{Correcte que vagi aquí la úlima frase?}
 
-Imagine we have \textit{n} documents. Then, we have to compare each document with all the rest. Thus, the number of comparisons we have to do is $n*(n-1)/2$ which is equal to $O$($n^2$).
+\subsection{Matrix Representation}
+
+To represent the matrix, we will put the documents' sets in the columns and the union of all the documents' sets in the rows. The values of the matrix will be the following:
+\[
+\begin{dcases}
+    1,& \text{if column \textit{c} contains row \textit{r}} \\
+    0,              & \text{otherwise}
+\end{dcases}
+\]
+
+¿For any pair of row \textit{r} and column \textit{c}, if the set in the colum \textit{c} has the element in the row \textit{r}, the matrix will have a 1 in the cell (\textit{r}, \textit{c}). Otherwise, the cell will have a 0.?
+
+\begin{exmp}
+For this example we will reuse the two sets used in Example 2.1. Remember that S = ("I", "love", "chocolate", "and", "pizza") and T = ("I", "love", "white", "chocolate").
+
+\begin{center}
+	\includegraphics[width=2in]{matrixRepresentation}
+	\label{fig:matrixRepresentation}
+	
+	Figure \ref{fig:matrixRepresentation}: Representation of the matrix with two sets S and T.
+\end{center}
+
+\end{exmp}
+
+% Parlar de que la probabilitat és gairebé la mateixa?
+
+In this type of matrices, for any pair of columns we can have 4 types of results, which are the permutations of 0s and 1s of size 2:
+
+\begin{center}
+	\includegraphics[width=2in]{typesValues}
+	\label{fig:typesValues}
+	
+	\textit{\underline{Figure \ref{fig:typesValues}}: Representation of the matrix with all the possible permutations.}
+\end{center}
+
+Note that as the matrix is sparse, most of the rows will be of type \textit{a}. If we try to calculate the similarity between two sets $S_1$ and $S_2$ using the matrix and the Jaccard Index, we will have the following result:
+
+\begin{equation}
+J(S_1, S_2) = \dfrac{Q(d)}{Q(b)+Q(c)+Q(d)}
+\end{equation}
+
+Where Q(x) is the number of rows of type \textit{x}. Q(d) is the intersection of the sets and Q(b) + Q(c) + Q(d) is the union of the sets.
+
+\subsubsection{Time Complexity}
+
+Imagine we have \textit{n} documents. Then, we have to compare each document with all the rest. Thus, the number of comparisons we have to do is $n*(n-1)/2$ which is equal to $O$($n^2$) ¿$omega$($n*log(n)$)?.
 
 \begin{exmp}
 Suppose we have 1 million documents. The number of comparisons would be $5*10^{11}$ which is a huge number.
@@ -130,14 +175,16 @@ Suppose we have 1 million documents. The number of comparisons would be $5*10^{1
 
 \end{exmp}
 
-% No s'arregla la time complexity
+% No s'arregla la time complexity?
 
-\subsection{Space Complexity} % Falta posar-ho al lloc correcte. Encara no hem parlat de quina data structure utilitzem (matrius)
+\subsubsection{Space Complexity}
 
-In typical applications the matrix is sparse, which means that there are more 0s than 1s. \underline{We can demonstrate this by calculating the probability of an element of the set to belong to a document D.}
+In typical applications the matrix is sparse, which means that there are more 0s than 1s. ¿We can demonstrate this by calculating the \underline{probability} of an element of the set to belong to a document D.?
 
 If we take \textit{k} shingles, then the document have relatively few of the possible shingles.
-Another way to think about this is with the toys in Christmas Day. Usually, kids would like to have a specific toy, which is very popular at that moment. Then, lots of toys would not be buyed for (a kid/anyone)?.
+Another way to think about this is with the toys in Christmas Day. Kids would be the columns of the matrix and toys, the rows. Usually, kids would like to have a specific toy, which is very popular at that moment. Then, lots of toys would not be buyed for any kid.
+
+\subsection{Minhashing}
 
 %The document matrix is a sparse matrix and storing it as it is will be a big memory overhead. One way to solve this is hashing.
 
@@ -163,6 +210,8 @@ Mas texto.
 \url{http://www.mit.edu/~andoni/LSH/}
 
 \url{http://infolab.stanford.edu/~ullman/mmds/ch3.pdf}
+
+\url{https://aerodatablog.wordpress.com/2017/11/29/locality-sensitive-hashing-lsh/}
 
 
 % Bibliografía.
