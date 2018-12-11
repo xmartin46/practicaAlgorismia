@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.1)  3 DEC 2018 13:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.1)  11 DEC 2018 13:00
 entering extended mode
 **./Hashing.tex
 (Hashing.tex
@@ -497,7 +497,7 @@ Overfull \hbox (46.87762pt too wide) in paragraph at lines 67--67
  [][] 
  []
 
-<./images/JaccardExample.png, id=40, 389.455pt x 241.40187pt>
+<./images/JaccardExample.png, id=48, 389.455pt x 241.40187pt>
 File: ./images/JaccardExample.png Graphic file (type png)
 <use ./images/JaccardExample.png>
 Package pdftex.def Info: ./images/JaccardExample.png  used on input line 90.
@@ -510,80 +510,69 @@ Overfull \hbox (79.39706pt too wide) in paragraph at lines 102--105
 [1
 
 {C:/Users/Xavier/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/J
-accardExample.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 120.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@@underline' on input line 120.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 120.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 120.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 120.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 120.
-
-
-Overfull \hbox (148.09497pt too wide) in paragraph at lines 137--138
-\OT1/cmr/m/n/12 1s. $[]$ 
- []
-
-[2]
-Overfull \hbox (88.52525pt too wide) in paragraph at lines 152--153
+accardExample.png>] [2]
+<./images/matrixRepresentation.png, id=70, 412.54124pt x 251.94125pt>
+File: ./images/matrixRepresentation.png Graphic file (type png)
+<use ./images/matrixRepresentation.png>
+Package pdftex.def Info: ./images/matrixRepresentation.png  used on input line 
+138.
+(pdftex.def)             Requested size: 144.54pt x 88.27301pt.
+<./images/typesValues.png, id=72, 398.99063pt x 171.64125pt>
+File: ./images/typesValues.png Graphic file (type png)
+<use ./images/typesValues.png>
+Package pdftex.def Info: ./images/typesValues.png  used on input line 151.
+(pdftex.def)             Requested size: 144.54pt x 62.1784pt.
+ [3 <./images/matrixRepresentation.png> <./images/typesValues.png>]
+Overfull \hbox (88.52525pt too wide) in paragraph at lines 199--200
 []$\OT1/cmtt/m/n/12 https : / / towardsdatascience . com / understanding-[]loca
 lity-[]sensitive-[]hashing-[]49f6d1f6134$[] 
  []
 
 
-Overfull \hbox (137.52509pt too wide) in paragraph at lines 161--162
+Overfull \hbox (137.52509pt too wide) in paragraph at lines 208--209
 [][]$\OT1/cmtt/m/n/12 https : / / medium . com / engineering-[]brainly / locali
 ty-[]sensitive-[]hashing-[]explained-[]304eb39291e4$[] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 176.
-[3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 176.
+
+Overfull \hbox (68.60005pt too wide) in paragraph at lines 214--215
+[][]$\OT1/cmtt/m/n/12 https : / / aerodatablog . wordpress . com / 2017 / 11 / 
+29 / locality-[]sensitive-[]hashing-[]lsh/$[] 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 225.
+[4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 225.
  (Hashing.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 176.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 176.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 225.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 225.
 Package rerunfilecheck Info: File `Hashing.out' has not changed.
-(rerunfilecheck)             Checksum: 745AF81F734D82027CB467D089641A6E;541.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 176.
+(rerunfilecheck)             Checksum: 2AFC405F3364C6694154DEF38C614BC5;702.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 225.
  ) 
 Here is how much of TeX's memory you used:
- 7603 strings out of 492970
- 115288 string characters out of 3126150
- 226170 words of memory out of 3000000
- 11354 multiletter control sequences out of 15000+200000
- 10749 words of font info for 39 fonts, out of 3000000 for 9000
+ 7627 strings out of 492970
+ 115788 string characters out of 3126150
+ 226263 words of memory out of 3000000
+ 11369 multiletter control sequences out of 15000+200000
+ 11450 words of font info for 41 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 33i,7n,31p,1203b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,10n,31p,1203b,435s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmbx12.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmmi12.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Xavier/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Xavier/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/
-Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pf
-b><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmti12.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Hashing.pdf (3 pages, 131691 bytes).
+public/amsfonts/cm/cmex10.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Xavier/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Xavier/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users
+/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.
+pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmr8.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Xavier/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on Hashing.pdf (4 pages, 163743 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 19 named destinations out of 1000 (max. 500000)
- 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 135 PDF objects out of 1000 (max. 8388607)
+ 24 named destinations out of 1000 (max. 500000)
+ 104 words of extra memory for PDF output out of 10000 (max. 10000000)
 
