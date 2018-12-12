@@ -8,7 +8,7 @@
 
 % Maths
 \usepackage{mathtools}
-\usepackage{amsmath}
+\usepackage{amsmath,amsthm,amssymb}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
@@ -48,9 +48,14 @@
 % Figure
 \usepackage{graphicx}
 % \usepackage{subcaption}
-
+\usepackage{etoc}
 % Example
 \newtheorem{exmp}{Example}[section]
+% Algorithms
+%\usepackage[]{algorithm2e}
+%\usepackage{algorithm}% http://ctan.org/pkg/algorithm
+%\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+\usepackage{algpseudocode}
 %--------------------------------------------------------------------------
 \title{Detection of/between similarity of documents with hashing}
 \author{Roger Vilaseca Darné, Xavier Lacasa Curto and Xavier Martín Ballesteros\\
@@ -65,6 +70,10 @@
 \maketitle
 %\abstract{Esto es una plantilla simple para un articulo en \LaTeX.}
 
+%	*********************** ÍNDEX *********************
+%\newpage
+%  \tableofcontents
+%\newpage
 
 \section{Introduction}
 
@@ -132,7 +141,7 @@ To represent the matrix, we will put the documents' sets in the columns and the 
 ¿For any pair of row \textit{r} and column \textit{c}, if the set in the colum \textit{c} has the element in the row \textit{r}, the matrix will have a 1 in the cell (\textit{r}, \textit{c}). Otherwise, the cell will have a 0.?
 
 \begin{exmp}
-For this example we will reuse the two sets used in Example 2.1. Remember that S = ("I", "love", "chocolate", "and", "pizza") and T = ("I", "love", "white", "chocolate").
+For this example we will use two sets representing the words "Nadal" and "Nadia". Let k = 2 to form the k-Shingles.
 
 \begin{center}
 	\includegraphics[width=2in]{matrixRepresentation}
@@ -141,6 +150,7 @@ For this example we will reuse the two sets used in Example 2.1. Remember that S
 	Figure \ref{fig:matrixRepresentation}: Representation of the matrix with two sets S and T.
 \end{center}
 
+\label{exmp:matrixRepresentation}
 \end{exmp}
 
 % Parlar de que la probabilitat és gairebé la mateixa?
@@ -164,7 +174,7 @@ Where Q(x) is the number of rows of type \textit{x}. Q(d) is the intersection of
 
 \subsubsection{Time Complexity}
 
-Imagine we have \textit{n} documents. Then, we have to compare each document with all the rest. Thus, the number of comparisons we have to do is $n*(n-1)/2$ which is equal to $O$($n^2$) ¿$omega$($n*log(n)$)?.
+Imagine we have \textit{n} documents. Then, we have to compare each document with all the rest. Thus, the number of comparisons we have to do is $n*(n-1)/2$ which is equal to $O$($n^2$) ¿$omega$($n*log(n)$)? O potser és Theta de $n^2$?.
 
 \begin{exmp}
 Suppose we have 1 million documents. The number of comparisons would be $5*10^{11}$ which is a huge number.
@@ -186,9 +196,67 @@ Another way to think about this is with the toys in Christmas Day. Kids would be
 
 \subsection{Minhashing}
 
-%The document matrix is a sparse matrix and storing it as it is will be a big memory overhead. One way to solve this is hashing.
+The main goal using minhashing is to reduce a lot the space complexity. We can achieve this by subsituting the matrix shown before by another matrix called "signature matrix".
 
-%Sets of shingles are large. Even if we hash them to four bytes each, the space needed to store a set is still roughly four times the space taken by the document. If we have millions of documents, it may well not be possible to store all the shingle-sets in main memory. Our goal in this section is to replace large sets by much smaller representations called ?signatures.? The important property we need for signatures is that we can compare the signatures of two sets and estimate the Jaccard similarity of the underlying sets from the signatures alone. It is not possible that There is another serious concern: even if the sets fit in main memory, the number of pairs may be too great for us to evaluate the similarity of each pair. We take up the solution to this problem in Section 3.4. 3.3. SIMILARITY-PRESERVING SUMMARIES OF SETS 81 the signatures give the exact similarity of the sets they represent, but the estimates they provide are close, and the larger the signatures the more accurate the estimates. For example, if we replace the 200,000-byte hashed-shingle sets that derive from 50,000-byte documents by signatures of 1000 bytes, we can usually get within a few percent.
+Signatures are smaller representations of the sets, but they still preserve the similarity of the sets they represent. We will demonstrate this in the next section.
+
+To minhash a set, first pick a random permutation of the rows. Then, the minhash value is the value of the first row that has a 1, preserving the permuted order.
+
+\begin{exmp}
+In this example we will reuse the two sets of Example \ref{exmp:matrixRepresentation}. Suppose that the random permutation has given the following order: "di", "da", "ia", "na", "ad", "al". Let h be the minhash function.
+
+\begin{center}
+	\includegraphics[width=2in]{permutationMatrixSignature}
+	\label{fig:permutationMatrixSignature}
+	
+	Figure \ref{fig:permutationMatrixSignature}: Permutation of the matrix of Example \ref{exmp:matrixRepresentation}.
+\end{center}
+
+In the first column, we can see that $h(S_1) = "da"$ and in the second one we see that $h(S_2) = "di"$.
+
+\end{exmp}
+
+With this technique, we can see that every time we do a permutation, we only occupy one new row of the "signature matrix", which is reducing a lot the space.
+
+\subsubsection{Preserving the Jaccard Index}
+
+As we mentioned before, the Jaccard Index in the matrix is equal to the number of rows of type \textit{d} divided by the number of rows of type \textit{b} + \textit{c} + \textit{d}. And that index is preserved in the "signature matrix".
+
+\begin{proof}
+Look down through the \underline{permuted columns} $C_1$ and $C_2$ until we see a 1 in any of the two columns. Then, we can have a row of type \textit{b} or \textit{c}, where only one of the columns have a 1, or a row of type \textit{d}, where both columns have a 1 in it.
+If we find a row of type \textit{d}, then the minhash function will take the same row. Thus, $h(C_1) = h(C_2)$.
+Otherwise, we must have a row of type \textit{b} or \textit{c} and $h(C_1) \neq h(C_2)$.
+
+We can see that this is exactly the Jaccard Index. The probability of two columns have the same minhash value is equal to the number of rows of type \textit{d} divided by the number of rows of type \textit{b} + \textit{c} + \textit{d}.
+
+\begin{equation}
+P[h(C_1) = h(C_2)] = J(C_1, C_2)
+\end{equation}
+
+\end{proof}
+
+\subsubsection{Optimizing the Time for Permutations}
+Encara falta posar cosetes NENG!
+
+\begin{algorithmic}
+%\Require $n \geq 0$
+%\Ensure $y = x^n$
+ \For{each row $r$}                    
+  \For{each has function $h_i$}                    
+    \State {compute $h_i(r)$;}
+  \EndFor
+ \EndFor
+
+ \For{each column $c$}                    
+  \If{$c$ has 1 in row $r$}
+    \For{each has function $h_i$}                    
+      \If{$h_i(r)$ is smaller than $M(i, c)$}
+  	    \State $M(i, c) := h_I(r)$;
+  	  \EndIf
+    \EndFor
+  \EndIf
+ \EndFor
+\end{algorithmic}
 
 \section{Locality Sensitive Hashing (LSH)}
 

@@ -7,5 +7,7 @@
 \BOOKMARK [3][-]{subsubsection.4.1.1}{Time Complexity}{subsection.4.1}% 7
 \BOOKMARK [3][-]{subsubsection.4.1.2}{Space Complexity}{subsection.4.1}% 8
 \BOOKMARK [2][-]{subsection.4.2}{Minhashing}{section.4}% 9
-\BOOKMARK [1][-]{section.5}{Locality Sensitive Hashing \(LSH\)}{}% 10
-\BOOKMARK [2][-]{subsection.5.1}{Referencies}{section.5}% 11
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Preserving the Jaccard Index}{subsection.4.2}% 10
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Optimizing the Time for Permutations}{subsection.4.2}% 11
+\BOOKMARK [1][-]{section.5}{Locality Sensitive Hashing \(LSH\)}{}% 12
+\BOOKMARK [2][-]{subsection.5.1}{Referencies}{section.5}% 13

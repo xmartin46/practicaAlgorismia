@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.1)  11 DEC 2018 13:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.1)  12 DEC 2018 12:27
 entering extended mode
 **./Hashing.tex
 (Hashing.tex
@@ -213,6 +213,31 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen120
 \l_MT_below_shortintertext_sep=\dimen121
 )
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.sty
+"
+Package: amsthm 2017/10/31 v2.20.4
+\thm@style=\toks23
+\thm@bodyfont=\toks24
+\thm@headfont=\toks25
+\thm@notefont=\toks26
+\thm@headpunct=\toks27
+\thm@preskip=\skip50
+\thm@postskip=\skip51
+\thm@headsep=\skip52
+\dth@everypar=\toks28
+)
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.
+sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts
+.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry
 .sty"
 Package: geometry 2018/04/16 v5.8 Page Geometry
@@ -241,7 +266,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutheight=\dimen127
 \Gm@layouthoffset=\dimen128
 \Gm@layoutvoffset=\dimen129
-\Gm@dimlist=\toks23
+\Gm@dimlist=\toks29
 
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry
 .cfg"))
@@ -362,7 +387,7 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip50
+\Hy@SectionHShift=\skip53
 )
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx
 .sty"
@@ -389,24 +414,108 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen134
 \Gin@req@width=\dimen135
 )
-\c@exmp=\count120
- (Hashing.aux)
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\etoc\etoc.sty"
+Package: etoc 2018/07/04 v1.08p Completely customisable TOCs (JFB)
+
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\multicol.st
+y"
+Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
+\c@tracingmulticols=\count120
+\mult@box=\box28
+\multicol@leftmargin=\dimen136
+\c@unbalance=\count121
+\c@collectmore=\count122
+\doublecol@number=\count123
+\multicoltolerance=\count124
+\multicolpretolerance=\count125
+\full@width=\dimen137
+\page@free=\dimen138
+\premulticols=\dimen139
+\postmulticols=\dimen140
+\multicolsep=\skip54
+\multicolbaselineskip=\skip55
+\partial@page=\box29
+\last@line=\box30
+\maxbalancingoverflow=\dimen141
+\mult@rightbox=\box31
+\mult@grightbox=\box32
+\mult@gfirstbox=\box33
+\mult@firstbox=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\c@columnbadness=\count126
+\c@finalcolumnbadness=\count127
+\last@try=\dimen142
+\multicolovershoot=\dimen143
+\multicolundershoot=\dimen144
+\mult@nat@firstbox=\box52
+\colbreak@box=\box53
+\mc@col@check@num=\count128
+)
+\Etoc@toctoks=\toks30
+\c@etoc@tocid=\count129
+\c@etoc@tocdepth=\count130
+\etoc@framed@titlebox=\box54
+\etoc@framed@contentsbox=\box55
+)
+\c@exmp=\count131
+
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\algorithmicx\algp
+seudocode.sty"
+Package: algpseudocode 
+
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\algorithmicx\algo
+rithmicx.sty"
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count132
+\c@ALG@rem=\count133
+\c@ALG@nested=\count134
+\ALG@tlm=\skip56
+\ALG@thistlm=\skip57
+\c@ALG@Lnr=\count135
+\c@ALG@blocknr=\count136
+\c@ALG@storecount=\count137
+\c@ALG@tmpcounter=\count138
+\ALG@tmplength=\skip58
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (Hashing.aux)
 \openout1 = `Hashing.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -442,8 +551,8 @@ LaTeX Font Info:    ... okay on input line 61.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box28
-Package hyperref Info: Link coloring OFF on input line 61.
+\AtBeginShipoutBox=\box56
+Package hyperref Info: Link coloring OFF on input line 66.
 
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.
 sty"
@@ -453,11 +562,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 lestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count121
+\c@section@level=\count139
 )
-LaTeX Info: Redefining \ref on input line 61.
-LaTeX Info: Redefining \pageref on input line 61.
-LaTeX Info: Redefining \nameref on input line 61.
+LaTeX Info: Redefining \ref on input line 66.
+LaTeX Info: Redefining \pageref on input line 66.
+LaTeX Info: Redefining \nameref on input line 66.
  (Hashing.out) (Hashing.out)
 \@outlinefile=\write3
 \openout3 = `Hashing.out'.
@@ -466,17 +575,17 @@ LaTeX Info: Redefining \nameref on input line 61.
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.m
 kii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count122
-\scratchdimen=\dimen136
-\scratchbox=\box29
-\nofMPsegments=\count123
-\nofMParguments=\count124
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count125
-\MPscratchDim=\dimen137
-\MPnumerator=\count126
-\makeMPintoPDFobject=\count127
-\everyMPtoPDFconversion=\toks25
+\scratchcounter=\count140
+\scratchdimen=\dimen145
+\scratchbox=\box57
+\nofMPsegments=\count141
+\nofMParguments=\count142
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count143
+\MPscratchDim=\dimen146
+\MPnumerator=\count144
+\makeMPintoPDFobject=\count145
+\everyMPtoPDFconversion=\toks32
 )
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf
 -base.sty"
@@ -493,86 +602,106 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-Overfull \hbox (46.87762pt too wide) in paragraph at lines 67--67
+\Etoc@tf=\read1
+LaTeX Font Info:    Try loading font information for U+msa on input line 72.
+
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 72.
+ ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
+"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \hbox (46.87762pt too wide) in paragraph at lines 72--72
  [][] 
  []
 
-<./images/JaccardExample.png, id=48, 389.455pt x 241.40187pt>
+<./images/JaccardExample.png, id=56, 389.455pt x 241.40187pt>
 File: ./images/JaccardExample.png Graphic file (type png)
 <use ./images/JaccardExample.png>
-Package pdftex.def Info: ./images/JaccardExample.png  used on input line 90.
+Package pdftex.def Info: ./images/JaccardExample.png  used on input line 99.
 (pdftex.def)             Requested size: 216.81pt x 134.38849pt.
 
-Overfull \hbox (79.39706pt too wide) in paragraph at lines 102--105
+Overfull \hbox (79.39706pt too wide) in paragraph at lines 111--114
 \OT1/cmr/m/n/12 they have. $[]$
  []
 
 [1
 
 {C:/Users/Xavier/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/J
-accardExample.png>] [2]
-<./images/matrixRepresentation.png, id=70, 412.54124pt x 251.94125pt>
+accardExample.png>]
+<./images/matrixRepresentation.png, id=72, 442.15187pt x 238.39063pt>
 File: ./images/matrixRepresentation.png Graphic file (type png)
 <use ./images/matrixRepresentation.png>
 Package pdftex.def Info: ./images/matrixRepresentation.png  used on input line 
-138.
-(pdftex.def)             Requested size: 144.54pt x 88.27301pt.
-<./images/typesValues.png, id=72, 398.99063pt x 171.64125pt>
+147.
+(pdftex.def)             Requested size: 144.54pt x 77.93073pt.
+ [2]
+<./images/typesValues.png, id=81, 398.99063pt x 171.64125pt>
 File: ./images/typesValues.png Graphic file (type png)
 <use ./images/typesValues.png>
-Package pdftex.def Info: ./images/typesValues.png  used on input line 151.
+Package pdftex.def Info: ./images/typesValues.png  used on input line 161.
 (pdftex.def)             Requested size: 144.54pt x 62.1784pt.
  [3 <./images/matrixRepresentation.png> <./images/typesValues.png>]
-Overfull \hbox (88.52525pt too wide) in paragraph at lines 199--200
+<./images/permutationMatrixSignature.png, id=93, 331.2375pt x 192.21812pt>
+File: ./images/permutationMatrixSignature.png Graphic file (type png)
+<use ./images/permutationMatrixSignature.png>
+Package pdftex.def Info: ./images/permutationMatrixSignature.png  used on input
+ line 209.
+(pdftex.def)             Requested size: 144.54pt x 83.87523pt.
+ [4 <./images/permutationMatrixSignature.png>]
+Overfull \hbox (88.52525pt too wide) in paragraph at lines 267--268
 []$\OT1/cmtt/m/n/12 https : / / towardsdatascience . com / understanding-[]loca
 lity-[]sensitive-[]hashing-[]49f6d1f6134$[] 
  []
 
 
-Overfull \hbox (137.52509pt too wide) in paragraph at lines 208--209
+Overfull \hbox (137.52509pt too wide) in paragraph at lines 276--277
 [][]$\OT1/cmtt/m/n/12 https : / / medium . com / engineering-[]brainly / locali
 ty-[]sensitive-[]hashing-[]explained-[]304eb39291e4$[] 
  []
 
 
-Overfull \hbox (68.60005pt too wide) in paragraph at lines 214--215
+Overfull \hbox (68.60005pt too wide) in paragraph at lines 282--283
 [][]$\OT1/cmtt/m/n/12 https : / / aerodatablog . wordpress . com / 2017 / 11 / 
 29 / locality-[]sensitive-[]hashing-[]lsh/$[] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 225.
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 225.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 293.
+[5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 293.
  (Hashing.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 225.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 225.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 293.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 293.
 Package rerunfilecheck Info: File `Hashing.out' has not changed.
-(rerunfilecheck)             Checksum: 2AFC405F3364C6694154DEF38C614BC5;702.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 225.
+(rerunfilecheck)             Checksum: 26D71526476A8F1BFFDC848535A7D445;888.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 293.
  ) 
 Here is how much of TeX's memory you used:
- 7627 strings out of 492970
- 115788 string characters out of 3126150
- 226263 words of memory out of 3000000
- 11369 multiletter control sequences out of 15000+200000
- 11450 words of font info for 41 fonts, out of 3000000 for 9000
+ 9095 strings out of 492970
+ 137108 string characters out of 3126150
+ 249277 words of memory out of 3000000
+ 12792 multiletter control sequences out of 15000+200000
+ 13920 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 33i,10n,31p,1203b,435s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,10n,31p,450b,477s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmbx12.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmex10.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Xavier/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Xavier/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users
-/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Xavier/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
+/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.
 pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr8.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Xavier/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Hashing.pdf (4 pages, 163743 bytes).
+nts/cm/cmr17.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr8.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Xavier/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Xavier/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on Hashing.pdf (5 pages, 185350 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
- 104 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 160 PDF objects out of 1000 (max. 8388607)
+ 29 named destinations out of 1000 (max. 500000)
+ 125 words of extra memory for PDF output out of 10000 (max. 10000000)
 
