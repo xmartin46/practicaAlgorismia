@@ -51,7 +51,7 @@ unsigned long mix(unsigned long a, unsigned long b, unsigned long c) {
 int main() {
 	// Put the 50 words of the document in this vector
 	vector<string> words = vector<string>(50);
-	putVector(words, "documentBasic.txt");
+	putVector(words, "./20doc/documentBasic.txt");
 	
 	// Set the random seed
 	//		https://stackoverflow.com/questions/322938/recommended-way-to-initialize-srand
@@ -70,14 +70,16 @@ int main() {
 		
 		// Open the file and clear its content
 		ofstream outfile;
-		string path = ("./50doc/" + to_string(i) + ".txt");
+		string path = ("./20doc/" + to_string(i) + ".txt");
 		outfile.open(path.c_str(), ofstream::out | ofstream::trunc);
 		
 		// Write into the file the 50 words of the vector "words"
-		for (int j = 0; j < randomPos.size(); j++) {
+		for (int j = 0; j < randomPos.size() - 1; j++) {
 			outfile << words[randomPos[j]] << " ";
 		}
-		
+
+		// Doing this, we will not have the space in the end
+		outfile << words[randomPos[randomPos.size() - 1]];
 		// Close the file
 		outfile.close();
 	}
