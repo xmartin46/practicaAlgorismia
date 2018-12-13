@@ -80,6 +80,7 @@ int main() {
 
 		// Doing this, we will not have the space in the end
 		outfile << words[randomPos[randomPos.size() - 1]];
+		
 		// Close the file
 		outfile.close();
 	}
