@@ -27,9 +27,12 @@ void putVector(vector<string> &v, const string filename) {
 	
     // Extracting words from the file 
     while (file >> word) {
+		for(int i = 0; i < word.length(); ++i)	{
+			word[i] = tolower(word[i]);
+		}
         v.push_back(word);
     }
-    
+
     file.close();
 }
 
@@ -49,7 +52,7 @@ unsigned long mix(unsigned long a, unsigned long b, unsigned long c) {
 int main() {
 	// Put the 50 words of the document in this vector
 	vector<string> words;
-	putVector(words, "./20doc/documentBasic.txt");
+	putVector(words, "./20doc/HP.txt");
 	
 	// Set the random seed
 	//		https://stackoverflow.com/questions/322938/recommended-way-to-initialize-srand
