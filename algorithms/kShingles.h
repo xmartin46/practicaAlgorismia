@@ -64,6 +64,11 @@ unordered_set<string> kShingleString(const string filePath, const int k, bool sp
 		if (spaces) allWords += " ";
     	allWords += word;
 	}
+
+	// All characters to lowecase
+	for(int i = 0; i < allWords.length(); ++i)	{
+		allWords[i] = tolower(allWords[i]);
+	}
     
     for (int i = 0; i + k <= allWords.size(); i++) {
    	    shingles.insert(allWords.substr(i, k));
