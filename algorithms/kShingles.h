@@ -1,10 +1,11 @@
-#ifndef KSHING
-#define KSHING
+#ifndef KSHINGLES
+#define KSHINGLES
 
 #include <iostream>
 #include <string>
 #include <unordered_set>
 #include <fstream>
+#include "stringToInt.h"
 
 using namespace std;
 //Un unordered_set te probabilitat de col·lisio = 1/(2^32) per ints
@@ -43,7 +44,7 @@ double jaccardSimilarity(unordered_set<T>& s1, unordered_set<T>& s2) {
 }
 
 // spaces == true if we want to count spaces
-unordered_set<string> kShingle(const string filePath, const int k, bool spaces) {
+unordered_set<string> kShingleString(const string filePath, const int k, bool spaces) {
 	fstream file;
     string word;
   	unordered_set<string> shingles;
@@ -61,12 +62,39 @@ unordered_set<string> kShingle(const string filePath, const int k, bool spaces) 
 		if (spaces) allWords += " ";
     	allWords += word;
 	}
-	
-	// Delete the last " " of the string
-	if (spaces) allWords = allWords.substr(0, allWords.size() - 1);
     
     for (int i = 0; i + k <= allWords.size(); i++) {
    	    shingles.insert(allWords.substr(i, k));
+	}
+
+	file.close();
+
+	return shingles;
+}
+
+unordered_set<int> kShingleInt(const string filePath, const int k, bool spaces) {
+	fstream file;
+    string word;
+  	unordered_set<int> shingles;
+
+    // Open the file 
+    file.open(filePath);
+    
+    // String that will have all the words of the document
+	string allWords = "";
+
+	// Extracting words from the file
+	file >> word;
+    allWords += word;
+    while (file >> word) {
+		if (spaces) allWords += " ";
+    	allWords += word;
+	}
+    
+    for (int i = 0; i + k <= allWords.size(); i++) {
+        StringToInt *st = StringToInt::getInstance();
+        int mapping = st->toInt(allWords.substr(i, k));
+   	    shingles.insert(mapping);
 	}
 
 	file.close();

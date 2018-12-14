@@ -21,8 +21,12 @@ int main() {
 
 	bool spaces = false;
 
-	unordered_set<string> D1 = kShingle(filePath1, k, spaces);
-	unordered_set<string> D2 = kShingle(filePath2, k, spaces);
+	unordered_set<string> S1 = kShingleString(filePath1, k, spaces);
+	unordered_set<string> S2 = kShingleString(filePath2, k, spaces);
 
-	cout << endl << "The Jaccard Similarity is: " << jaccardSimilarity(D1, D2)*100 << "%" << endl;
+	unordered_set<int> I1 = kShingleInt(filePath1, k, spaces);
+	unordered_set<int> I2 = kShingleInt(filePath2, k, spaces);
+
+	cout << endl << "The Jaccard Similarity using Strings as Shingles is: " << jaccardSimilarity(S1, S2)*100 << "%" << endl;
+	cout << endl << "The Jaccard Similarity using Integers as Shingles is: " << jaccardSimilarity(I1, I2)*100 << "%" << endl;
 }
