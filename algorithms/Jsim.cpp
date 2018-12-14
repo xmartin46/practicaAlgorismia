@@ -15,7 +15,7 @@ B es defineix com Jsim(A, B) = |A n B|.
 
 //Un unordered_set te probabilitat de col·lisio = 1/(2^32) per ints
 
-
+// es Template per si volem fer-ho amb strings o passar-ho a 4 bytes (ints)
 template<typename T>
 int unionSetsSize (unordered_set<T>& s1, unordered_set<T>& s2) {
 	//First count all elements of s1
