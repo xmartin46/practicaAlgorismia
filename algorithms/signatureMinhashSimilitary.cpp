@@ -4,6 +4,7 @@
 #include <unordered_set>
 #include <fstream>
 #include <algorithm>
+#include <limits>
 using namespace std;
 
 /*
@@ -94,7 +95,7 @@ int main() {
 	for (int i = 2; i < ndocuments; i++) shingles = unionSets(shingles, documents[i]);
 	
 	// Matrix representation
-	for (int j = 0; j < k; ++j) cout << " ";
+	/*for (int j = 0; j < k; ++j) cout << " ";
 	for (int i = 0; i < ndocuments; i++) {
 		cout << "	D" << i + 1;
 	}
@@ -107,14 +108,17 @@ int main() {
 			else cout << "0	";
 		}
 		cout << endl;
-	}
+	}*/
 	
-	int infinity = 999999;
+	int infinity = numeric_limits<int>::max();
 	int nhashFunctions = 2;
 	vector<vector<int>> hashingValues(shingles.size(), vector<int>(nhashFunctions));
 	vector<vector<int>> signatureMatrix(nhashFunctions, vector<int>(ndocuments, infinity));
 	
-	for (int i = 0; i < shingles.size(); i++) {
+	auto it = shingles.begin();
+	
+	for (int i = 0; i < shingles.size() and i < nhashFunctions; i++) {
+		// Compute h(i)
 		for (int j = 0; j < nhashFunctions; j++) {
 			switch (j) {
 				case 0:
@@ -125,16 +129,29 @@ int main() {
 					break;
 			}
 		}
+		
+		// Signature matrix
+		for (int n = 0; n < ndocuments; n++) {
+			if (documents[n].find(*it) != documents[i].end()) {
+				for (int j = 0; j < nhashFunctions; j++) {
+					if (hashingValues[i][j] < signatureMatrix[i][n]) {
+						signatureMatrix[i][n] = hashingValues[i][j];
+					}
+				}
+			}
+		}
+		
+		++it;
 	}
 	
-		// Hashing Values
-	cout << endl << endl;
+	// Hashing Values
+	/*cout << endl << endl;
 	for (int j = 0; j < k; ++j) cout << " ";
 	for (int i = 0; i < ndocuments; i++) {
 		cout << "	D" << i + 1;
 	}
 	cout << endl;
-	auto it = shingles.begin();
+	it = shingles.begin();
 	for (int i = 0; i < shingles.size(); i++) {
 		
 		cout << *it << "	";
@@ -145,22 +162,6 @@ int main() {
 		cout << endl;
 	}
 	
-	
-	
-	int j = 0;
-	for (int i = 0; i < ndocuments; i++) {
-		for (string shing : shingles) {
-			if (documents[i].find(shing) != documents[i].end()) {
-				for (int k = 0; k < nhashFunctions; k++) {
-					if (hashingValues[j][k] < signatureMatrix[j][i]) {
-						signatureMatrix[j][i] = hashingValues[j][k];
-					}
-				}
-			}
-			j++;
-		}
-		j = 0;
-	}
 	// Signature Matrix
 	cout << endl << endl;
 	for (int i = 0; i < nhashFunctions; i++) {
@@ -168,5 +169,18 @@ int main() {
 			cout << signatureMatrix[i][j] << "	";
 		}
 		cout << endl;
+	}*/
+	
+	// Càlcul de jaccard similarity a signature matrix
+	// Comparem els dos primers documetns (es pot canviar)
+	int doc1 = 0;
+	int doc2 = 1;
+	int interseccio = 0;
+	for (int i = 0; i < nhashFunctions; i++) {
+		if (signatureMatrix[i][doc1] == signatureMatrix[i][doc2]) ++interseccio;
 	}
+	
+	cout << endl;
+	
+	cout << "Jaccard Similarity in the Signature Matrix: " << ((double)interseccio/(double)nhashFunctions) * 100 << "%" << endl;
 }
