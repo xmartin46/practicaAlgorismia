@@ -5,6 +5,7 @@
 #include <fstream>
 #include <algorithm>
 #include <limits>
+#include <time.h>
 using namespace std;
 
 /*
@@ -149,17 +150,18 @@ int main() {
 		cout << endl;
 	}*/
 	
+	//clock_t tStart = clock();
 	int infinity = numeric_limits<int>::max();
 	int nhashFunctions = 14;
 	vector<vector<int>> hashingValues(shingles.size(), vector<int>(nhashFunctions));
 	vector<vector<int>> signatureMatrix(nhashFunctions, vector<int>(ndocuments, infinity));
 	
 	auto it = shingles.begin();
-	
+	int l = firstPrime(shingles.size());
 	for (int i = 0; i < shingles.size(); i++) {
 		// Compute h(i)
 		for (int j = 0; j < nhashFunctions; j++) {
-			int l = firstPrime(shingles.size());
+			
 			//cout << endl << endl << l << endl << endl;
 			switch (j) {
 				case 0:
@@ -247,9 +249,9 @@ int main() {
 		}
 		cout << endl;
 	}*/
-	
+		
 	// C�lcul de jaccard similarity a signature matrix
-	// Comparem els dos primersW documents (es pot canviar)
+	// Comparem els dos primers documents (es pot canviar)
 	int doc1 = 0;
 	int doc2 = 1;
 	int interseccio = 0;
@@ -260,4 +262,5 @@ int main() {
 	cout << endl;
 
 	cout << "Jaccard Similarity in the Signature Matrix: " << ((double)interseccio/(double)nhashFunctions) * 100 << "%" << endl;
+	//printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 }
