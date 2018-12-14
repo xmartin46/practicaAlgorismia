@@ -32,7 +32,7 @@ void putVector(vector<string> &v, const string filename) {
     while (file >> word) {
         v[i] = word;
         i++;
-    } 
+    }
 }
 
 unsigned long mix(unsigned long a, unsigned long b, unsigned long c) {
