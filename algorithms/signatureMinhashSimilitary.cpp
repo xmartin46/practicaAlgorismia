@@ -95,7 +95,7 @@ int main() {
 	for (int i = 2; i < ndocuments; i++) shingles = unionSets(shingles, documents[i]);
 	
 	// Matrix representation
-	/*for (int j = 0; j < k; ++j) cout << " ";
+	for (int j = 0; j < k; ++j) cout << " ";
 	for (int i = 0; i < ndocuments; i++) {
 		cout << "	D" << i + 1;
 	}
@@ -108,24 +108,39 @@ int main() {
 			else cout << "0	";
 		}
 		cout << endl;
-	}*/
+	}
 	
 	int infinity = numeric_limits<int>::max();
-	int nhashFunctions = 2;
+	int nhashFunctions = 7;
 	vector<vector<int>> hashingValues(shingles.size(), vector<int>(nhashFunctions));
 	vector<vector<int>> signatureMatrix(nhashFunctions, vector<int>(ndocuments, infinity));
 	
 	auto it = shingles.begin();
 	
-	for (int i = 0; i < shingles.size() and i < nhashFunctions; i++) {
+	for (int i = 0; i < shingles.size(); i++) {
 		// Compute h(i)
 		for (int j = 0; j < nhashFunctions; j++) {
 			switch (j) {
 				case 0:
-					hashingValues[i][j] = (i + 1)%5;
+					hashingValues[i][j] = (i + 1)%7;
 					break;
 				case 1:
-					hashingValues[i][j] = (2*(i + 1)+1)%5;
+					hashingValues[i][j] = (2*(i + 1)+1)%7;
+					break;
+				case 2:
+					hashingValues[i][j] = (i + 1)%7;
+					break;
+				case 3:
+					hashingValues[i][j] = (2*(i + 1)+1)%7;
+					break;
+				case 4:
+					hashingValues[i][j] = (i + 1)%7;
+					break;
+				case 5:
+					hashingValues[i][j] = (2*(i + 1)+1)%7;
+					break;
+				case 6:
+					hashingValues[i][j] = (i + 1)%7;
 					break;
 			}
 		}
@@ -134,8 +149,8 @@ int main() {
 		for (int n = 0; n < ndocuments; n++) {
 			if (documents[n].find(*it) != documents[i].end()) {
 				for (int j = 0; j < nhashFunctions; j++) {
-					if (hashingValues[i][j] < signatureMatrix[i][n]) {
-						signatureMatrix[i][n] = hashingValues[i][j];
+					if (hashingValues[i][j] < signatureMatrix[j][n]) {
+						signatureMatrix[j][n] = hashingValues[i][j];
 					}
 				}
 			}
@@ -145,7 +160,7 @@ int main() {
 	}
 	
 	// Hashing Values
-	/*cout << endl << endl;
+	cout << endl << endl;
 	for (int j = 0; j < k; ++j) cout << " ";
 	for (int i = 0; i < ndocuments; i++) {
 		cout << "	D" << i + 1;
@@ -169,7 +184,7 @@ int main() {
 			cout << signatureMatrix[i][j] << "	";
 		}
 		cout << endl;
-	}*/
+	}
 	
 	// Càlcul de jaccard similarity a signature matrix
 	// Comparem els dos primers documetns (es pot canviar)

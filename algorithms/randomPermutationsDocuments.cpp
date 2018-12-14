@@ -24,15 +24,13 @@ void putVector(vector<string> &v, const string filename) {
   
     // Open the file 
     file.open(filename); 
-  
-    // Counter of words
-  	int i = 0;
 	
     // Extracting words from the file 
     while (file >> word) {
-        v[i] = word;
-        i++;
+        v.push_back(word);
     }
+    
+    file.close();
 }
 
 unsigned long mix(unsigned long a, unsigned long b, unsigned long c) {
@@ -50,7 +48,7 @@ unsigned long mix(unsigned long a, unsigned long b, unsigned long c) {
 
 int main() {
 	// Put the 50 words of the document in this vector
-	vector<string> words = vector<string>(50);
+	vector<string> words;
 	putVector(words, "./20doc/documentBasic.txt");
 	
 	// Set the random seed
