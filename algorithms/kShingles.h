@@ -12,35 +12,37 @@ using namespace std;
 
 // es Template per si volem fer-ho amb strings o passar-ho a 4 bytes (ints)
 template<typename T>
-int unionSetsSize (unordered_set<T>& s1, unordered_set<T>& s2) {
+unordered_set<T> unionSets(unordered_set<T>& s1, unordered_set<T>& s2) {
 	//First count all elements of s1
-	int size = s1.size();
+	unordered_set<T> unionSet(s1);
 	//Then count all elements of s2 that are not in s1, so that
 	//elements that are in the intersection aren't repeated
 	for (T elem : s2) {
 		if (s1.find(elem) == s1.end()) {
-			++size;
+			unionSet.insert(elem);
 		}
 	}
-	return size;
+	return unionSet;
 }
 
 template<typename T>
-int intersectionSetsSize (unordered_set<T>& s1, unordered_set<T>& s2) {
+unordered_set<T> intersectionSets(unordered_set<T>& s1, unordered_set<T>& s2) {
 	//Count all elements from one set that are in the other set
-	int size = 0;
+	unordered_set<T> intersectionSet;
 	for (T elem : s1) {
 		if (s2.find(elem) != s2.end()) {
-			++size;
+			intersectionSet.insert(elem);
 		}
 	}
-	return size;
+	return intersectionSet;
 }
 
 template<typename T>
 double jaccardSimilarity(unordered_set<T>& s1, unordered_set<T>& s2) {	
 	// Return the Jaccard Similarity (Intersection / Union)
-	return (double)(intersectionSetsSize(s1, s2))/(double)(unionSetsSize(s1, s2));
+	int sizeIntersection = intersectionSets(s1, s2).size();
+	int sizeUnion = unionSets(s1, s2).size();
+	return ((double)(sizeIntersection)/(double)(sizeUnion));
 }
 
 // spaces == true if we want to count spaces

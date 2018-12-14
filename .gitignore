@@ -1,2 +1,4 @@
 algorithms/*.exe
+algorithms/*.h.gch
+algorithms/*.gch
 .vscode
