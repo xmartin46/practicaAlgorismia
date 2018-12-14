@@ -25,6 +25,42 @@ unordered_set<T> unionSets (unordered_set<T>& s1, unordered_set<T>& s2) {
 	return v;
 }
 
+bool IsPrime(int number)
+{
+
+    if (number == 2 || number == 3)
+        return true;
+
+    if (number % 2 == 0 || number % 3 == 0)
+        return false;
+
+    int divisor = 6;
+    while (divisor * divisor - 2 * divisor + 1 <= number)
+    {
+
+        if (number % (divisor - 1) == 0)
+            return false;
+
+        if (number % (divisor + 1) == 0)
+            return false;
+
+        divisor += 6;
+
+    }
+
+    return true;
+
+}
+
+int firstPrime(int a)
+{
+
+    while (!IsPrime(++a)) 
+    { }
+    return a;
+
+}
+
 template<typename T>
 vector<T> intersectionSets (unordered_set<T>& s1, unordered_set<T>& s2) {
 	vector<T> v;
@@ -95,7 +131,7 @@ int main() {
 	for (int i = 2; i < ndocuments; i++) shingles = unionSets(shingles, documents[i]);
 	
 	// Matrix representation
-	for (int j = 0; j < k; ++j) cout << " ";
+	/*for (int j = 0; j < k; ++j) cout << " ";
 	for (int i = 0; i < ndocuments; i++) {
 		cout << "	D" << i + 1;
 	}
@@ -108,7 +144,7 @@ int main() {
 			else cout << "0	";
 		}
 		cout << endl;
-	}
+	}*/
 	
 	int infinity = numeric_limits<int>::max();
 	int nhashFunctions = 7;
@@ -120,27 +156,29 @@ int main() {
 	for (int i = 0; i < shingles.size(); i++) {
 		// Compute h(i)
 		for (int j = 0; j < nhashFunctions; j++) {
+			int l = firstPrime(shingles.size());
+			//cout << endl << endl << l << endl << endl;
 			switch (j) {
 				case 0:
-					hashingValues[i][j] = (i + 1)%7;
+					hashingValues[i][j] = (i + 1)%l;
 					break;
 				case 1:
-					hashingValues[i][j] = (2*(i + 1)+1)%7;
+					hashingValues[i][j] = (2*(i + 1)+1)%l;
 					break;
 				case 2:
-					hashingValues[i][j] = (i + 1)%7;
+					hashingValues[i][j] = (3*i + 1)%l;
 					break;
 				case 3:
-					hashingValues[i][j] = (2*(i + 1)+1)%7;
+					hashingValues[i][j] = (2*(5*i + 1)+1)%l;
 					break;
 				case 4:
-					hashingValues[i][j] = (i + 1)%7;
+					hashingValues[i][j] = (i + 10)%l;
 					break;
 				case 5:
-					hashingValues[i][j] = (2*(i + 1)+1)%7;
+					hashingValues[i][j] = (4*(i + 1)-1)%l;
 					break;
 				case 6:
-					hashingValues[i][j] = (i + 1)%7;
+					hashingValues[i][j] = (i + 7)%l;
 					break;
 			}
 		}
@@ -160,10 +198,10 @@ int main() {
 	}
 	
 	// Hashing Values
-	cout << endl << endl;
+	/*cout << endl << endl;
 	for (int j = 0; j < k; ++j) cout << " ";
-	for (int i = 0; i < ndocuments; i++) {
-		cout << "	D" << i + 1;
+	for (int i = 0; i < nhashFunctions; i++) {
+		cout << "	H" << i + 1;
 	}
 	cout << endl;
 	it = shingles.begin();
@@ -184,7 +222,7 @@ int main() {
 			cout << signatureMatrix[i][j] << "	";
 		}
 		cout << endl;
-	}
+	}*/
 	
 	// Càlcul de jaccard similarity a signature matrix
 	// Comparem els dos primers documetns (es pot canviar)
