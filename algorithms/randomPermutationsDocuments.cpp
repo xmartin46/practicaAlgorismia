@@ -27,9 +27,6 @@ void putVector(vector<string> &v, const string filename) {
 	
     // Extracting words from the file 
     while (file >> word) {
-		for(int i = 0; i < word.length(); ++i)	{
-			word[i] = tolower(word[i]);
-		}
         v.push_back(word);
     }
 
