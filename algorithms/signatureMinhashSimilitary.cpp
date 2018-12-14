@@ -8,7 +8,7 @@
 using namespace std;
 
 /*
-Obtenir una aproximaci´o del grau de similitud de Jaccard a trav´es d’una representaci´o via signatures minhash basades 
+Obtenir una aproximaciï¿½o del grau de similitud de Jaccard a travï¿½es dï¿½una representaciï¿½o via signatures minhash basades 
 en t funcions de hash. La mesura de similitud de dos signatures a i b amb t components es defineix com:
 */
 
@@ -114,10 +114,13 @@ int main() {
 	cout << "Insert the k value to do the k-Shingling: ";
 	cin >> k;
 	
-	string filePath1 = "./Jsim2documents/first.txt";
-	string filePath2 = "./Jsim2documents/second.txt";
+	//string filePath1 = "./Jsim2documents/first.txt";
+	//string filePath2 = "./Jsim2documents/second.txt";
 
-	bool spaces = false;
+	string filePath1 = "./20doc/13.txt";
+	string filePath2 = "./20doc/0.txt";
+
+	bool spaces = true;
 	vector<unordered_set<string>> documents;
 
 	unordered_set<string> D1 = kShingle(filePath1, k, spaces);
@@ -224,7 +227,7 @@ int main() {
 		cout << endl;
 	}*/
 	
-	// Càlcul de jaccard similarity a signature matrix
+	// Cï¿½lcul de jaccard similarity a signature matrix
 	// Comparem els dos primers documetns (es pot canviar)
 	int doc1 = 0;
 	int doc2 = 1;

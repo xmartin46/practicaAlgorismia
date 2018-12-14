@@ -49,7 +49,7 @@ unsigned long mix(unsigned long a, unsigned long b, unsigned long c) {
 int main() {
 	// Put the 50 words of the document in this vector
 	vector<string> words;
-	putVector(words, "./20doc/documentBasic.txt");
+	putVector(words, "./20doc/HP.txt");
 	
 	// Set the random seed
 	//		https://stackoverflow.com/questions/322938/recommended-way-to-initialize-srand
