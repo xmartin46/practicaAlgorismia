@@ -147,7 +147,7 @@ int main() {
 	}*/
 	
 	int infinity = numeric_limits<int>::max();
-	int nhashFunctions = 7;
+	int nhashFunctions = 14;
 	vector<vector<int>> hashingValues(shingles.size(), vector<int>(nhashFunctions));
 	vector<vector<int>> signatureMatrix(nhashFunctions, vector<int>(ndocuments, infinity));
 	
@@ -178,7 +178,28 @@ int main() {
 					hashingValues[i][j] = (4*(i + 1)-1)%l;
 					break;
 				case 6:
-					hashingValues[i][j] = (i + 7)%l;
+					hashingValues[i][j] = (i)%l;
+					break;
+				case 7:
+					hashingValues[i][j] = (i*4-2)%l;
+					break;
+				case 8:
+					hashingValues[i][j] = (10*(i + 1)-1)%l;
+					break;
+				case 9:
+					hashingValues[i][j] = (5*i + 2)%l;
+					break;
+				case 10:
+					hashingValues[i][j] = (7*(5*i + 5)+1)%l;
+					break;
+				case 11:
+					hashingValues[i][j] = (i/2)%l;
+					break;
+				case 12:
+					hashingValues[i][j] = (4*(i + 1)/2)%l;
+					break;
+				case 13:
+					hashingValues[i][j] = (i/7)%l;
 					break;
 			}
 		}
@@ -225,15 +246,15 @@ int main() {
 	}*/
 	
 	// Càlcul de jaccard similarity a signature matrix
-	// Comparem els dos primers documetns (es pot canviar)
+	// Comparem els dos primers documents (es pot canviar)
 	int doc1 = 0;
 	int doc2 = 1;
 	int interseccio = 0;
 	for (int i = 0; i < nhashFunctions; i++) {
-		if (signatureMatrix[i][doc1] == signatureMatrix[i][doc2]) ++interseccio;
+		if (signatureMatrix[i][doc1] == signatureMatrix[i][doc2] and signatureMatrix[i][doc1] != infinity) ++interseccio;
 	}
 	
 	cout << endl;
-	
+
 	cout << "Jaccard Similarity in the Signature Matrix: " << ((double)interseccio/(double)nhashFunctions) * 100 << "%" << endl;
 }
