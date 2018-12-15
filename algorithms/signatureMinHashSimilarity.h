@@ -39,18 +39,18 @@ int modularHashFunction(int i, int x, int y, int z) {
 template<typename T>
 double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
 	
-    vector<unordered_set<string>> documents(2);
+    vector<unordered_set<T>> documents(2);
 	documents[0] = (D1);
 	documents[1] = (D2);
 
 	int ndocuments = 2;
 
-	unordered_set<string> shingles = unionSets(D1, D2);
+	unordered_set<T> shingles = unionSets(D1, D2);
     // In case we needed to compute union of > 2 documents
 	for (int i = 2; i < ndocuments; i++) shingles = unionSets(shingles, documents[i]);
 	
 	//clock_t tStart = clock();
-	int nhashFunctions = 1000;
+	int nhashFunctions = 200;
 
 	vector<vector<int>> signatureMatrix(nhashFunctions, vector<int>(ndocuments, INFINITY));
 	vector<vector<int>> hashFunctions(2, vector<int>(nhashFunctions));
@@ -59,7 +59,7 @@ double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
 	
 	for (int i = 0; i < nhashFunctions; i++) {
 		// x, y
-		hashFunctions[0][i] = primes[i];
+		hashFunctions[0][i] = primes[i%primes.size()];
 		hashFunctions[1][i] = rand()%z;
 	}
 	
@@ -80,16 +80,6 @@ double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
 		
 		++it;
 	}
-
-	/*
-	cout << endl << endl;
-	for (int i = 0; i < nhashFunctions; i++) {
-		for (int j = 0; j < ndocuments; j++) {
-			cout << signatureMatrix[i][j] << "	";
-		}
-		cout << endl;
-	}
-	*/
 
 	// Calcul de jaccard similarity a signature matrix
 	// Comparem els dos primers documents (es pot canviar)
