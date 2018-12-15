@@ -288,12 +288,12 @@ For each document:
 
 \begin{algorithmic}
  \Require $k$
- \Ensure S has all the substrings of size k of the document
- \State{\textit{words} = entire document}
- \State{\textit{pos} = 0}
- \State{unordered\_set \textit{S} = $\O$}
+ \Ensure Returns an unordered\_set with all the substrings of size k of the document
+ \State{\textit{words} := entire document}
+ \State{\textit{pos} := 0}
+ \State{unordered\_set \textit{S} := $\O$}
  \While {\textit{pos + k} $<=$ \textit{words.size()}}
-	\State{\textit{sub} = substring from \textit{pos} to \textit{pos + (k - 1)}}
+	\State{\textit{sub} := substring from \textit{pos} to \textit{pos + (k - 1)}}
 	\State{insert \textit{sub} into \textit{S}}
  \EndWhile
  \State{return \textit{S}}
@@ -306,7 +306,7 @@ Once we have calculated the \textit{k}-Shingles, we need to compute the intersec
 \begin{algorithmic}
  \Require Two sets $S_1$ and $S_2$
  \Ensure Returns the intersection set between $S_1$ and $S_2$
- \State{unordered\_set intersection = $\O$}
+ \State{unordered\_set intersection := $\O$}
  \For{each element in $S_1$}                                       
   \If {$S_2$ contains the element in $S_1$}
 	\State{insert the element into intersection}
@@ -319,7 +319,7 @@ Once we have calculated the \textit{k}-Shingles, we need to compute the intersec
 \begin{algorithmic}
  \Require Two sets $S_1$ and $S_2$
  \Ensure Returns the union set between $S_1$ and $S_2$
- \State{unordered\_set union = $S_1$}
+ \State{unordered\_set union := $S_1$}
  \For{each element in $S_2$}                                       
   \If {the element in $S_1$ is not contained in $S_1$}
 	\State{insert the element into union}
@@ -353,26 +353,26 @@ We know that implementing just k-Shingling is very expensive in terms of size an
  \Require Two sets $S_1$ and $S_2$
  \Ensure Returns an approximate Jaccard Similarity value between $S_1$ and $S_2$
  \State{unordered\_set union = $S_1 U S_2$}
- \State{matrix signatures = infinity}
+ \State{matrix signatures = infinity?????????????????????? S'enten que és cada posició?}
  \State{vector h = all the hash functions we will use}
  
   \For{each row $r$}                    
   \For{each hash function $h[i]$}                    
     \State {compute $h[i](r)$;}
   \EndFor
- \EndFor
  \For{each column $c$}                    
   \If{$c$ has 1 in row $r$}
-    \For{each hash function $h_i$}                    
-      \If{$h_i(r)$ is smaller than $signatures[i][c]$}
+    \For{each hash function $h[i]$}                    
+      \If{$h[i](r)$ is smaller than $signatures[i][c]$}
   	    \State $signatures[i][c] := h[i](r)$;
   	  \EndIf
     \EndFor
   \EndIf
  \EndFor
- \State{intersection = 0}
- \State{doc1 = 0}
- \State{doc2 = 1}
+  \EndFor
+ \State{intersection := 0}
+ \State{doc1 := 0}
+ \State{doc2 := 1}
  \For{each hash function $h[i]$}                    
     \If{$signatures[i][doc1] == signatures[i][doc2]$}
       \If{$signatures[i][doc1] != infinity$}
@@ -382,6 +382,27 @@ We know that implementing just k-Shingling is very expensive in terms of size an
   \EndFor
  \State{return $\dfrac{intersection}{h.size()}$}
 \end{algorithmic}
+
+\hfill
+
+FALTA PARLAR DE LES HASH FUNCTIONS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+\paragraph{Cost}
+
+We can deduce by just watching the code that the time complexity will come from the first for loop, as it is the one that has to compute most things.
+Inside the loop, we have two more loops:
+
+\begin{enumerate}
+   \item This loop is responsible of calculating the hash functions taking as the input the row number. Let \textit{h} be the number of hash functions we are using. Then, the cost is $O(h)$ because the calculus done inside this loop is constant.
+   
+   \item This other loop is the one that updates (or not) the signature matrix. For every column \textit{c}:
+   \begin{itemize}
+     \item Watch if the set representing the document has the shingle of the row \textit{r}. The cost of doing this is $O(1)$.
+     \item Compare the results of all the values computed in the previous for. If any value is smaller than the one that is in the signature matrix at position [\textit{h}][\textit{c}], just replace it by the new value. The cost of this for is $O(c * h)$, where \textit{c} is the number of documents and \textit{h} is the number of hash functions.
+   \end{itemize}
+\end{enumerate}
+
+Thus, the cost of this function is $O(r * (h + c * (h + 1))) = O(r * h + r * c * h + r * c) = O(r * c * h)$, where \textit{r} is the number of rows and \textit{h} and \textit{c} the values explained before. We should point that \textit{h} is a constant value (usually 200 is correct), so the real cost is $O(r * c)$.
 
 \section{Referencies}
 
