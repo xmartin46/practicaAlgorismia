@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <limits>
 #include <time.h>
+#include <cstdlib>		// srand, rand
+#include <stdlib.h>
 using namespace std;
 
 /*
@@ -56,8 +58,8 @@ bool IsPrime(int number)
 int firstPrime(int a)
 {
 
-    while (!IsPrime(++a)) 
-    { }
+    while (!IsPrime(a)) 
+    {a++; }
     return a;
 
 }
@@ -76,6 +78,10 @@ vector<T> intersectionSets (unordered_set<T>& s1, unordered_set<T>& s2) {
 template<typename T>
 double jaccardSimilarity(unordered_set<T>& s1, unordered_set<T>& s2) {	
 	// Return the Jaccard Similarity (Intersection / Union)
+}
+
+int modularHashFunction(int i, int x, int y, int z) {
+	return (i*x+y)%z;
 }
 
 // spaces == true if we want to count spaces
@@ -99,7 +105,7 @@ unordered_set<string> kShingle(const string filePath, const int k, bool spaces) 
 	}
 	
 	// Delete the last " " of the string
-	if (spaces) allWords = allWords.substr(0, allWords.size() - 1);
+	//if (spaces) allWords = allWords.substr(0, allWords.size() - 1);
     
     for (int i = 0; i + k <= allWords.size(); i++) {
    	    shingles.insert(allWords.substr(i, k));
@@ -118,7 +124,7 @@ int main() {
 	string filePath1 = "./Jsim2documents/first.txt";
 	string filePath2 = "./Jsim2documents/second.txt";
 
-	bool spaces = false;
+	bool spaces = true;
 	vector<unordered_set<string>> documents;
 
 	unordered_set<string> D1 = kShingle(filePath1, k, spaces);
@@ -132,7 +138,7 @@ int main() {
 	for (int i = 2; i < ndocuments; i++) shingles = unionSets(shingles, documents[i]);
 	
 	// Matrix representation
-	/*for (int j = 0; j < k; ++j) cout << " ";
+/*for (int j = 0; j < k; ++j) cout << " ";
 	for (int i = 0; i < ndocuments; i++) {
 		cout << "	D" << i + 1;
 	}
@@ -147,71 +153,30 @@ int main() {
 		cout << endl;
 	}*/
 	
-	//clock_t tStart = clock();
+	
 	int infinity = numeric_limits<int>::max();
-	int nhashFunctions = 14;
-	vector<vector<int>> hashingValues(shingles.size(), vector<int>(nhashFunctions));
+	int nhashFunctions = 200;
 	vector<vector<int>> signatureMatrix(nhashFunctions, vector<int>(ndocuments, infinity));
+	vector<vector<int>> hashFunctions(2, vector<int>(nhashFunctions));
+	srand(time(NULL));
+	int z = firstPrime(shingles.size());
+	
+	clock_t tStart = clock();
+	for (int i = 0; i < nhashFunctions; i++) {
+		// x, y
+		hashFunctions[0][i] = abs(rand());
+		hashFunctions[1][i] = abs(rand());
+	}
 	
 	auto it = shingles.begin();
-	int l = firstPrime(shingles.size());
-	for (int i = 0; i < shingles.size(); i++) {
-		// Compute h(i)
-		for (int j = 0; j < nhashFunctions; j++) {
-			
-			//cout << endl << endl << l << endl << endl;
-			switch (j) {
-				case 0:
-					hashingValues[i][j] = (i + 1)%l;
-					break;
-				case 1:
-					hashingValues[i][j] = (2*(i + 1)+1)%l;
-					break;
-				case 2:
-					hashingValues[i][j] = (3*i + 1)%l;
-					break;
-				case 3:
-					hashingValues[i][j] = (2*(5*i + 1)+1)%l;
-					break;
-				case 4:
-					hashingValues[i][j] = (i + 10)%l;
-					break;
-				case 5:
-					hashingValues[i][j] = (4*(i + 1)-1)%l;
-					break;
-				case 6:
-					hashingValues[i][j] = (i)%l;
-					break;
-				case 7:
-					hashingValues[i][j] = (i*4-2)%l;
-					break;
-				case 8:
-					hashingValues[i][j] = (10*(i + 1)-1)%l;
-					break;
-				case 9:
-					hashingValues[i][j] = (5*i + 2)%l;
-					break;
-				case 10:
-					hashingValues[i][j] = (7*(5*i + 5)+1)%l;
-					break;
-				case 11:
-					hashingValues[i][j] = (i/2)%l;
-					break;
-				case 12:
-					hashingValues[i][j] = (4*(i + 1)/2)%l;
-					break;
-				case 13:
-					hashingValues[i][j] = (i/7)%l;
-					break;
-			}
-		}
-		
+	for (int i = 0; i < shingles.size(); i++) {	
 		// Signature matrix
 		for (int n = 0; n < ndocuments; n++) {
 			if (documents[n].find(*it) != documents[i].end()) {
 				for (int j = 0; j < nhashFunctions; j++) {
-					if (hashingValues[i][j] < signatureMatrix[j][n]) {
-						signatureMatrix[j][n] = hashingValues[i][j];
+					int value = modularHashFunction(i, hashFunctions[0][j], hashFunctions[1][j], z);
+					if (value < signatureMatrix[j][n]) {
+						signatureMatrix[j][n] = value;
 					}
 				}
 			}
@@ -221,7 +186,7 @@ int main() {
 	}
 	
 	// Hashing Values
-	/*cout << endl << endl;
+/*	cout << endl << endl;
 	for (int j = 0; j < k; ++j) cout << " ";
 	for (int i = 0; i < nhashFunctions; i++) {
 		cout << "	H" << i + 1;
@@ -259,5 +224,5 @@ int main() {
 	cout << endl;
 
 	cout << "Jaccard Similarity in the Signature Matrix: " << ((double)interseccio/(double)nhashFunctions) * 100 << "%" << endl;
-	//printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+	printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 }

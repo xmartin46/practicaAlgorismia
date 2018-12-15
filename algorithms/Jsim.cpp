@@ -19,7 +19,7 @@ int main() {
 	string filePath1 = "./Jsim2documents/first.txt";
 	string filePath2 = "./Jsim2documents/second.txt";
 
-	bool spaces = false;
+	bool spaces = true;
 
 	unordered_set<string> S1 = kShingleString(filePath1, k, spaces);
 	unordered_set<string> S2 = kShingleString(filePath2, k, spaces);
