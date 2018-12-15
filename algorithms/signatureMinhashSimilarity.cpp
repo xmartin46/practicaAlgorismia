@@ -32,8 +32,13 @@ int main() {
 	unordered_set<string> D1 = kShingleString(filePath1, k, spaces, allLowercase);
 	unordered_set<string> D2 = kShingleString(filePath2, k, spaces, allLowercase);
 
-	double sim = signatureMinHashSimilarity(D1, D2);
+	unordered_set<int> I1 = kShingleInt(filePath1, k, spaces, allLowercase);
+	unordered_set<int> I2 = kShingleInt(filePath2, k, spaces, allLowercase);
 
-	cout << endl << "Jaccard Similarity in the Signature Matrix: " << sim * 100 << "%" << endl;
+	double simS = signatureMinHashSimilarity(D1, D2);
+	//double simD = signatureMinHashSimilarity(I1, I2);
+
+	cout << endl << "The Jaccard Similarity using Strings as Shingles is: " << simS * 100 << "%" << endl;
+	//cout << endl << "The Jaccard Similarity using Integers as Shingles is: " << simD * 100 << "%" << endl;
 	//printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 }
