@@ -1,7 +1,5 @@
-#include <limits>
+#include "constants.h"
 using namespace std;
-
-const int INFINITY = numeric_limits<int>::max();
 
 bool IsPrime(int number) {
 
@@ -33,6 +31,7 @@ int firstPrime(int a) {
     return a;
 }
 
+// X hauria de ser un nombre primer per evitar colisions 
 int modularHashFunction(int i, int x, int y, int z) {
 	return (i*x+y)%z;
 }
@@ -50,24 +49,8 @@ double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
     // In case we needed to compute union of > 2 documents
 	for (int i = 2; i < ndocuments; i++) shingles = unionSets(shingles, documents[i]);
 	
-	// Matrix representation
-	/*for (int j = 0; j < k; ++j) cout << " ";
-	for (int i = 0; i < ndocuments; i++) {
-		cout << "	D" << i + 1;
-	}
-	cout << endl;
-	
-	for (string shing : shingles) {
-		cout << shing << "	";
-		for (int i = 0; i < ndocuments; i++) {
-			if (documents[i].find(shing) != documents[i].end()) cout << "1	";
-			else cout << "0	";
-		}
-		cout << endl;
-	}*/
-	
 	//clock_t tStart = clock();
-	int nhashFunctions = 200;
+	int nhashFunctions = 1000;
 
 	vector<vector<int>> signatureMatrix(nhashFunctions, vector<int>(ndocuments, INFINITY));
 	vector<vector<int>> hashFunctions(2, vector<int>(nhashFunctions));
@@ -76,8 +59,8 @@ double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
 	
 	for (int i = 0; i < nhashFunctions; i++) {
 		// x, y
-		hashFunctions[0][i] = abs(rand());
-		hashFunctions[1][i] = abs(rand());
+		hashFunctions[0][i] = primes[i];
+		hashFunctions[1][i] = rand()%z;
 	}
 	
 	auto it = shingles.begin();
@@ -97,34 +80,17 @@ double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
 		
 		++it;
 	}
-	
-	// Hashing Values
-	/*cout << endl << endl;
-	for (int j = 0; j < k; ++j) cout << " ";
-	for (int i = 0; i < nhashFunctions; i++) {
-		cout << "	H" << i + 1;
-	}
-	cout << endl;
-	it = shingles.begin();
-	for (int i = 0; i < shingles.size(); i++) {
-		
-		cout << *it << "	";
-		++it;
-		for (int j = 0; j < nhashFunctions; j++) {
-			cout << hashingValues[i][j] << "	";
-		}
-		cout << endl;
-	}
-	
-	// Signature Matrix
+
+	/*
 	cout << endl << endl;
 	for (int i = 0; i < nhashFunctions; i++) {
 		for (int j = 0; j < ndocuments; j++) {
 			cout << signatureMatrix[i][j] << "	";
 		}
 		cout << endl;
-	}*/
-		
+	}
+	*/
+
 	// Calcul de jaccard similarity a signature matrix
 	// Comparem els dos primers documents (es pot canviar)
 	int doc1 = 0;
