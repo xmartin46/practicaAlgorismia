@@ -1,10 +1,10 @@
 #include <iostream>		// cout
 #include <algorithm>    // random_shuffle
 #include <cstdlib>		// srand, rand
-#include <ctime>		// time
 #include <vector>		// vector
 #include <string>		// string
 #include <fstream>		// open, close, 
+#include "constAndRand.h"
 using namespace std;
 
 vector<int> randomize(int n) {
@@ -33,19 +33,6 @@ void putVector(vector<string> &v, const string filename) {
     file.close();
 }
 
-unsigned long mix(unsigned long a, unsigned long b, unsigned long c) {
-    a=a-b;  a=a-c;  a=a^(c >> 13);
-    b=b-c;  b=b-a;  b=b^(a << 8);
-    c=c-a;  c=c-b;  c=c^(b >> 13);
-    a=a-b;  a=a-c;  a=a^(c >> 12);
-    b=b-c;  b=b-a;  b=b^(a << 16);
-    c=c-a;  c=c-b;  c=c^(b >> 5);
-    a=a-b;  a=a-c;  a=a^(c >> 3);
-    b=b-c;  b=b-a;  b=b^(a << 10);
-    c=c-a;  c=c-b;  c=c^(b >> 15);
-    return c;
-}
-
 int main() {
 	// Put the 50 words of the document in this vector
 	vector<string> words;
@@ -54,7 +41,7 @@ int main() {
 	// Set the random seed
 	//		https://stackoverflow.com/questions/322938/recommended-way-to-initialize-srand
 	//		We will use the time and the PID to get a good seed for the pseudo-random number generations
-	unsigned long seed = mix(clock(), time(NULL), getpid());
+	unsigned long seed = genRand();
 	srand (seed);
 	//srand (time(NULL));
 	
