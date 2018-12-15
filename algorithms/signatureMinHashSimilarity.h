@@ -1,4 +1,4 @@
-#include "constants.h"
+#include "constAndRand.h"
 using namespace std;
 
 bool IsPrime(int number) {
@@ -54,7 +54,7 @@ double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
 
 	vector<vector<int>> signatureMatrix(nhashFunctions, vector<int>(ndocuments, INFINITY));
 	vector<vector<int>> hashFunctions(2, vector<int>(nhashFunctions));
-	srand(time(NULL));
+	srand(genRand());
 	int z = shingles.size();
 	
 	for (int i = 0; i < nhashFunctions; i++) {
