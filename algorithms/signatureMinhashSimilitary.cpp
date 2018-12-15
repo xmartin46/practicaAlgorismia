@@ -121,8 +121,11 @@ int main() {
 	cout << "Insert the k value to do the k-Shingling: ";
 	cin >> k;
 	
-	string filePath1 = "./Jsim2documents/first.txt";
-	string filePath2 = "./Jsim2documents/second.txt";
+	/*string filePath1 = "./Jsim2documents/first.txt";
+	string filePath2 = "./Jsim2documents/second.txt";*/
+	
+	string filePath1 = "./20doc/0.txt";
+	string filePath2 = "./20doc/13.txt";
 
 	bool spaces = true;
 	vector<unordered_set<string>> documents;
