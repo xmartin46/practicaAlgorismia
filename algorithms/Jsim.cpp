@@ -23,12 +23,13 @@ int main() {
 	string filePath2 = "./20doc/0.txt";
 
 	bool spaces = true;
+	bool allLowercase = true;
 
-	unordered_set<string> S1 = kShingleString(filePath1, k, spaces);
-	unordered_set<string> S2 = kShingleString(filePath2, k, spaces);
+	unordered_set<string> S1 = kShingleString(filePath1, k, spaces, allLowercase);
+	unordered_set<string> S2 = kShingleString(filePath2, k, spaces, allLowercase);
 
-	unordered_set<int> I1 = kShingleInt(filePath1, k, spaces);
-	unordered_set<int> I2 = kShingleInt(filePath2, k, spaces);
+	unordered_set<int> I1 = kShingleInt(filePath1, k, spaces, allLowercase);
+	unordered_set<int> I2 = kShingleInt(filePath2, k, spaces, allLowercase);
 
 	cout << endl << "The Jaccard Similarity using Strings as Shingles is: " << jaccardSimilarity(S1, S2)*100 << "%" << endl;
 	cout << endl << "The Jaccard Similarity using Integers as Shingles is: " << jaccardSimilarity(I1, I2)*100 << "%" << endl;

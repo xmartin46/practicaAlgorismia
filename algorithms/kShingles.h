@@ -46,7 +46,7 @@ double jaccardSimilarity(unordered_set<T>& s1, unordered_set<T>& s2) {
 }
 
 // spaces == true if we want to count spaces
-unordered_set<string> kShingleString(const string filePath, const int k, bool spaces) {
+unordered_set<string> kShingleString(const string filePath, const int k, bool spaces, bool allLowecase) {
 	fstream file;
     string word;
   	unordered_set<string> shingles;
@@ -64,10 +64,12 @@ unordered_set<string> kShingleString(const string filePath, const int k, bool sp
 		if (spaces) allWords += " ";
     	allWords += word;
 	}
-
-	// All characters to lowecase
-	for(int i = 0; i < allWords.length(); ++i)	{
-		allWords[i] = tolower(allWords[i]);
+	
+	if (allLowecase) {
+		// All characters to lowecase
+		for(int i = 0; i < allWords.length(); ++i)	{
+			allWords[i] = tolower(allWords[i]);
+		}
 	}
     
     for (int i = 0; i + k <= allWords.size(); i++) {
@@ -79,7 +81,7 @@ unordered_set<string> kShingleString(const string filePath, const int k, bool sp
 	return shingles;
 }
 
-unordered_set<int> kShingleInt(const string filePath, const int k, bool spaces) {
+unordered_set<int> kShingleInt(const string filePath, const int k, bool spaces,  bool allLowecase) {
 	fstream file;
     string word;
   	unordered_set<int> shingles;
@@ -96,6 +98,13 @@ unordered_set<int> kShingleInt(const string filePath, const int k, bool spaces) 
     while (file >> word) {
 		if (spaces) allWords += " ";
     	allWords += word;
+	}
+
+	if (allLowecase) {
+		// All characters to lowecase
+		for(int i = 0; i < allWords.length(); ++i)	{
+			allWords[i] = tolower(allWords[i]);
+		}
 	}
     
     for (int i = 0; i + k <= allWords.size(); i++) {
