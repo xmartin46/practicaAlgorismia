@@ -56,6 +56,16 @@
 %\usepackage{algorithm}% http://ctan.org/pkg/algorithm
 %\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
 \usepackage{algpseudocode}
+
+\renewcommand{\thefootnote}{\arabic{footnote}} % 1, 2, 3... (la que hay por defecto)
+
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 %--------------------------------------------------------------------------
 \title{Detection of/between similarity of documents with hashing}
 \author{Roger Vilaseca Darné and Xavier Martín Ballesteros\\
@@ -242,14 +252,14 @@ Encara falta posar cosetes NENG!
 %\Require $n \geq 0$
 %\Ensure $y = x^n$
  \For{each row $r$}                    
-  \For{each has function $h_i$}                    
+  \For{each hash function $h_i$}                    
     \State {compute $h_i(r)$;}
   \EndFor
  \EndFor
 
  \For{each column $c$}                    
   \If{$c$ has 1 in row $r$}
-    \For{each has function $h_i$}                    
+    \For{each hash function $h_i$}                    
       \If{$h_i(r)$ is smaller than $M(i, c)$}
   	    \State $M(i, c) := h_I(r)$;
   	  \EndIf
@@ -262,7 +272,118 @@ Encara falta posar cosetes NENG!
 
 Mas texto.
 
-\subsection{Referencies}
+\section{Algorithms}
+
+L'objectiu és mostrar la idea que hi ha darrere els algorismes. No es mostrarà part del codi real. Si es vol mirar el codi, s'haruàn d'anar als arxius corresponents.
+
+\subsection{Jaccard Similarity}
+
+The main objective in this section is to calculate the Jaccard Similarity between two documents in different ways.
+
+\subsubsection{k-Shingles}
+
+The idea is to create two sets, one per document, and insert all substrings of size \textit{k} of the documents. Afterwards, we will just have two make a division: the number of shingles in the intersection divided by the number of shingles in the union.
+
+For each document:
+
+\begin{algorithmic}
+ \Require $k$
+ \Ensure S has all the substrings of size k of the document
+ \State{\textit{words} = entire document}
+ \State{\textit{pos} = 0}
+ \State{unordered\_set \textit{S} = $\O$}
+ \While {\textit{pos + k} $<=$ \textit{words.size()}}
+	\State{\textit{sub} = substring from \textit{pos} to \textit{pos + (k - 1)}}
+	\State{insert \textit{sub} into \textit{S}}
+ \EndWhile
+ \State{return \textit{S}}
+\end{algorithmic}
+\hfill
+\hfill
+Once we have calculated the \textit{k}-Shingles, we need to compute the intersection and the union of the sets. Note that we insert the substrings in an unordered set. This will be very usefull to improve the time complexity in the next two algorithms:
+\hfill
+\hfill
+\begin{algorithmic}
+ \Require Two sets $S_1$ and $S_2$
+ \Ensure Returns the intersection set between $S_1$ and $S_2$
+ \State{unordered\_set intersection = $\O$}
+ \For{each element in $S_1$}                                       
+  \If {$S_2$ contains the element in $S_1$}
+	\State{insert the element into intersection}
+  \EndIf
+ \EndFor
+ \State{return \textit{intersection}}
+\end{algorithmic}
+\hfill
+\hfill
+\begin{algorithmic}
+ \Require Two sets $S_1$ and $S_2$
+ \Ensure Returns the union set between $S_1$ and $S_2$
+ \State{unordered\_set union = $S_1$}
+ \For{each element in $S_2$}                                       
+  \If {the element in $S_1$ is not contained in $S_1$}
+	\State{insert the element into union}
+  \EndIf
+ \EndFor
+ \State{return \textit{union}}
+\end{algorithmic}
+
+As you can see, we visit only one set in each algorithm. The good thing is that finding if an element belongs to an unordered set or not is $O(1)$ (IN THE AVREAGE TIME?????). Thus, the time complexity for these two algorithms is $O(n)$, where \textit{n} is the size of the smallest unordered set\footnote{Note that we can change the set we are visiting by the other one. In the intersection, if $S_2$ is smaller than $S_1$, we can visit $S_2$. In the union, if $S_2$ is bigger than $S_1$, we can match the unordered set with $S_2$ and visit $S_1$.}, and the total time complexity is $O(n)$????????????????????, as inserting elements in an unordered set is $O(1)$ (IN THE AVREAGE TIME?????).
+
+On the other hand, if we would have used the predefined functions \textit{set\_intersection} and \textit{set\_union}, we would have needed two ordered set, as it is a precondition of these two functions. Thus, the total cost would have been $O(n * log(n))$.
+
+Finally, we just have to divide the size of the intersection set by the size of the union set (and multiply by 100 if we want a percentage).
+
+\begin{equation}
+Jsim(D_1, D_2) = \dfrac{intersection.size()}{union.size()} * 100
+\end{equation}
+
+\paragraph{Cost}
+
+The cost of the first algorithm is $O(k * (t - k))$, where \textit{k} is the k-Shingle value and \textit{t} is the size of \textit{words}. As \textit{k} is always a constant, the final cost of this algorithm is $O(k * t - k^2) = O(t)$. The cost of the next two algorithms are $O(n)$, as we have said in the previous section. Finally, the cost of a division and a multiplication is $O(1)$.
+
+Thus, the total cost of calculating the Jaccard Similarity using only k-Shingles is $O(n) + O(t) + O(1) = O(n)$, as usually the number of shingles is much larger than the size of \textit{words}.
+
+\subsubsection{Minhash Signatures}
+
+We know that implementing just k-Shingling is very expensive in terms of size and time (if we want to compare n documents between them, the complexity is $O(n^2)$). Implementing minhash signatures will help on this a lot. However, the Jaccard Similarity will not be the exact value. To do this, we will use as our input the k-Shingle sets calculated in the previous section.
+\hfill
+\hfill
+\begin{algorithmic}
+ \Require Two sets $S_1$ and $S_2$
+ \Ensure Returns an approximate Jaccard Similarity value between $S_1$ and $S_2$
+ \State{unordered\_set union = $S_1 U S_2$}
+ \State{matrix signatures = infinity}
+ \State{vector h = all the hash functions we will use}
+ 
+  \For{each row $r$}                    
+  \For{each hash function $h[i]$}                    
+    \State {compute $h[i](r)$;}
+  \EndFor
+ \EndFor
+ \For{each column $c$}                    
+  \If{$c$ has 1 in row $r$}
+    \For{each hash function $h_i$}                    
+      \If{$h_i(r)$ is smaller than $signatures[i][c]$}
+  	    \State $signatures[i][c] := h[i](r)$;
+  	  \EndIf
+    \EndFor
+  \EndIf
+ \EndFor
+ \State{intersection = 0}
+ \State{doc1 = 0}
+ \State{doc2 = 1}
+ \For{each hash function $h[i]$}                    
+    \If{$signatures[i][doc1] == signatures[i][doc2]$}
+      \If{$signatures[i][doc1] != infinity$}
+  	  	\State{++intersection}
+  	  \EndIf
+  	\EndIf
+  \EndFor
+ \State{return $\dfrac{intersection}{h.size()}$}
+\end{algorithmic}
+
+\section{Referencies}
 
 \url{https://towardsdatascience.com/understanding-locality-sensitive-hashing-49f6d1f6134}
 
