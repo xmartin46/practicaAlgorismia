@@ -16,7 +16,7 @@ int main(int argc, char** argv){
 	int k;
 	int nHashFunctions;
 	bool measureTime;
-	double threshold = 0.80;
+	double threshold = 0.20;
 	if (argc > 1) {
 		k = stoi(argv[1]);
 		nHashFunctions = stoi(argv[2]);
@@ -28,7 +28,7 @@ int main(int argc, char** argv){
 		cin >> k;
 		// Default value for number of hash functions
 		// Simulating permutations
-		nHashFunctions = 500;
+		nHashFunctions = 200;
 		measureTime = false;
 	}
 
@@ -52,11 +52,12 @@ int main(int argc, char** argv){
 	int b = 1;
 	int nhashFunctions = sm.size();
 	
+	double aux = POSINFINITY;
 	double err_min = 1;
-	
-	for (int i = 1; i <= nhashFunctions; ++i){
+	int i = 1;
+	while (aux > threshold && i <= nhashFunctions) {
 		if (nhashFunctions%i==0){
-			double aux = pow((1.0/(double)i),((double)i/(double)nhashFunctions));
+			aux = pow((1.0/(double)i),((double)i/(double)nhashFunctions));
 			// cout << "Bands: " << i << " -> Error: " <<  aux << endl;
 			double diff = abs(aux-threshold);
 			if (diff < err_min) {
@@ -64,8 +65,9 @@ int main(int argc, char** argv){
 				b = i;
 			}
 		}
+		++i;
 	}
-	//b = 8;
+
 	int r = nhashFunctions / b;
 	
 	cout << b << "    " << r << endl;
