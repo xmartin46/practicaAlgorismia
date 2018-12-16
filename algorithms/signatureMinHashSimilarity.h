@@ -37,7 +37,7 @@ int modularHashFunction(int i, int x, int y, int z) {
 }
 
 template<typename T>
-double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
+double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2, int nHashFunctions) {
 	
     vector<unordered_set<T>> documents(2);
 	documents[0] = (D1);
@@ -50,14 +50,13 @@ double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
 	for (int i = 2; i < ndocuments; i++) shingles = unionSets(shingles, documents[i]);
 	
 	//clock_t tStart = clock();
-	int nhashFunctions = 200;
 
-	vector<vector<int>> signatureMatrix(nhashFunctions, vector<int>(ndocuments, INFINITY));
-	vector<vector<int>> hashFunctions(2, vector<int>(nhashFunctions));
+	vector<vector<int>> signatureMatrix(nHashFunctions, vector<int>(ndocuments, INFINITY));
+	vector<vector<int>> hashFunctions(2, vector<int>(nHashFunctions));
 	srand(genRand());
 	int z = shingles.size();
 	
-	for (int i = 0; i < nhashFunctions; i++) {
+	for (int i = 0; i < nHashFunctions; i++) {
 		// x, y
 		hashFunctions[0][i] = primes[i%primes.size()];
 		hashFunctions[1][i] = rand()%z;
@@ -69,7 +68,7 @@ double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
 		// Signature matrix
 		for (int n = 0; n < ndocuments; n++) {
 			if (documents[n].find(*it) != documents[i].end()) {
-				for (int j = 0; j < nhashFunctions; j++) {
+				for (int j = 0; j < nHashFunctions; j++) {
 					int value = modularHashFunction(i, hashFunctions[0][j], hashFunctions[1][j], z);
 					if (value < signatureMatrix[j][n]) {
 						signatureMatrix[j][n] = value;
@@ -86,10 +85,10 @@ double signatureMinHashSimilarity(unordered_set<T>& D1, unordered_set<T>& D2) {
 	int doc1 = 0;
 	int doc2 = 1;
 	int interseccio = 0;
-	for (int i = 0; i < nhashFunctions; i++) {
+	for (int i = 0; i < nHashFunctions; i++) {
 		if (signatureMatrix[i][doc1] == signatureMatrix[i][doc2] and signatureMatrix[i][doc1] != INFINITY) ++interseccio;
 	}
 	
-    return ((double)interseccio/(double)nhashFunctions);
+    return ((double)interseccio/(double)nHashFunctions);
 	//printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 }

@@ -14,10 +14,20 @@ Obtenir una aproximacio del grau de similitud de Jaccard a traves d una represen
 en t funcions de hash. La mesura de similitud de dos signatures a i b amb t components es defineix com:
 */
 
-int main() {
+int main(int argc, char** argv) {
 	int k;
-	cout << "Insert the k value to do the k-Shingling: ";
-	cin >> k;
+	int nHashFunctions;
+	if (argc > 1) {
+		k = stoi(argv[1]);
+		nHashFunctions = stoi(argv[2]);
+	}
+	else {
+		cout << "Insert the k value to do the k-Shingling: ";
+		cin >> k;
+		// Default value for number of hash functions
+		// Simulating permutations
+		nHashFunctions = 200;
+	}
 	
 	//string filePath1 = "./Jsim2documents/first.txt";
 	//string filePath2 = "./Jsim2documents/second.txt";
@@ -35,10 +45,12 @@ int main() {
 	unordered_set<int> I1 = kShingleInt(filePath1, k, spaces, allLowercase);
 	unordered_set<int> I2 = kShingleInt(filePath2, k, spaces, allLowercase);
 
-	double simS = signatureMinHashSimilarity(D1, D2);
-	//double simD = signatureMinHashSimilarity(I1, I2);
+	double simS = signatureMinHashSimilarity(D1, D2, nHashFunctions) * 100;
+	//double simD = signatureMinHashSimilarity(I1, I2) * 100;
 
-	cout << endl << "The Jaccard Similarity using Strings as Shingles is: " << simS * 100 << "%" << endl;
-	//cout << endl << "The Jaccard Similarity using Integers as Shingles is: " << simD * 100 << "%" << endl;
+	//cout << endl << "The Jaccard Similarity using Strings as Shingles is: " << simS << "%" << endl;
+	//cout << endl << "The Jaccard Similarity using Integers as Shingles is: " << simD << "%" << endl;
+	cout << simS;
+
 	//printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 }
