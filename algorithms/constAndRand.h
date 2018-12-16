@@ -2,6 +2,8 @@
 #include <limits>
 #include <ctime>	
 #include <unistd.h>	
+#include <dirent.h>
+#include <sys/types.h>
 using namespace std;
 
 const int POSINFINITY = numeric_limits<int>::max();
@@ -23,4 +25,25 @@ unsigned long mix(unsigned long a, unsigned long b, unsigned long c) {
 
 unsigned long genRand() {
     return mix(clock(), time(NULL), getpid());
+}
+
+vector<string> list_dir(const char *path) {
+   struct dirent *entry;
+   DIR *dir = opendir(path);
+   /*
+   if (dir == NULL) {
+      return ;
+   }
+   */
+   vector<string> fileNames;
+   entry = readdir(dir); // To skip "."
+   entry = readdir(dir); // To skip ".."
+   while ((entry = readdir(dir)) != NULL) {
+		if (entry->d_name[0] <= '9' && entry->d_name[0] >= '0') {
+			// cout << entry->d_name << endl;
+			fileNames.push_back(entry->d_name);
+		}
+   }
+   closedir(dir);
+   return fileNames;
 }

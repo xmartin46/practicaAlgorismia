@@ -8,43 +8,20 @@
 #include <time.h>
 #include <cmath>
 #include "signatureMinHashSimilarity.h"
-#include <dirent.h>
-#include <sys/types.h>
 
 using namespace std;
-
-vector<string> list_dir(const char *path) {
-   struct dirent *entry;
-   DIR *dir = opendir(path);
-   /*
-   if (dir == NULL) {
-      return ;
-   }
-   */
-   vector<string> fileNames;
-   entry = readdir(dir); // To skip "."
-   entry = readdir(dir); // To skip ".."
-   while ((entry = readdir(dir)) != NULL) {
-		if (entry->d_name[0] <= '9' && entry->d_name[0] >= '0') {
-			// cout << entry->d_name << endl;
-			fileNames.push_back(entry->d_name);
-		}
-   }
-   closedir(dir);
-   return fileNames;
-}
 
 int main(int argc, char** argv){
 	// demenar la matriu
 	int k;
 	int nHashFunctions;
 	bool measureTime;
-	double t = 0.20;
-	double threshold = t;
+	double threshold = 0.20;
 	if (argc > 1) {
 		k = stoi(argv[1]);
 		nHashFunctions = stoi(argv[2]);
 		measureTime = stoi(argv[3]);
+		threshold = stoi(argv[4]);
 	}
 	else {
 		cout << "Insert the k value to do the k-Shingling: ";
