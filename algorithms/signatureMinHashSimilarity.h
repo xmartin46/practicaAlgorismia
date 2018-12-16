@@ -1,4 +1,5 @@
 #include "constAndRand.h"
+#include "kShingles.h"
 using namespace std;
 
 bool IsPrime(int number) {
@@ -37,18 +38,15 @@ int modularHashFunction(int i, int x, int y, int z) {
 }
 
 template<typename T>
-vector<vector<int>>& signatureMatrix (unordered_set<T>& D1, unordered_set<T>& D2, int nHashFunctions) {
-	vector<unordered_set<T>> documents(2);
-	documents[0] = (D1);
-	documents[1] = (D2);
+vector<vector<int>> signatureMatrix (vector<unordered_set<T>>& documents, int nHashFunctions) {
 
-	int ndocuments = 2;
+	int ndocuments = documents.size();
 
-	unordered_set<T> shingles = unionSets(D1, D2);
+	unordered_set<T> shingles = unionSets(documents[0], documents[1]);
     // In case we needed to compute union of > 2 documents
 	for (int i = 2; i < ndocuments; i++) shingles = unionSets(shingles, documents[i]);
 
-	vector<vector<int>> signatureMatrix(nHashFunctions, vector<int>(ndocuments, INFINITY));
+	vector<vector<int>> signatureMatrix(nHashFunctions, vector<int>(ndocuments, POSINFINITY));
 	vector<vector<int>> hashFunctions(2, vector<int>(nHashFunctions));
 	srand(genRand());
 	int z = shingles.size();
@@ -80,15 +78,13 @@ vector<vector<int>>& signatureMatrix (unordered_set<T>& D1, unordered_set<T>& D2
 }
 
 
-double signatureMinHashSimilarity (vector<vector<int>>& signatureMatrix) {
+double signatureMinHashSimilarity (vector<vector<int>>& signatureMatrix, int doc1, int doc2) {
 	// Calcul de jaccard similarity a signature matrix
 	// Comparem els dos primers documents (es pot canviar)
-	int doc1 = 0;
-	int doc2 = 1;
 	int interseccio = 0;
 	int nHashFunctions = signatureMatrix.size();
 	for (int i = 0; i < nHashFunctions; i++) {
-		if (signatureMatrix[i][doc1] == signatureMatrix[i][doc2] and signatureMatrix[i][doc1] != INFINITY) ++interseccio;
+		if (signatureMatrix[i][doc1] == signatureMatrix[i][doc2] and signatureMatrix[i][doc1] != POSINFINITY) ++interseccio;
 	}
 	
     return ((double)interseccio/(double)nHashFunctions);
