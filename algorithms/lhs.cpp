@@ -7,20 +7,32 @@
 #include <algorithm>
 #include <time.h>
 #include <cmath>
+//#include "constAndRand.h"
 
 using namespace std;
 
-main(){
+double fun (const vector<vector<int>> & signatureMatrix, int x, int y){
+	int intersection = 0;
+	int nhash = signatureMatrix.size();
+	for (int i = 0; i<nhash; i++){
+		if (signatureMatrix[i][x] == signatureMatrix[i][y] /*and signatureMatrix[i][x]!=INFINITY*/){
+			++intersection;
+		}
+	}
+	return ((double)intersection/(double)nhash);
+}
+
+int main(){
 	// demenar la matriu
-	int nhashFunctions = 200;
-	int ndocuments = 2;
+	int nhashFunctions = 148;
+	int ndocuments = 100;
 	
-	int threshold;
+	double tres = 0;
 	
-	cin >> threshold;
+	cin >> tres;
 	
 	vector<vector<int>> signatureMatrix(nhashFunctions, vector<int>(ndocuments));
-	srand(45);
+	srand(time(NULL));
 	
 	for (int i = 0; i < nhashFunctions; ++i){
 		for (int j = 0; j < ndocuments; ++j){
@@ -35,93 +47,66 @@ main(){
 		 cout << endl;
 	 }*/
 	
-	int b = 100;
-	int r = nhashFunctions / b; //2
+	int b = 1;
 	
-	// https://hal.inria.fr/inria-00567191/document
-
-
-	/*
-	* HAsh functtion (Potser md5(n) 
-	*/
-	/*
-	vector<vector<int>> lshMatrix(pow(10,r), vector<int>(ndocuments, 0));
-
-	for (int d = 0; d < ndocuments; ++d){
-		for (int i = 0; i < nhashFunctions; i = i + r){
-			int val = 0;
-			for (int j = 0; j < r; ++j){
-				cout << signatureMatrix[i+j][d] << " ";
-				val = val*10 + signatureMatrix[i+j][d];
+	
+	double err_min = 100;
+	
+	for (int i = 1; i <= nhashFunctions; ++i){
+		if (nhashFunctions%i==0){
+			double aux = pow((1.0/(double)i),((double)i/(double)nhashFunctions))*100;
+			if (abs(aux-tres) < err_min){
+				err_min = abs(aux-tres);
+				b = i;
 			}
-			cout << "-> " << val << endl; 
-		lshMatrix[val][d] = 1;
 		}
 	}
-
-	for (int i = 0; i < pow(10,r); ++i){
-		for (int d = 0; d < ndocuments; ++d){
-			cout << lshMatrix[i][d] << "   ";
-		}
-		cout << endl;
-	}
-	*/
-	//vector<vector<int>> lshMatrix(b, vector<int>(ndocuments, 0));
-	//vector<int> container(1000000, 0);
+	int r = nhashFunctions / b;
+	
+	cout << b << "    " << r << endl;
+	
+	
 	unordered_map<int, unordered_set<int>> container;
-	unordered_set<pair<int, int>> similardoc;
-	for (int d = 0; d < ndocuments; ++d){
-		for (int i = 0; i < nhashFunctions; i = i + r){
-			int nb = i/r;
+	unordered_map<int, unordered_set<int>> similardoc;
+	
+	for (int band_it = 0; band_it < nhashFunctions; band_it = band_it + r){
+		for (int d = 0; d < ndocuments; ++d){
+			int nb = band_it/r;
 			unsigned int val = 0;
 			for (int j = 0; j < r; ++j){
-				cout << signatureMatrix[i+j][d] << " ";
-				val = val*10 + signatureMatrix[i+j][d];
+				cout << signatureMatrix[band_it+j][d] << " ";
+				val = val*10 + signatureMatrix[band_it+j][d];
 			}
 			cout << "-> " << val << endl;
 			container[val].insert(d);
 		}
 		for (auto i : container){
-			auto it = i.begin();
-			while (it != i.end()){
-				auto it2 = it+1;
-				while (it2 != i.end()){
+			auto it = i.second.begin();
+			while (it != i.second.end()){
+				auto it2 = it;
+				++it2;
+				while (it2 != i.second.end()){
+					cout << *it << "         " << *it2 << endl;
 					//similardoc.insert(make_pair(*it,*it2));
+					if (/*similardoc[*it2].find(*it) != similardoc[*it2].end()*/ true){
+						cout << "n'he trobar un " << endl;
+						similardoc[*it2].insert(*it);
+					}
+					++it2;
 				}
+				++it;
 			}
 		}
 		container.clear();
 	}
-
-
-	/*for (int i = 0; i < 1000000; ++i){
-		bool t = false;
-		for (int d = 0; not t and d < ndocuments; ++d){
-			if (container[i][d] == 1) t = true;
-		}
-		if (t){
-			cout << i << "    ";
-			for (int d = 0; d < ndocuments; ++d){
-				cout << container[i][d] << "  ";
-			}
-			cout << endl;
+	
+	cout << similardoc.size() << endl;
+	
+	for (auto it : similardoc){
+		auto it2 = it.second.begin();
+		while (it2 != it.second.end()){
+			cout << it.first << " is similar " << *it2 << ": " << fun(signatureMatrix, it.first, *it2)*100 << endl;
+			++it2;
 		}
 	}
-
-	int doc1 = 0;
-	int doc2 = 1;
-	int interseccio = 0;
-	int unio = 0;
-	for (int i = 0; i < 1000000; i++) {
-		if (container[i][doc1] == container[i][doc2] and container[i][doc1]!=0) ++interseccio;
-		if (container[i][doc1] == 1 or  container[i][doc2] == 1) ++unio;
-	}
-
-	double result = ((double)interseccio/(double)unio)*100;
-	cout << endl << "Probabilitat: " << result << "%" << endl;
-	
-	if (result >= threshold) cout << "Hi ha molta probabilitat de ser similars" << endl;
-	else cout << "No son similars" << endl;*/
-	
-	
 }
