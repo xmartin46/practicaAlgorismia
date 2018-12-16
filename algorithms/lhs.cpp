@@ -116,7 +116,7 @@ int main(int argc, char** argv){
 			//cout << endl << fileNames[it.first] << " is similar " << fileNames[*it2] << ": " << signatureMinHashSimilarity(sm, it.first, *it2)*100 << endl;
 			++numCandidatePairs;
 			double sim = signatureMinHashSimilarity(sm, it.first, *it2);
-			if (sim >= t) {
+			if (sim >= threshold) {
 				meanSimTrue += sim;
 				++numTruePairs;
 			}
