@@ -36,7 +36,7 @@ void putVector(vector<string> &v, const string filename) {
 int main() {
 	// Put the 50 words of the document in this vector
 	vector<string> words;
-	putVector(words, "./20doc/HP.txt");
+	putVector(words, "./20doc/documentBasic.txt");
 	
 	// Set the random seed
 	//		https://stackoverflow.com/questions/322938/recommended-way-to-initialize-srand

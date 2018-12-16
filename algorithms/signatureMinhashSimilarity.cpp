@@ -41,24 +41,30 @@ int main(int argc, char** argv) {
 
 	bool spaces = true;
 	bool allLowercase = true;
-	vector<unordered_set<string>> documents;
 
+	clock_t tStart;
 	if (measureTime) {
-		clock_t tStart = clock();
+		tStart = clock();
 	}
 
 	unordered_set<string> D1 = kShingleString(filePath1, k, spaces, allLowercase);
 	unordered_set<string> D2 = kShingleString(filePath2, k, spaces, allLowercase);
 
+	vector<unordered_set<string>> documents(2);
+	documents[0] = D1;
+	documents[1] = D2;
+
 	unordered_set<int> I1 = kShingleInt(filePath1, k, spaces, allLowercase);
 	unordered_set<int> I2 = kShingleInt(filePath2, k, spaces, allLowercase);
 
-	double simS = signatureMinHashSimilarity(D1, D2, nHashFunctions) * 100;
+	vector<vector<int>> sm = signatureMatrix(documents, nHashFunctions);
+
+	double simS = signatureMinHashSimilarity(sm, 0, 1) * 100;
 	//double simD = signatureMinHashSimilarity(I1, I2) * 100;
 
 	//cout << endl << "The Jaccard Similarity using Strings as Shingles is: " << simS << "%" << endl;
 	//cout << endl << "The Jaccard Similarity using Integers as Shingles is: " << simD << "%" << endl;
-	if (!measureTime) {
+	if (true) {
 		cout << simS;
 	}
 	else {
