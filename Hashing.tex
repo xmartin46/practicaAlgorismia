@@ -404,6 +404,91 @@ Inside the loop, we have two more loops:
 
 Thus, the cost of this function is $O(r * (h + c * (h + 1))) = O(r * h + r * c * h + r * c) = O(r * c * h)$, where \textit{r} is the number of rows and \textit{h} and \textit{c} the values explained before. We should point that \textit{h} is a constant value (usually 200 is correct), so the real cost is $O(r * c)$.
 
+\subsection{LSH}
+
+BLA BLA BLA INTRODUCCIÓ
+
+The first thing we need to do in this algorithm is finding the right values for \textit{b}, number of bands, and \textit{r}, number of rows per band depending on the value of a \textit{threshold}. To do so, we need an algorithm that calculates the \textit{b} value \footnote{It is also possible to calculate the \textit{r} value and later divide \textit{nhashFunctions} by \textit{r} to get the \textit{b} value, but it is more difficult to calculate it.} that has the minimum error with the threshold. The error is calculated as the function FALTA FER REFERÊNCIA A AQUELLA FUNCTION minus the \textit{threshold}.
+
+\hfill
+
+\begin{algorithmic}
+ \Require nhashFunctions = number of rows of the signature matrix, and a threshold
+ \Ensure Returns the \textit{b} value
+ 
+ \State{b := 1}
+ \State{minError := 1.0}
+ %\State{nhashFunctions := SM.size()}
+ \For{each row $h$ of SM}
+	\If{nhashFunctions mod h $==$ 0}
+      \State{aux := $(1/h)^{(h/nhashFunctions)}$}
+      \State{absolute := $\abs{aux - threshold}$}
+      \If{absolute $<$ minError}
+        \State{minError := absolute}
+        \State{b := h}
+  	  \EndIf
+  	\EndIf
+ \EndFor
+ 
+ \State{return \textit{b}}
+\end{algorithmic}
+Once we have calculated the \textit{b} value, we just need to divide \textit{nhashFunctions} by \textit{b} to get the number of rows per band.
+
+Now that we have the best possible values for \textit{b} and \textit{r}, it is time to begin with the LSH algorithm. This algorithm will hash each set of rows from each band and if two set of rows from the same band hashes to the same bucket, both documents will be inserted in a data structure of possible candidates.
+
+\begin{algorithmic}
+ \Require The signature matrix of the \textit{c} documents we have SM, \textit{b} and \textit{r}
+ \Ensure Returns the condidate pairs
+ 
+ \State{unordered\_map buckets := $\O$}
+ \State{unordered\_map candidates := $\O$}
+
+ \For{each band $b$}
+    %\State{nb := b/r}
+	\For{each document $c$}
+	  \State{hv := hash value of SM[b][c]}
+	  \State{buckets[hv].insert(c)}
+    \EndFor
+    
+    \For{each element $val$ of buckets}
+	  \For{each element $d$ of buckets[val]}
+	  	\State{j := 1}
+	  		\While {position of $d$ + j $<$ buckets[val].size()}
+	  			\State{elem := element of buckets[val] in position ($d$ + j)}
+	  			\If{absolute $<$ minError}
+       				\State{insert elem into candidates[d]}
+  				\Else
+		 			\State{insert $d$ into candidates[elem]}
+		 		\EndIf
+ 			\EndWhile
+      \EndFor
+    \EndFor
+    \State{buckets.clear()}
+ \EndFor
+ \State{return \textit{candidates}}
+\end{algorithmic}
+
+\hfill
+
+At this moment, we have the list of pairs of candidates that we want with the threshold \textit{t}.jsfuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+
+The last thing we have to do is calculate the Jaccard Similarity between all the pairs of candidates of the list. As we have done an aproximation when calculating the values \textit{b} and \textit{r}, it is very probable that some pair of candidates have less Jaccard Similarity than \textit{t}. WATCH THE SECTION BLA BLA BLA TO SEE THE NUMBER OF FALSE POSITIVE AND NEGATIVES WE CAN REACH.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+\subsubsection{Cost}
+
+The LSH algorithm has two parts. The first one calculates the best possible values of \textit{b} and \textit{r}. The second one chooses the candidate pairs of documents.
+
+\begin{enumerate}
+   \item The cost of this part is $O(h)$, where \textit{h} is the total number of hash functions used in the signature matrix (\textit{h} is the number of rows of the signature matrix).
+   
+   \item Let $c$ be the number of documents and $b$ the number of bands. The cost of this part of the algorithm is $O(c * b^2)$. For each band \textit{b}:
+   \begin{itemize}
+     \item For each document compute the hash value of each set of rows of band \textit{b}. The cost of doing this is $O(c)$, as the computational cost of calculating the hash values is $O(1)$.
+     
+     \item For each non-empty position of the buckets, create pairs of candidates between all the documents of the bucket without repetitions. This means that documents 3 and 4 will only have one candidate pair (3, 4), and not two (3, 4) and (4, 3). The cost of this for loop is $O(c^2)$, as in the worst case all the documents will be in the same bucket and we will have to make $(c * (c - 1))/2$ candidate pairs.
+   \end{itemize}
+\end{enumerate}
+
 \section{Referencies}
 
 \url{https://towardsdatascience.com/understanding-locality-sensitive-hashing-49f6d1f6134}
