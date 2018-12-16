@@ -17,9 +17,12 @@ en t funcions de hash. La mesura de similitud de dos signatures a i b amb t comp
 int main(int argc, char** argv) {
 	int k;
 	int nHashFunctions;
+	bool measureTime;
 	if (argc > 1) {
 		k = stoi(argv[1]);
 		nHashFunctions = stoi(argv[2]);
+		measureTime = stoi(argv[3]);
+
 	}
 	else {
 		cout << "Insert the k value to do the k-Shingling: ";
@@ -27,6 +30,7 @@ int main(int argc, char** argv) {
 		// Default value for number of hash functions
 		// Simulating permutations
 		nHashFunctions = 200;
+		measureTime = false;
 	}
 	
 	//string filePath1 = "./Jsim2documents/first.txt";
@@ -39,6 +43,10 @@ int main(int argc, char** argv) {
 	bool allLowercase = true;
 	vector<unordered_set<string>> documents;
 
+	if (measureTime) {
+		clock_t tStart = clock();
+	}
+
 	unordered_set<string> D1 = kShingleString(filePath1, k, spaces, allLowercase);
 	unordered_set<string> D2 = kShingleString(filePath2, k, spaces, allLowercase);
 
@@ -50,7 +58,10 @@ int main(int argc, char** argv) {
 
 	//cout << endl << "The Jaccard Similarity using Strings as Shingles is: " << simS << "%" << endl;
 	//cout << endl << "The Jaccard Similarity using Integers as Shingles is: " << simD << "%" << endl;
-	cout << simS;
-
-	//printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+	if (!measureTime) {
+		cout << simS;
+	}
+	else {
+		printf("%.2f\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+	}
 }
