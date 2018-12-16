@@ -7,60 +7,68 @@
 #include <algorithm>
 #include <time.h>
 #include <cmath>
-#include "signatureMinhashSimilarity.h"
-//#include "constAndRand.h"
+#include "signatureMinHashSimilarity.h"
+#include <dirent.h>
+#include <sys/types.h>
 
 using namespace std;
+
+vector<string> list_dir(const char *path) {
+   struct dirent *entry;
+   DIR *dir = opendir(path);
+   /*
+   if (dir == NULL) {
+      return ;
+   }
+   */
+   vector<string> fileNames;
+   entry = readdir(dir); // To skip "."
+   entry = readdir(dir); // To skip ".."
+   while ((entry = readdir(dir)) != NULL) {
+		if (entry->d_name[0] <= '9' && entry->d_name[0] >= '0') {
+			// cout << entry->d_name << endl;
+			fileNames.push_back(entry->d_name);
+		}
+   }
+   closedir(dir);
+   return fileNames;
+}
 
 int main(int argc, char** argv){
 	// demenar la matriu
 	int k;
 	int nHashFunctions;
 	bool measureTime;
-	double threshold = 0.05;
+	double t = 0.20;
+	double threshold = t;
 	if (argc > 1) {
 		k = stoi(argv[1]);
 		nHashFunctions = stoi(argv[2]);
 		measureTime = stoi(argv[3]);
-
 	}
 	else {
 		cout << "Insert the k value to do the k-Shingling: ";
 		cin >> k;
 		// Default value for number of hash functions
 		// Simulating permutations
-		nHashFunctions = 200;
+		nHashFunctions = 500;
 		measureTime = false;
 	}
 
-	int nDocs = 6;
-
 	bool spaces = true;
 	bool allLowercase = true;
-	vector<unordered_set<string>> shingles(nDocs);
-	vector<string> fileNames(nDocs);
-	string filePath = "./20doc/";
-	fileNames[0] = "0.txt";
-	fileNames[1] = "HP0.txt";
-	fileNames[2] = "documentBasic.txt";
-	fileNames[3] = "first.txt";
-	fileNames[4] = "HP13.txt";
-	fileNames[5] = "second.txt";
-	
-	shingles[0] = kShingleString("./20doc/0.txt", k, spaces, allLowercase);
-	shingles[1] = kShingleString("./20doc/HP0.txt", k, spaces, allLowercase);
-	shingles[2] = kShingleString("./20doc/documentBasic.txt", k, spaces, allLowercase);
-	shingles[3] = kShingleString("./Jsim2documents/first.txt", k, spaces, allLowercase);
-	shingles[4] = kShingleString("./20doc/HP13.txt", k, spaces, allLowercase);
-	shingles[5] = kShingleString("./Jsim2documents/second.txt", k, spaces, allLowercase);
-	
+	string pathString = "./20doc/";
+	const char *path = pathString.c_str();
+	vector<string> fileNames = list_dir(path);
 
-	/*
+	int nDocs = fileNames.size();
+
+	vector<unordered_set<string>> shingles(nDocs);
+
 	for (int i = 0; i < nDocs; ++i) {
-		string filePath = "./20doc/" + to_string(i) + ".txt"; 
-		shingles[i] = kShingleString(filePath, k, spaces, allLowercase);
+		shingles[i] = kShingleString(path + fileNames[i], k, spaces, allLowercase);
 	}
-	*/
+	
 
 	vector<vector<int>> sm = signatureMatrix(shingles, nHashFunctions);
 	
@@ -73,27 +81,28 @@ int main(int argc, char** argv){
 		if (nhashFunctions%i==0){
 			double aux = pow((1.0/(double)i),((double)i/(double)nhashFunctions));
 			// cout << "Bands: " << i << " -> Error: " <<  aux << endl;
-			if (abs(aux-threshold) < err_min){
-				err_min = abs(aux-threshold);
+			double diff = abs(aux-threshold);
+			if (diff < err_min) {
+				err_min = diff;
 				b = i;
 			}
 		}
 	}
+	//b = 8;
 	int r = nhashFunctions / b;
 	
-	// cout << b << "    " << r << endl;
+	cout << b << "    " << r << endl;
 	
-	
-	unordered_map<int, unordered_set<int>> container;
+	unordered_map<string, unordered_set<int>> container;
 	unordered_map<int, unordered_set<int>> similardoc;
-	
-	for (int band_it = 0; band_it < nhashFunctions; band_it = band_it + r){
+	for (int band_it = 0; band_it < nhashFunctions; band_it = band_it + r) {
+		int nb = band_it/r;
 		for (int d = 0; d < nDocs; ++d){
-			int nb = band_it/r;
-			unsigned int val = 0;
+			string val = "";
 			for (int j = 0; j < r; ++j){
+				val += to_string(sm[band_it+j][d]) + "-";
 				//cout << sm[band_it+j][d] << " ";
-				val = val*10 + sm[band_it+j][d];
+				//val = val*10 + sm[band_it+j][d];
 			}
 			//cout << "-> " << val << endl;
 			container[val].insert(d);
@@ -105,28 +114,52 @@ int main(int argc, char** argv){
 				++it2;
 				while (it2 != i.second.end()){
 					//cout << *it << "         " << *it2 << endl;
-					//similardoc.insert(make_pair(*it,*it2));
-					if (/*similardoc[*it2].find(*it) != similardoc[*it2].end()*/ true){
-						// cout << "n'he trobar un " << endl;
+					// cout << "n'he trobar un " << endl;
+					if (*it2 > *it) {
 						similardoc[*it2].insert(*it);
+					}
+					else {
+						similardoc[*it].insert(*it2);
 					}
 					++it2;
 				}
 				++it;
 			}
 		}
-		container.clear();
 	}
 	
 	// cout << similardoc.size() << endl;
-	
+	int numCandidatePairs = 0;
+	int numTruePairs = 0;
+	double meanSimTrue = 0;
+	double meanSimFalse = 0;
 	for (auto it : similardoc){
 		auto it2 = it.second.begin();
 		while (it2 != it.second.end()){
-			cout << endl << fileNames[it.first] << " is similar " << fileNames[*it2] << ": " << signatureMinHashSimilarity(sm, it.first, *it2)*100 << endl;
+			//cout << endl << fileNames[it.first] << " is similar " << fileNames[*it2] << ": " << signatureMinHashSimilarity(sm, it.first, *it2)*100 << endl;
+			++numCandidatePairs;
+			double sim = signatureMinHashSimilarity(sm, it.first, *it2);
+			if (sim >= t) {
+				meanSimTrue += sim;
+				++numTruePairs;
+			}
+			else {
+				meanSimFalse += sim;
+			}
 			++it2;
 		}
 	}
+	meanSimTrue /= numTruePairs;
+	meanSimFalse /= (double)(numCandidatePairs - numTruePairs);
+	int numPossiblePairs = (nDocs*(nDocs-1))/2;
+	cout << "nDocs: " << nDocs << endl;
+	cout << "numPossiblePairs: " << numPossiblePairs << endl;
+	cout << "numCandidatePairs: " << numCandidatePairs << endl; 
+	cout << "numTruePairs: " << numTruePairs << endl; 
+	cout << "numFalsePairs: " << (numCandidatePairs - numTruePairs) << endl; 
+	cout << "falsePositives: " << ((double)(numCandidatePairs - numTruePairs)/numCandidatePairs) * 100 << "%" << endl;
+	cout << "truePositives: " << ((double)(numTruePairs)/numCandidatePairs) * 100 << "%" << endl;
+	cout << "meanSim of TruePairs: " << meanSimTrue * 100 << "%" << endl; 
+	cout << "meanSim of FalsePositivePairs: " << meanSimFalse * 100 << "%" << endl; 
 	cout << endl;
-	
 }
