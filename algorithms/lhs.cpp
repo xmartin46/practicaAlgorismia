@@ -16,7 +16,7 @@ int main(int argc, char** argv){
 	int k;
 	int nHashFunctions;
 	bool measureTime;
-	double threshold = 0.20;
+	double threshold = 0.80;
 	if (argc > 1) {
 		k = stoi(argv[1]);
 		nHashFunctions = stoi(argv[2]);
@@ -103,6 +103,7 @@ int main(int argc, char** argv){
 				++it;
 			}
 		}
+		container.clear();
 	}
 	
 	// cout << similardoc.size() << endl;

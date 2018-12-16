@@ -1,0 +1,4 @@
+Words = 50
+Chars (no spaces) = 292
+Chars (with spaces) = 341
+Mean Word Length = 5.84
