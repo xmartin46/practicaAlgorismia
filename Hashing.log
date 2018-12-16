@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.1)  12 DEC 2018 12:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.1)  15 DEC 2018 23:46
 entering extended mode
 **./Hashing.tex
 (Hashing.tex
@@ -499,23 +499,36 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip58
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
+)
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\titlesec\titlesec
+.sty"
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
+\ttl@box=\box56
+\beforetitleunit=\skip59
+\aftertitleunit=\skip60
+\ttl@plus=\dimen145
+\ttl@minus=\dimen146
+\ttl@toksa=\toks31
+\titlewidth=\dimen147
+\titlewidthlast=\dimen148
+\titlewidthfirst=\dimen149
 ) (Hashing.aux)
 \openout1 = `Hashing.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -551,8 +564,8 @@ LaTeX Font Info:    ... okay on input line 66.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box56
-Package hyperref Info: Link coloring OFF on input line 66.
+\AtBeginShipoutBox=\box57
+Package hyperref Info: Link coloring OFF on input line 76.
 
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.
 sty"
@@ -564,9 +577,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count139
 )
-LaTeX Info: Redefining \ref on input line 66.
-LaTeX Info: Redefining \pageref on input line 66.
-LaTeX Info: Redefining \nameref on input line 66.
+LaTeX Info: Redefining \ref on input line 76.
+LaTeX Info: Redefining \pageref on input line 76.
+LaTeX Info: Redefining \nameref on input line 76.
  (Hashing.out) (Hashing.out)
 \@outlinefile=\write3
 \openout3 = `Hashing.out'.
@@ -576,16 +589,16 @@ LaTeX Info: Redefining \nameref on input line 66.
 kii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count140
-\scratchdimen=\dimen145
-\scratchbox=\box57
+\scratchdimen=\dimen150
+\scratchbox=\box58
 \nofMPsegments=\count141
 \nofMParguments=\count142
-\everyMPshowfont=\toks31
+\everyMPshowfont=\toks32
 \MPscratchCnt=\count143
-\MPscratchDim=\dimen146
+\MPscratchDim=\dimen151
 \MPnumerator=\count144
 \makeMPintoPDFobject=\count145
-\everyMPtoPDFconversion=\toks32
+\everyMPtoPDFconversion=\toks33
 )
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf
 -base.sty"
@@ -603,27 +616,27 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 \Etoc@tf=\read1
-LaTeX Font Info:    Try loading font information for U+msa on input line 72.
+LaTeX Font Info:    Try loading font information for U+msa on input line 82.
 
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 72.
+LaTeX Font Info:    Try loading font information for U+msb on input line 82.
  ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
 "
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (46.87762pt too wide) in paragraph at lines 72--72
+Overfull \hbox (46.87762pt too wide) in paragraph at lines 82--82
  [][] 
  []
 
-<./images/JaccardExample.png, id=56, 389.455pt x 241.40187pt>
+<./images/JaccardExample.png, id=72, 389.455pt x 241.40187pt>
 File: ./images/JaccardExample.png Graphic file (type png)
 <use ./images/JaccardExample.png>
-Package pdftex.def Info: ./images/JaccardExample.png  used on input line 99.
+Package pdftex.def Info: ./images/JaccardExample.png  used on input line 109.
 (pdftex.def)             Requested size: 216.81pt x 134.38849pt.
 
-Overfull \hbox (79.39706pt too wide) in paragraph at lines 111--114
+Overfull \hbox (79.39706pt too wide) in paragraph at lines 121--124
 \OT1/cmr/m/n/12 they have. $[]$
  []
 
@@ -631,77 +644,108 @@ Overfull \hbox (79.39706pt too wide) in paragraph at lines 111--114
 
 {C:/Users/Xavier/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/J
 accardExample.png>]
-<./images/matrixRepresentation.png, id=72, 442.15187pt x 238.39063pt>
+<./images/matrixRepresentation.png, id=88, 442.15187pt x 238.39063pt>
 File: ./images/matrixRepresentation.png Graphic file (type png)
 <use ./images/matrixRepresentation.png>
 Package pdftex.def Info: ./images/matrixRepresentation.png  used on input line 
-147.
+157.
 (pdftex.def)             Requested size: 144.54pt x 77.93073pt.
  [2]
-<./images/typesValues.png, id=81, 398.99063pt x 171.64125pt>
+<./images/typesValues.png, id=97, 398.99063pt x 171.64125pt>
 File: ./images/typesValues.png Graphic file (type png)
 <use ./images/typesValues.png>
-Package pdftex.def Info: ./images/typesValues.png  used on input line 161.
+Package pdftex.def Info: ./images/typesValues.png  used on input line 171.
 (pdftex.def)             Requested size: 144.54pt x 62.1784pt.
  [3 <./images/matrixRepresentation.png> <./images/typesValues.png>]
-<./images/permutationMatrixSignature.png, id=93, 331.2375pt x 192.21812pt>
+<./images/permutationMatrixSignature.png, id=109, 331.2375pt x 192.21812pt>
 File: ./images/permutationMatrixSignature.png Graphic file (type png)
 <use ./images/permutationMatrixSignature.png>
 Package pdftex.def Info: ./images/permutationMatrixSignature.png  used on input
- line 209.
+ line 219.
 (pdftex.def)             Requested size: 144.54pt x 83.87523pt.
  [4 <./images/permutationMatrixSignature.png>]
-Overfull \hbox (88.52525pt too wide) in paragraph at lines 267--268
+
+LaTeX Warning: Command \O invalid in math mode on input line 294.
+
+[5]
+
+LaTeX Warning: Command \O invalid in math mode on input line 309.
+
+
+Overfull \hbox (1.26857pt too wide) in paragraph at lines 333--334
+[]\OT1/cmr/m/n/12 On the other hand, if we would have used the pre-defined func
+-tions \OT1/cmr/m/it/12 set[]intersection
+ []
+
+[6] [7]
+Overfull \hbox (193.56773pt too wide) in paragraph at lines 388--389
+[]\OT1/cmr/m/n/12 FALTA PAR-LAR DE LES HASH FUNC-TIONS!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!! 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 400.
+
+("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 400.
+
+Overfull \hbox (88.52525pt too wide) in paragraph at lines 409--410
 []$\OT1/cmtt/m/n/12 https : / / towardsdatascience . com / understanding-[]loca
 lity-[]sensitive-[]hashing-[]49f6d1f6134$[] 
  []
 
 
-Overfull \hbox (137.52509pt too wide) in paragraph at lines 276--277
+Overfull \hbox (137.52509pt too wide) in paragraph at lines 418--419
 [][]$\OT1/cmtt/m/n/12 https : / / medium . com / engineering-[]brainly / locali
 ty-[]sensitive-[]hashing-[]explained-[]304eb39291e4$[] 
  []
 
 
-Overfull \hbox (68.60005pt too wide) in paragraph at lines 282--283
+Overfull \hbox (68.60005pt too wide) in paragraph at lines 424--425
 [][]$\OT1/cmtt/m/n/12 https : / / aerodatablog . wordpress . com / 2017 / 11 / 
 29 / locality-[]sensitive-[]hashing-[]lsh/$[] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 293.
-[5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 293.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 435.
+[8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 435.
  (Hashing.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 293.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 293.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 435.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 435.
 Package rerunfilecheck Info: File `Hashing.out' has not changed.
-(rerunfilecheck)             Checksum: 26D71526476A8F1BFFDC848535A7D445;888.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 293.
+(rerunfilecheck)             Checksum: 7FE45DCE3E4540E47FC80DA043041CF3;1140.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 435.
  ) 
 Here is how much of TeX's memory you used:
- 9095 strings out of 492970
- 137108 string characters out of 3126150
- 249277 words of memory out of 3000000
- 12792 multiletter control sequences out of 15000+200000
- 13920 words of font info for 53 fonts, out of 3000000 for 9000
+ 9407 strings out of 492970
+ 141380 string characters out of 3126150
+ 256274 words of memory out of 3000000
+ 13083 multiletter control sequences out of 15000+200000
+ 14565 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 33i,10n,31p,450b,477s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,10n,31p,724b,499s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmbx12.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmex10.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Xavier/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Xavier/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
-/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.
+9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Xavier/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Xavier/AppD
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/User
+s/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr12.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr17.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Xavier/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Xavier/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/
+Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.
 pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr8.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Xavier/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Xavier/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Hashing.pdf (5 pages, 185350 bytes).
+nts/cm/cmtt12.pfb>
+Output written on Hashing.pdf (8 pages, 219152 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
- 29 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 208 PDF objects out of 1000 (max. 8388607)
+ 41 named destinations out of 1000 (max. 500000)
+ 157 words of extra memory for PDF output out of 10000 (max. 10000000)
 
