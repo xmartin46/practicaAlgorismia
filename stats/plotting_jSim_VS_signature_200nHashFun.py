@@ -23,10 +23,11 @@ y = dt.iloc[:, -1:]
 ax.plot(x, y, linewidth=3, label='Jaccard Similarity', alpha=0.75)
 
 # Importing the second dataset
-dt = pd.read_csv(path + '\\data\\signature_k_sim.csv')
+dt = pd.read_csv(path + '\\data\\signature_100_k_sim.csv')
 # Plot the data
-x = dt.iloc[1:, :-1]
-y = dt.iloc[1:, -1:]
+x = dt.iloc[:, 1]
+print(x)
+y = dt.iloc[:, 2]
 ax.plot(x, y, linewidth=3, label='Signature Matrix Approximation', alpha=0.75)
 
 # Add legend
@@ -36,7 +37,7 @@ plt.legend(loc='upper right')
 step = 1.0
 minRange = int(np.min(x))
 maxRange = int(np.max(x))+1
-plt.xticks([x * step for x in range(minRange, maxRange)])
+plt.xticks([x * step for x in range(0, maxRange)])
 # ax.xaxis.set_major_locator(ticker.MultipleLocator(base=0.5))
 
 # Set titles
