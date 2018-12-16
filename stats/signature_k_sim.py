@@ -8,9 +8,9 @@ path = lacaPath
 for n in range(0, 1001, 50):
     if n == 0: n = 1
     file = open(path + '\\data\\signature_' + str(n) + '_k_sim.csv', 'w')
-    file.write('Number of Hash Functions, k, Jaccard Similarity' + '\n')
+    file.write('NumberOfHashFunctions, k, JaccardSimilarity' + '\n')
 
-    print('Number of Hash Functions, k, Jaccard Similarity')
+    print('NumberOfHashFunctions, k, JaccardSimilarity')
 
     # k = size of shingles
     for k in range(21):
