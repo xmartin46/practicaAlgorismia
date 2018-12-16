@@ -17,30 +17,28 @@ fig = plt.figure()
 ax = plt.axes()
 
 # Importing the dataset
-dt = pd.read_csv(path + '\\data\\signature_nHashFun_k_sim.csv', sep='\s*,\s*')
+dt = pd.read_csv(path + '\\data\\MEAN_signature_nHashFun_k_sim.csv', sep='\s*,\s*')
 
 # Plot the data
-kShingles = np.unique(dt.iloc[:, 1])
-for k in kShingles:
-    if (np.asscalar(k)%2 != 0):
-        rows = dt.loc[dt.iloc[:, 1] == k]
-        rows = rows.sort_values('NumberOfHashFunctions')
-        x = rows.iloc[:, 0] # nHashFun
+hashFun = np.unique(dt.iloc[:, 0])
+for n in hashFun:
+    if (True or np.asscalar(n) <= 100 or (np.asscalar(n) > 100 and np.asscalar(n)%250 == 0)):
+        rows = dt.loc[dt.iloc[:, 0] == n]
+        rows = rows.sort_values('k')
+        x = rows.iloc[:, 1] # kShingles
         y = rows.iloc[:, 2] # Similarity
-        ax.plot(x,y, label='k = ' + str(np.asscalar(k)))
+        ax.plot(x,y, label='nHashes = ' + str(np.asscalar(n)))
     
 # Set "tick" frequency in x axis
-maxRange = int(np.max(rows.iloc[:, 0]))+1
-plt.xticks([x for x in range(0, maxRange, 50)])
+maxRange = int(np.max(rows.iloc[:, 1]))+1
+plt.xticks([x for x in range(0, maxRange, 1)])
 # ax.xaxis.set_major_locator(ticker.MultipleLocator(base=0.5))
-
-# ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap='viridis', edgecolor='none', label='Signature Matrix Approximation', alpha=1.0)
 
 # Add legend
 plt.legend(loc='upper right')
 
 # Set titles
-ax.set(title="Signature Matrix Approximation for different Shingle sizes (k)", xlabel="number of hash functions", ylabel="similarity (%)")
+ax.set(title="Signature Matrix Approximation for different Shingle sizes (k)", xlabel="shingles size (k)", ylabel="similarity (%)")
 
 # Show the plot
 

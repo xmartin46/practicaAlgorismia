@@ -7,12 +7,12 @@ rogerPath = ''
 path = lacaPath
 
 # find all files in path that match regular expression
-files = [f for f in os.listdir(path + '\\data') if re.match(r'signature\_[0-9]+.*\.csv', f)]
+files = [f for f in os.listdir(path + '\\data') if re.match(r'MEAN_signature\_[0-9]+.*\.csv', f)]
 
 # Open file where we are gonna put it all
-file = open(path + '\\data\\signature_nHashFun_k_sim.csv', 'w')
+file = open(path + '\\data\\MEAN_signature_nHashFun_k_sim.csv', 'w')
 
-file.write('NumberOfHashFunctions, k, JaccardSimilarity', end = '\n')
+file.write('NumberOfHashFunctions, k, JaccardSimilarity' + '\n')
 for fileName in files:
     f = open(path + '\\data\\' + fileName)
     f.readline()
