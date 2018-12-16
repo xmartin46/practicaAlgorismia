@@ -24,7 +24,7 @@ x = dt.iloc[:, 1] # Shingles
 y = dt.iloc[:, 0] # nHashFun
 z = dt.iloc[:, 2] # Similarity
 
-ax.scatter(x,y,z, cmap='winter', c=x)
+ax.scatter(x,y,z, cmap='brg', c=z)
 
 # ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap='viridis', edgecolor='none', label='Signature Matrix Approximation', alpha=1.0)
 
