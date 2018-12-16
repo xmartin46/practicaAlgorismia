@@ -1,6 +1,7 @@
 #include <vector>
 #include <limits>
 #include <ctime>	
+#include <unistd.h>	
 using namespace std;
 
 const int POSINFINITY = numeric_limits<int>::max();
