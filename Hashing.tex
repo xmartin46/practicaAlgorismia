@@ -60,7 +60,7 @@
 \renewcommand{\thefootnote}{\arabic{footnote}} % 1, 2, 3... (la que hay por defecto)
 
 \usepackage{titlesec}
-\setcounter{secnumdepth}{4}
+\setcounter{secnumdepth}{5}
 
 \titleformat{\paragraph}
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
@@ -77,10 +77,34 @@
 % Images
 \graphicspath{ {./images/} }
 
-\maketitle
+%\maketitle
+
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE UNIVERSITAT POLITÈCNICA DE CATALUNYA \par}
+	\vspace{1cm}
+	{\scshape\Large ALGORTIHMS\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Detection of similarity between documents with hashing\par}
+	\vspace{2cm}
+	{\Large\itshape Roger Vilaseca Darné and Xavier Martín Ballesteros\par}
+	\vfill
+	\includegraphics[width=0.15\textwidth]{UPC.png}\par\vspace{1cm}
+	%supervised by\par
+	%Dr.~Mark \textsc{Brown}
+
+	\vfill
+
+% Bottom of the page
+	{\large 1st December 2018}
+\end{titlepage}
+
 %\abstract{Esto es una plantilla simple para un articulo en \LaTeX.}
 
 %	*********************** ÍNDEX *********************
+%\setcounter{secnumdepth}{5}
+%\setcounter{tocdepth}{5}
+
 %\newpage
 %  \tableofcontents
 %\newpage
@@ -91,16 +115,16 @@
 % Referència a una secció \ref{sec:nada}
 % Referència a una cita \cite{Cd94}.
 
-\section{Jaccard Index}
-The Jaccard Index, also known as Intersection Over Union (IOU), calculates the percentage of similarity between two sets.
+\section{Jaccard Similarity}
+The Jaccard Similarity, also known as Intersection Over Union (IOU), calculates the percentage of similarity between two sets.
 
-For any pair of sets S and T, the Jaccard Index is defined as:
-% For any pair of sets S and T, we can define the Jaccard Index as shown:
+For any pair of sets S and T, the Jaccard Similarity is defined as:
+% For any pair of sets S and T, we can define the Jaccard Similarity as shown:
 \begin{equation}
 J(S, T) = \frac{\abs{S \cap T}}{\abs{S \cup T}}
 \end{equation}
 
-We can easily deduce that the more common words, the bigger the Jaccard Index, which means that it is more probable that one set is a duplicate of the other.
+We can easily deduce that the more common words, the bigger the Jaccard Similarity, which means that it is more probable that one set is a duplicate of the other.
 
 \begin{exmp}
 In Figure \ref{fig:JaccardExample} we see two sets S and T. There are 3 elements in their intersection ("I", "love", "chocolate") and 6 in their union ("I", "love", "chocolate", "and", "pizza", "white"). Thus, J(S, T) = 3/6.
@@ -109,7 +133,7 @@ In Figure \ref{fig:JaccardExample} we see two sets S and T. There are 3 elements
 	\includegraphics[width=3in]{JaccardExample}
 	\label{fig:JaccardExample}
 	
-	Figure \ref{fig:JaccardExample}: Two sets with Jaccard Index 3/6.
+	Figure \ref{fig:JaccardExample}: Two sets with Jaccard Similarity 3/6.
 \end{center}
 
 % Falta dir què passa si hi ha poques paraules? Fals positiu...?
@@ -135,7 +159,7 @@ and Jeffrey D. Ullman (2011), "k should be picked large enough that the probabil
 
 \section{Compairing Similarity Using The Sets}
 
-If we succeed in shingling the documents by using the \textit{k}-Shingling technique, we will only have to compare all pairs of documents using the Jaccard Index and say if there is similarity between them or not. 
+If we succeed in shingling the documents by using the \textit{k}-Shingling technique, we will only have to compare all pairs of documents using the Jaccard Similarity and say if there is similarity between them or not. 
 In order to do this, we have to store all the information in a data structure, for instance (\underline{e.g.}), a matrix. By doing this, we have two problems: time and space complexity. $<$= \textbf{Correcte que vagi aquí la úlima frase?}
 
 \subsection{Matrix Representation}
@@ -174,7 +198,7 @@ In this type of matrices, for any pair of columns we can have 4 types of results
 	\textit{\underline{Figure \ref{fig:typesValues}}: Representation of the matrix with all the possible permutations.}
 \end{center}
 
-Note that as the matrix is sparse, most of the rows will be of type \textit{a}. If we try to calculate the similarity between two sets $S_1$ and $S_2$ using the matrix and the Jaccard Index, we will have the following result:
+Note that as the matrix is sparse, most of the rows will be of type \textit{a}. If we try to calculate the similarity between two sets $S_1$ and $S_2$ using the matrix and the Jaccard Similarity, we will have the following result:
 
 \begin{equation}
 J(S_1, S_2) = \dfrac{Q(d)}{Q(b)+Q(c)+Q(d)}
@@ -228,16 +252,16 @@ In the first column, we can see that $h(S_1) = "da"$ and in the second one we se
 
 With this technique, we can see that every time we do a permutation, we only occupy one new row of the "signature matrix", which is reducing a lot the space.
 
-\subsubsection{Preserving the Jaccard Index}
+\subsubsection{Preserving the Jaccard Similarity}
 
-As we mentioned before, the Jaccard Index in the matrix is equal to the number of rows of type \textit{d} divided by the number of rows of type \textit{b} + \textit{c} + \textit{d}. And that index is preserved in the "signature matrix".
+As we mentioned before, the Jaccard Similarity in the matrix is equal to the number of rows of type \textit{d} divided by the number of rows of type \textit{b} + \textit{c} + \textit{d}. And that Similarity is preserved in the "signature matrix".
 
 \begin{proof}
 Look down through the \underline{permuted columns} $C_1$ and $C_2$ until we see a 1 in any of the two columns. Then, we can have a row of type \textit{b} or \textit{c}, where only one of the columns have a 1, or a row of type \textit{d}, where both columns have a 1 in it.
 If we find a row of type \textit{d}, then the minhash function will take the same row. Thus, $h(C_1) = h(C_2)$.
 Otherwise, we must have a row of type \textit{b} or \textit{c} and $h(C_1) \neq h(C_2)$.
 
-We can see that this is exactly the Jaccard Index. The probability of two columns have the same minhash value is equal to the number of rows of type \textit{d} divided by the number of rows of type \textit{b} + \textit{c} + \textit{d}.
+We can see that this is exactly the Jaccard Similarity. The probability of two columns have the same minhash value is equal to the number of rows of type \textit{d} divided by the number of rows of type \textit{b} + \textit{c} + \textit{d}.
 
 \begin{equation}
 P[h(C_1) = h(C_2)] = J(C_1, C_2)
@@ -246,7 +270,10 @@ P[h(C_1) = h(C_2)] = J(C_1, C_2)
 \end{proof}
 
 \subsubsection{Optimizing the Time for Permutations}
-Encara falta posar cosetes NENG!
+
+As doing a set of permutation would be very expensive, but we can use a trick to simulate the \textit{n} permutations. We can use \textit{n} random hash functions that maps row numbers to as many buckets as the size of the rows of the matrix. We say that this is a trick because we are not doing a literal permutation, as we can have collisions using the hash functions but the point is that the probability of a collision with a large number \textit{k} for the shingling is very small. Thus, we can think of this new algorithm as a perfect permutation of the rows. The algorithm is the following:
+
+\hfill
 
 \begin{algorithmic}
 %\Require $n \geq 0$
@@ -268,13 +295,62 @@ Encara falta posar cosetes NENG!
  \EndFor
 \end{algorithmic}
 
+\hfill
+
+Every time we go to the next row, we first compute all the hash values using the row value as their input. Then, for each position in that row, if there is a 1 we compare the hashed value of that position with the value in the signature matrix for all the hash functions computed. In case that this new value is smaller we change the value of the signature matrix by this new one. Doing this, in the end we have the smallest possible number in each position of the signature matrix.
+
+\paragraph{Hashing Functions}
+
+We will present you now all the types of hashing functions we have used in the previous algorithm and in the algorithms in the Section \ref{sec:ALG}.
+
+\subparagraph{Modular Hashing}
+
+\subparagraph{Modular Hashing}
+
 \section{Locality Sensitive Hashing (LSH)}
 
-Mas texto.
+We have talked before about how to improve to space complexity, but we still have not introduced a technique to improve the time complexity.
+
+The general idea is that only a few pair of documents will have a high Jaccard Similarity. Thus, we need an algorithm that chooses the candidates that are more likely to be similar. The Locality Sensitive Hashing will help on this a lot.
+
+The approach of LSH is to hash groups of rows into buckets in the sense that if two or more documents are hashed into the same bucket for at least one time, they will be very likely to be similar and will be put as a candidate pair.
+
+\subsection{Band partition}
+
+LSH will divide the signature matrix into \textit{b} bands of \textit{r} rows per band. Then, the algorithm will hash the set of rows that form a band for all the documents. Finally, it will create a new pair of candidates for every pair of documents hashed into the same bucket (for at least one time).
+
+\begin{center}
+	\includegraphics[width=6in]{BandPartition}
+	\label{fig:bandPartition}
+	
+	Figure \ref{fig:bandPartition}: Band partition of a signature matrix and hashing the values of the rows of the first band int othe buckets.
+\end{center}
+
+We can see that the set of rows of value "0143", from top to bottom, are hashed into the same bucket, and will be put as a candidate pair. However, the other two set of rows ("2130" and "1204") will not be hashed into the same bucket, and will not be put as a candidate pair (with this band).
+
+\subsection{Choice of \textit{b} and \textit{r} values}
+
+The election of \textit{b} and \textit{r} values is a very important part of the algorithm. See that the bigger \textit{r}, the less probable is to hash two sets of rows into the same bucket. This is because the probability that two sets of documents hashes into the same bucket decreases exponentialy each time we add one row into \textit{r}.
+
+We want to get the least number of dissimilar documents that are hashed into the same bucket. These are called \textit{false positives}. On the other hand, we also want to minimize the number of similar documents that are hashed into different buckets. These other ones are called \textit{false negatives}.
+
+The idea is to select a threshold, which is the minimum value that the Jaccard Similarity can have to consider two documents as similar, and then compute the \textit{b} and \textit{r} values.
+
+According to Anand Rajaraman, Jure Leskovec,
+and Jeffrey D. Ullman (2011), "a good aproximation to the threshold is $(1/b)^{1/r}$" (p. 90). So if we take a threshold \textit{t}, then we can calculate the \textit{b} and \textit{r} values as following:
+
+Having that r = nhashFunctions/b,
+
+\begin{equation}
+t \approx (\dfrac{1}{b})^{\dfrac{1}{r}} = (\dfrac{1}{b})^{\dfrac{b}{nhashFunctions}}
+\end{equation}
+
+Thus, using an arbitrary threshold, we can calculate the best approximate value of \textit{b} and \textit{r}.
 
 \section{Algorithms}
+\label{sec:ALG}
 
-L'objectiu és mostrar la idea que hi ha darrere els algorismes. No es mostrarà part del codi real. Si es vol mirar el codi, s'haruàn d'anar als arxius corresponents.
+The objective in this section is to show the idea behind the algorithms we have programmed and give you the time complexity for each one. If you want to see the code, you will have to go to the algorithms folder.
 
 \subsection{Jaccard Similarity}
 
@@ -403,6 +479,91 @@ Inside the loop, we have two more loops:
 \end{enumerate}
 
 Thus, the cost of this function is $O(r * (h + c * (h + 1))) = O(r * h + r * c * h + r * c) = O(r * c * h)$, where \textit{r} is the number of rows and \textit{h} and \textit{c} the values explained before. We should point that \textit{h} is a constant value (usually 200 is correct), so the real cost is $O(r * c)$.
+
+\subsection{LSH}
+
+BLA BLA BLA INTRODUCCIÓ
+
+The first thing we need to do in this algorithm is finding the right values for \textit{b}, number of bands, and \textit{r}, number of rows per band depending on the value of a \textit{threshold}. To do so, we need an algorithm that calculates the \textit{b} value \footnote{It is also possible to calculate the \textit{r} value and later divide \textit{nhashFunctions} by \textit{r} to get the \textit{b} value, but it is more difficult to calculate it.} that has the minimum error with the threshold. The error is calculated as the function FALTA FER REFERÊNCIA A AQUELLA FUNCTION minus the \textit{threshold}.
+
+\hfill
+
+\begin{algorithmic}
+ \Require nhashFunctions = number of rows of the signature matrix, and a threshold
+ \Ensure Returns the \textit{b} value
+ 
+ \State{b := 1}
+ \State{minError := 1.0}
+ %\State{nhashFunctions := SM.size()}
+ \For{each row $h$ of SM}
+	\If{nhashFunctions mod h $==$ 0}
+      \State{aux := $(1/h)^{(h/nhashFunctions)}$}
+      \State{absolute := $\abs{aux - threshold}$}
+      \If{absolute $<$ minError}
+        \State{minError := absolute}
+        \State{b := h}
+  	  \EndIf
+  	\EndIf
+ \EndFor
+ 
+ \State{return \textit{b}}
+\end{algorithmic}
+Once we have calculated the \textit{b} value, we just need to divide \textit{nhashFunctions} by \textit{b} to get the number of rows per band.
+
+Now that we have the best possible values for \textit{b} and \textit{r}, it is time to begin with the LSH algorithm. This algorithm will hash each set of rows from each band and if two set of rows from the same band hashes to the same bucket, both documents will be inserted in a data structure of possible candidates.
+
+\begin{algorithmic}
+ \Require The signature matrix of the \textit{c} documents we have SM, \textit{b} and \textit{r}
+ \Ensure Returns the condidate pairs
+ 
+ \State{unordered\_map buckets := $\O$}
+ \State{unordered\_map candidates := $\O$}
+
+ \For{each band $b$}
+    %\State{nb := b/r}
+	\For{each document $c$}
+	  \State{hv := hash value of SM[b][c]}
+	  \State{buckets[hv].insert(c)}
+    \EndFor
+    
+    \For{each element $val$ of buckets}
+	  \For{each element $d$ of buckets[val]}
+	  	\State{j := 1}
+	  		\While {position of $d$ + j $<$ buckets[val].size()}
+	  			\State{elem := element of buckets[val] in position ($d$ + j)}
+	  			\If{absolute $<$ minError}
+       				\State{insert elem into candidates[d]}
+  				\Else
+		 			\State{insert $d$ into candidates[elem]}
+		 		\EndIf
+ 			\EndWhile
+      \EndFor
+    \EndFor
+    \State{buckets.clear()}
+ \EndFor
+ \State{return \textit{candidates}}
+\end{algorithmic}
+
+\hfill
+
+At this moment, we have the list of pairs of candidates that we want with the threshold \textit{t}.jsfuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+
+The last thing we have to do is calculate the Jaccard Similarity between all the pairs of candidates of the list. As we have done an aproximation when calculating the values \textit{b} and \textit{r}, it is very probable that some pair of candidates have less Jaccard Similarity than \textit{t}. WATCH THE SECTION BLA BLA BLA TO SEE THE NUMBER OF FALSE POSITIVE AND NEGATIVES WE CAN REACH.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+\subsubsection{Cost}
+
+The LSH algorithm has two parts. The first one calculates the best possible values of \textit{b} and \textit{r}. The second one chooses the candidate pairs of documents.
+
+\begin{enumerate}
+   \item The cost of this part is $O(h)$, where \textit{h} is the total number of hash functions used in the signature matrix (\textit{h} is the number of rows of the signature matrix).
+   
+   \item Let $c$ be the number of documents and $b$ the number of bands. The cost of this part of the algorithm is $O(c * b^2)$. For each band \textit{b}:
+   \begin{itemize}
+     \item For each document compute the hash value of each set of rows of band \textit{b}. The cost of doing this is $O(c)$, as the computational cost of calculating the hash values is $O(1)$.
+     
+     \item For each non-empty position of the buckets, create pairs of candidates between all the documents of the bucket without repetitions. This means that documents 3 and 4 will only have one candidate pair (3, 4), and not two (3, 4) and (4, 3). The cost of this for loop is $O(c^2)$, as in the worst case all the documents will be in the same bucket and we will have to make $(c * (c - 1))/2$ candidate pairs.
+   \end{itemize}
+\end{enumerate}
 
 \section{Referencies}
 
