@@ -34,7 +34,7 @@ plt.xticks([x for x in range(0, maxRange, 1)])
 # ax.xaxis.set_major_locator(ticker.MultipleLocator(base=0.5))
 
 # Add marker at average word size
-ax.axhline(y=136, linestyle='--', linewidth=1, color='darkred', label='compute Jaccard Similarity\nfor all copies (210) without LHS', alpha=0.75)
+ax.axhline(y=136, linestyle='--', linewidth=1, color='darkred', label='compute Jaccard Similarity\nfor all pairs (190) without LHS', alpha=0.75)
 
 # Add legend
 plt.legend(loc='upper right')

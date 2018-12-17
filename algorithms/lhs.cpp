@@ -36,7 +36,7 @@ int main(int argc, char** argv){
 	// demenar la matriu
 	int k;
 	int nHashFunctions = 500;
-	bool measuringTime = true;
+	bool measuringTime = false;
     bool spaces = true;
 	bool allLowercase = true;
 	double threshold = 0.42;
@@ -60,7 +60,6 @@ int main(int argc, char** argv){
     clock_t tStart;
 
 
-    
 	if (measuringTime) {
 		tStart = clock();
 	}
@@ -77,11 +76,11 @@ int main(int argc, char** argv){
 		printf("%.3f", (double)(clock() - tStart)/CLOCKS_PER_SEC);
     }
     else {
-        cout << numTrueCopies << endl;
+        //cout << numTrueCopies << endl;
     }
-    
 
-/*
+
+
     if (measuringTime) {
         tStart = clock();
     }
@@ -181,7 +180,14 @@ int main(int argc, char** argv){
         // Print time elapsed in s
 		printf("%.3f", (double)(clock() - tStart)/CLOCKS_PER_SEC);
     }
-*/
+    //NumCandidats
+    cout << numCandidatePairs << ",";
+    //Falsos positius
+    cout << (numCandidatePairs - numTruePairs) << ",";
+    //Encerts
+    cout << numTruePairs << ",";
+    //Falsos negatius
+    cout << numTrueCopies - numTruePairs << ","
     /*
 	meanSimTrue /= numTruePairs;
 	meanSimFalse /= (double)(numCandidatePairs - numTruePairs);
