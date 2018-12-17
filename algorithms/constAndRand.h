@@ -1,3 +1,6 @@
+#ifndef CONSTANDRAND
+#define CONSTANDRAND
+
 #include <vector>
 #include <limits>
 #include <ctime>	
@@ -30,11 +33,6 @@ unsigned long genRand() {
 vector<string> list_dir(const char *path) {
    struct dirent *entry;
    DIR *dir = opendir(path);
-   /*
-   if (dir == NULL) {
-      return ;
-   }
-   */
    vector<string> fileNames;
    entry = readdir(dir); // To skip "."
    entry = readdir(dir); // To skip ".."
@@ -47,3 +45,5 @@ vector<string> list_dir(const char *path) {
    closedir(dir);
    return fileNames;
 }
+
+#endif
