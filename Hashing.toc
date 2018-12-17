@@ -32,4 +32,4 @@
 \contentsline {paragraph}{\numberline {7.1.2.1}Using Modular Hashing}{16}{paragraph.7.1.2.1}
 \contentsline {paragraph}{\numberline {7.1.2.2}Using Robert Jenkins' 96 bit Mix Function}{18}{paragraph.7.1.2.2}
 \contentsline {paragraph}{\numberline {7.1.2.3}Modular Hashing vs. Robert Jenkins' 96 bit Mix Function}{20}{paragraph.7.1.2.3}
-\contentsline {subsubsection}{\numberline {7.1.3}LSH}{22}{subsubsection.7.1.3}
+\contentsline {subsection}{\numberline {7.2}LSH}{22}{subsection.7.2}
