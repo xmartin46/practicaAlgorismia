@@ -1,0 +1,22 @@
+import subprocess
+import pandas as pd
+import numpy as np
+lacaPath = 'D:\\code\\practicaAlgorismia'
+martinPath = ''
+rogerPath = ''
+path = lacaPath
+
+
+
+# n = number of hash functions applied to create signature matrix
+
+# Importing the dataset
+dtJenk = pd.read_csv(path + '\\data\\sig_jsim_meanError_jenkinsFunc.csv', sep='\s*,\s*')
+dtMod = pd.read_csv(path + '\\data\\sig_jsim_meanError.csv', sep='\s*,\s*')
+dtMod['error'] = dtMod['error'] - dtJenk['error']
+
+dtMod.to_csv(path + '\\data\\sig_error_modular_vs_jenkinsFunc.csv', encoding='utf-8', index=False)
+
+
+
+    
