@@ -1,28 +1,35 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \babel@toc {british}{}
-\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
-\contentsline {section}{\numberline {2}Jaccard Similarity}{3}{section.2}
-\contentsline {section}{\numberline {3}Shingling of Documents}{3}{section.3}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Jaccard Similarity}{2}{section.2}
+\contentsline {section}{\numberline {3}Shingling of Documents}{2}{section.3}
 \contentsline {subsection}{\numberline {3.1}k-Shingles}{3}{subsection.3.1}
-\contentsline {section}{\numberline {4}Compairing Similarity Using The Sets}{4}{section.4}
-\contentsline {subsection}{\numberline {4.1}Matrix Representation}{4}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}Time Complexity}{5}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Space Complexity}{5}{subsubsection.4.1.2}
-\contentsline {subsection}{\numberline {4.2}Minhashing}{5}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Preserving the Jaccard Similarity}{6}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Optimizing the Time for Permutations}{6}{subsubsection.4.2.2}
-\contentsline {paragraph}{\numberline {4.2.2.1}Hashing Functions}{7}{paragraph.4.2.2.1}
-\contentsline {subparagraph}{\numberline {4.2.2.1.1}Modular Hashing}{7}{subparagraph.4.2.2.1.1}
-\contentsline {subparagraph}{\numberline {4.2.2.1.2}Modular Hashing}{7}{subparagraph.4.2.2.1.2}
+\contentsline {section}{\numberline {4}Compairing Similarity Using The Sets}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}Matrix Representation}{3}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Time Complexity}{4}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Space Complexity}{4}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Minhashing}{4}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Preserving the Jaccard Similarity}{5}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Optimizing the Time for Permutations}{5}{subsubsection.4.2.2}
+\contentsline {paragraph}{\numberline {4.2.2.1}Hashing Functions}{6}{paragraph.4.2.2.1}
+\contentsline {subparagraph}{\numberline {4.2.2.1.1}Modular Hashing}{6}{subparagraph.4.2.2.1.1}
+\contentsline {subparagraph}{\numberline {4.2.2.1.2}Robert Jenkins' 96 bit Mix Function}{6}{subparagraph.4.2.2.1.2}
 \contentsline {section}{\numberline {5}Locality Sensitive Hashing (LSH)}{7}{section.5}
 \contentsline {subsection}{\numberline {5.1}Band partition}{7}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Choice of \textit {b} and \textit {r} values}{8}{subsection.5.2}
-\contentsline {section}{\numberline {6}Algorithms}{9}{section.6}
-\contentsline {subsection}{\numberline {6.1}Jaccard Similarity}{9}{subsection.6.1}
-\contentsline {subsubsection}{\numberline {6.1.1}k-Shingles}{9}{subsubsection.6.1.1}
+\contentsline {section}{\numberline {6}Algorithms}{8}{section.6}
+\contentsline {subsection}{\numberline {6.1}Jaccard Similarity}{8}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}k-Shingles}{8}{subsubsection.6.1.1}
 \contentsline {paragraph}{\numberline {6.1.1.1}Cost}{10}{paragraph.6.1.1.1}
 \contentsline {subsubsection}{\numberline {6.1.2}Minhash Signatures}{10}{subsubsection.6.1.2}
 \contentsline {paragraph}{\numberline {6.1.2.1}Cost}{11}{paragraph.6.1.2.1}
-\contentsline {subsection}{\numberline {6.2}LSH}{12}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.2}LSH}{11}{subsection.6.2}
 \contentsline {subsubsection}{\numberline {6.2.1}Cost}{13}{subsubsection.6.2.1}
-\contentsline {section}{\numberline {7}Referencies}{14}{section.7}
+\contentsline {section}{\numberline {7}Plots}{13}{section.7}
+\contentsline {subsection}{\numberline {7.1}Jaccard Similarity}{13}{subsection.7.1}
+\contentsline {subsubsection}{\numberline {7.1.1}k-Shingles}{13}{subsubsection.7.1.1}
+\contentsline {subsubsection}{\numberline {7.1.2}Signature Matrix}{16}{subsubsection.7.1.2}
+\contentsline {paragraph}{\numberline {7.1.2.1}Using Modular Hashing}{16}{paragraph.7.1.2.1}
+\contentsline {paragraph}{\numberline {7.1.2.2}Using Robert Jenkins' 96 bit Mix Function}{18}{paragraph.7.1.2.2}
+\contentsline {paragraph}{\numberline {7.1.2.3}Modular Hashing vs. Robert Jenkins' 96 bit Mix Function}{20}{paragraph.7.1.2.3}
+\contentsline {subsubsection}{\numberline {7.1.3}LSH}{22}{subsubsection.7.1.3}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.1)  17 DEC 2018 07:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.1)  17 DEC 2018 09:33
 entering extended mode
 **./Hashing.tex
 (Hashing.tex
@@ -635,7 +635,7 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 \Etoc@tf=\read1
-<./images/UPC.png, id=99, 1027.84pt x 1027.84pt>
+<./images/UPC.png, id=135, 1027.84pt x 1027.84pt>
 File: ./images/UPC.png Graphic file (type png)
 <use ./images/UPC.png>
 Package pdftex.def Info: ./images/UPC.png  used on input line 94.
@@ -644,433 +644,351 @@ Package pdftex.def Info: ./images/UPC.png  used on input line 94.
 
 {C:/Users/Xavier/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/U
 PC.png>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 128.
+\tf@toc=\write4
+\openout4 = `Hashing.toc'.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 112.
 
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 128.
+LaTeX Font Info:    Try loading font information for U+msb on input line 112.
  ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
 "
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-<./images/JaccardExample.png, id=112, 389.455pt x 241.40187pt>
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.112 \newpage
+               [1]
+<./images/JaccardExample.png, id=185, 389.455pt x 241.40187pt>
 File: ./images/JaccardExample.png Graphic file (type png)
 <use ./images/JaccardExample.png>
 Package pdftex.def Info: ./images/JaccardExample.png  used on input line 138.
 (pdftex.def)             Requested size: 216.81pt x 134.38849pt.
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.157 T
-       he question now is how big \textit{k} should be? If we take a small v...
-[1 <./images/JaccardExample.png>]
-<./images/matrixRepresentation.png, id=121, 442.15187pt x 238.39063pt>
+ [2 <./images/JaccardExample.png>]
+<./images/matrixRepresentation.png, id=194, 442.15187pt x 238.39063pt>
 File: ./images/matrixRepresentation.png Graphic file (type png)
 <use ./images/matrixRepresentation.png>
 Package pdftex.def Info: ./images/matrixRepresentation.png  used on input line 
 183.
 (pdftex.def)             Requested size: 144.54pt x 77.93073pt.
-<./images/typesValues.png, id=123, 398.99063pt x 171.64125pt>
+<./images/typesValues.png, id=195, 398.99063pt x 171.64125pt>
 File: ./images/typesValues.png Graphic file (type png)
 <use ./images/typesValues.png>
 Package pdftex.def Info: ./images/typesValues.png  used on input line 197.
 (pdftex.def)             Requested size: 144.54pt x 62.1784pt.
- [2 <./images/matrixRepresentation.png>]
-[3 <./images/typesValues.png>]
-<./images/permutationMatrixSignature.png, id=141, 331.2375pt x 192.21812pt>
+ [3 <./images/matrixRepresentation.png>] [4 <./images/typesValues.png>]
+<./images/permutationMatrixSignature.png, id=212, 331.2375pt x 192.21812pt>
 File: ./images/permutationMatrixSignature.png Graphic file (type png)
 <use ./images/permutationMatrixSignature.png>
 Package pdftex.def Info: ./images/permutationMatrixSignature.png  used on input
  line 243.
 (pdftex.def)             Requested size: 144.54pt x 83.87523pt.
- [4 <./images/permutationMatrixSignature.png>]
-[5]
-<./images/BandPartition.png, id=159, 611.28375pt x 341.275pt>
+ [5 <./images/permutationMatrixSignature.png>] [6]
+<./images/BandPartition.png, id=227, 611.28375pt x 341.275pt>
 File: ./images/BandPartition.png Graphic file (type png)
 <use ./images/BandPartition.png>
-Package pdftex.def Info: ./images/BandPartition.png  used on input line 349.
+Package pdftex.def Info: ./images/BandPartition.png  used on input line 350.
 (pdftex.def)             Requested size: 433.62pt x 242.08301pt.
 
-Overfull \hbox (7.62pt too wide) in paragraph at lines 349--351
+Overfull \hbox (7.62pt too wide) in paragraph at lines 350--352
  [] 
  []
 
-[6 <./images/BandPartition.png>]
+[7 <./images/BandPartition.png>]
 
-LaTeX Warning: Command \O invalid in math mode on input line 396.
+LaTeX Warning: Command \O invalid in math mode on input line 398.
 
-[7]
+[8]
 
-LaTeX Warning: Command \O invalid in math mode on input line 411.
+LaTeX Warning: Command \O invalid in math mode on input line 413.
 
 
-Overfull \hbox (1.26857pt too wide) in paragraph at lines 435--436
+Overfull \hbox (1.26857pt too wide) in paragraph at lines 437--438
 []\OT1/cmr/m/n/12 On the other hand, if we would have used the pre-defined func
 -tions \OT1/cmr/m/it/12 set[]intersection
  []
 
-[8] [9]
-Overfull \hbox (193.56773pt too wide) in paragraph at lines 490--491
-[]\OT1/cmr/m/n/12 FALTA PAR-LAR DE LES HASH FUNC-TIONS!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!! 
- []
+[9] [10]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 504.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 502.
 
 ("C:\Users\Xavier\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 502.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 504.
 
 Overfull \hbox (2.40442pt too wide) in paragraph at lines 518--519
 []\OT1/cmr/m/n/12 nhashFunctions = num-ber of rows of the sig-na-ture mat-rix, 
 and a threshold 
  []
 
-[10]
+[11]
 
 LaTeX Warning: Command \O invalid in math mode on input line 545.
 
 
 LaTeX Warning: Command \O invalid in math mode on input line 546.
 
-
-Overfull \hbox (100.24739pt too wide) in paragraph at lines 575--576
-\OT1/cmr/m/n/12 threshold \OT1/cmr/m/it/12 t\OT1/cmr/m/n/12 .jsfuuuuuuuuuuuuuuu
-uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu 
- []
-
-
-Overfull \hbox (139.93655pt too wide) in paragraph at lines 577--578
-\OT1/cmr/m/n/12 OF FALSE POS-IT-IVE AND NEG-AT-IVES WE CAN REACH.!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
- []
-
-[11]
-Overfull \hbox (1.35191pt too wide) in paragraph at lines 596--597
-\OT1/cmr/m/n/12 Tots ES-TAN FETS AMB PY-THON! PELS EX-PER-I-MENTS HEM TRIAT ALE
-AT-
- []
-
-<./plots/jsim_k_sim.png, id=201, 415.5525pt x 327.3831pt>
+[12]
+<./plots/jsim_k_sim.png, id=268, 415.5525pt x 327.3831pt>
 File: ./plots/jsim_k_sim.png Graphic file (type png)
 <use ./plots/jsim_k_sim.png>
-Package pdftex.def Info: ./plots/jsim_k_sim.png  used on input line 604.
+Package pdftex.def Info: ./plots/jsim_k_sim.png  used on input line 605.
 (pdftex.def)             Requested size: 361.34999pt x 284.6911pt.
-[12]
-<./plots/jsim_k_time.png, id=211, 409.0482pt x 327.3831pt>
+ [13]
+<./plots/jsim_k_time.png, id=276, 409.0482pt x 327.3831pt>
 File: ./plots/jsim_k_time.png Graphic file (type png)
 <use ./plots/jsim_k_time.png>
-Package pdftex.def Info: ./plots/jsim_k_time.png  used on input line 619.
+Package pdftex.def Info: ./plots/jsim_k_time.png  used on input line 620.
 (pdftex.def)             Requested size: 184.02911pt x 147.28606pt.
-<./plots/jsim_k_meanTime.png, id=212, 409.0482pt x 327.3831pt>
+<./plots/jsim_k_meanTime.png, id=277, 409.0482pt x 327.3831pt>
 File: ./plots/jsim_k_meanTime.png Graphic file (type png)
 <use ./plots/jsim_k_meanTime.png>
-Package pdftex.def Info: ./plots/jsim_k_meanTime.png  used on input line 624.
+Package pdftex.def Info: ./plots/jsim_k_meanTime.png  used on input line 625.
 (pdftex.def)             Requested size: 184.02911pt x 147.28606pt.
-<./plots/jsim_spaces_k_sim.png, id=215, 415.5525pt x 327.3831pt>
+<./plots/jsim_spaces_k_sim.png, id=278, 415.5525pt x 327.3831pt>
 File: ./plots/jsim_spaces_k_sim.png Graphic file (type png)
 <use ./plots/jsim_spaces_k_sim.png>
-Package pdftex.def Info: ./plots/jsim_spaces_k_sim.png  used on input line 634.
+Package pdftex.def Info: ./plots/jsim_spaces_k_sim.png  used on input line 636.
 
 (pdftex.def)             Requested size: 361.34999pt x 284.6911pt.
- [13 <./plots/jsim_k_sim.png>] [14pdfTeX warning (ext4): destination with the s
-ame identifier (name{figure.1}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.653 \begin{center}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{figure.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.653 \begin{center}
-                     <./plots/jsim_k_time.png> <./plots/jsim_k_meanTime.png> <.
-/plots/jsim_spaces_k_sim.png>]
-<./plots/signature_nHash_k_meanSim.png, id=231, 419.166pt x 327.3831pt>
+ [14 <./plots/jsim_k_sim.png>] [15 <./plots/jsim_k_time.png> <./plots/jsim_k_me
+anTime.png> <./plots/jsim_spaces_k_sim.png>]
+<./plots/signature_nHash_k_meanSim.png, id=292, 419.166pt x 327.3831pt>
 File: ./plots/signature_nHash_k_meanSim.png Graphic file (type png)
 <use ./plots/signature_nHash_k_meanSim.png>
 Package pdftex.def Info: ./plots/signature_nHash_k_meanSim.png  used on input l
-ine 654.
+ine 656.
 (pdftex.def)             Requested size: 361.34999pt x 282.22835pt.
-
-Overfull \hbox (6.68304pt too wide) in paragraph at lines 660--661
-\OT1/cmr/m/n/12 more alike to the Jac-card Sim-il-ar-ity (Fig-ure YYYYYYYYYYYYY
-YYYYYYYYYYY
- []
-
-<./plots/signature_nHash_k_meanSim3D.png, id=232, 462.528pt x 345.4506pt>
+<./plots/signature_nHash_k_meanSim3D.png, id=293, 462.528pt x 345.4506pt>
 File: ./plots/signature_nHash_k_meanSim3D.png Graphic file (type png)
 <use ./plots/signature_nHash_k_meanSim3D.png>
 Package pdftex.def Info: ./plots/signature_nHash_k_meanSim3D.png  used on input
- line 669.
+ line 671.
 (pdftex.def)             Requested size: 184.02911pt x 137.4451pt.
-<./plots/signature_nHash_k_meanTime.png, id=233, 585.387pt x 327.3831pt>
+<./plots/signature_nHash_k_meanTime.png, id=294, 585.387pt x 327.3831pt>
 File: ./plots/signature_nHash_k_meanTime.png Graphic file (type png)
 <use ./plots/signature_nHash_k_meanTime.png>
 Package pdftex.def Info: ./plots/signature_nHash_k_meanTime.png  used on input 
-line 674.
+line 676.
 (pdftex.def)             Requested size: 220.8368pt x 123.50269pt.
 
-Overfull \hbox (16.35863pt too wide) in paragraph at lines 674--675
+Overfull \hbox (16.35863pt too wide) in paragraph at lines 676--678
  [][] 
  []
 
-[15 <./plots/signature_nHash_k_meanSim.png>]
-<./plots/signature_jsim_meanError.png, id=248, 530.4618pt x 327.3831pt>
+[16 <./plots/signature_nHash_k_meanSim.png>]
+<./plots/signature_jsim_meanError.png, id=300, 530.4618pt x 327.3831pt>
 File: ./plots/signature_jsim_meanError.png Graphic file (type png)
 <use ./plots/signature_jsim_meanError.png>
 Package pdftex.def Info: ./plots/signature_jsim_meanError.png  used on input li
-ne 692.
+ne 694.
 (pdftex.def)             Requested size: 184.02911pt x 113.5767pt.
-<./plots/signature_jsim_meanError_from25.png, id=249, 530.4618pt x 327.3831pt>
+<./plots/signature_jsim_meanError_from25.png, id=301, 530.4618pt x 327.3831pt>
 File: ./plots/signature_jsim_meanError_from25.png Graphic file (type png)
 <use ./plots/signature_jsim_meanError_from25.png>
 Package pdftex.def Info: ./plots/signature_jsim_meanError_from25.png  used on i
-nput line 697.
+nput line 699.
 (pdftex.def)             Requested size: 184.02911pt x 113.5767pt.
-<./plots/signature_jsim_meanError_from50.png, id=252, 525.4029pt x 327.3831pt>
+<./plots/signature_jsim_meanError_from50.png, id=302, 525.4029pt x 327.3831pt>
 File: ./plots/signature_jsim_meanError_from50.png Graphic file (type png)
 <use ./plots/signature_jsim_meanError_from50.png>
 Package pdftex.def Info: ./plots/signature_jsim_meanError_from50.png  used on i
-nput line 704.
-(pdftex.def)             Requested size: 204.47818pt x 127.41412pt.
- [16pdfTeX warning (ext4): destination with the same identifier (name{figure.3}
+nput line 706.
+(pdftex.def)             Requested size: 426.0pt x 265.4536pt.
+ [17pdfTeX warning (ext4): destination with the same identifier (name{figure.1}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.708 \break
-            pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.4}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.708 \break
-            pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.5}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.708 \break
-            pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.708 \break
+l.710 \break
              <./plots/signature_nHash_k_meanSim3D.png> <./plots/signature_nHash
 _k_meanTime.png> <./plots/signature_jsim_meanError.png> <./plots/signature_jsim
 _meanError_from25.png>]
-<./plots/signature_nHash_k_meanSim_jenkinsFunc.png, id=266, 528.2937pt x 327.38
+<./plots/signature_nHash_k_meanSim_jenkinsFunc.png, id=312, 528.2937pt x 327.38
 31pt>
 File: ./plots/signature_nHash_k_meanSim_jenkinsFunc.png Graphic file (type png)
 
 <use ./plots/signature_nHash_k_meanSim_jenkinsFunc.png>
 Package pdftex.def Info: ./plots/signature_nHash_k_meanSim_jenkinsFunc.png  use
-d on input line 717.
+d on input line 719.
 (pdftex.def)             Requested size: 361.34999pt x 223.93137pt.
-<./plots/signature_jsim_meanError_jenkinsFunc.png, id=268, 573.1011pt x 327.383
+<./plots/signature_jsim_meanError_jenkinsFunc.png, id=313, 573.1011pt x 327.383
 1pt>
 File: ./plots/signature_jsim_meanError_jenkinsFunc.png Graphic file (type png)
 <use ./plots/signature_jsim_meanError_jenkinsFunc.png>
 Package pdftex.def Info: ./plots/signature_jsim_meanError_jenkinsFunc.png  used
- on input line 726.
+ on input line 728.
 (pdftex.def)             Requested size: 184.02911pt x 105.12439pt.
-<./plots/signature_nHash_k_meanTime_jenkinsFunc.png, id=269, 585.387pt x 327.38
+<./plots/signature_nHash_k_meanTime_jenkinsFunc.png, id=314, 585.387pt x 327.38
 31pt>
 File: ./plots/signature_nHash_k_meanTime_jenkinsFunc.png Graphic file (type png
 )
 <use ./plots/signature_nHash_k_meanTime_jenkinsFunc.png>
 Package pdftex.def Info: ./plots/signature_nHash_k_meanTime_jenkinsFunc.png  us
-ed on input line 731.
+ed on input line 733.
 (pdftex.def)             Requested size: 184.02911pt x 102.9214pt.
 File: ./plots/signature_jsim_meanError.png Graphic file (type png)
 <use ./plots/signature_jsim_meanError.png>
 Package pdftex.def Info: ./plots/signature_jsim_meanError.png  used on input li
-ne 739.
+ne 741.
 (pdftex.def)             Requested size: 184.02911pt x 113.5767pt.
-<./plots/signature_jsim_meanError_from25_jenkinsFunc.png, id=270, 573.1011pt x 
+<./plots/signature_jsim_meanError_from25_jenkinsFunc.png, id=315, 573.1011pt x 
 327.3831pt>
 File: ./plots/signature_jsim_meanError_from25_jenkinsFunc.png Graphic file (typ
 e png)
 <use ./plots/signature_jsim_meanError_from25_jenkinsFunc.png>
 Package pdftex.def Info: ./plots/signature_jsim_meanError_from25_jenkinsFunc.pn
-g  used on input line 744.
+g  used on input line 746.
 (pdftex.def)             Requested size: 184.02911pt x 105.12439pt.
 File: ./plots/signature_jsim_meanError_from25_jenkinsFunc.png Graphic file (typ
 e png)
 <use ./plots/signature_jsim_meanError_from25_jenkinsFunc.png>
 Package pdftex.def Info: ./plots/signature_jsim_meanError_from25_jenkinsFunc.pn
-g  used on input line 751.
-(pdftex.def)             Requested size: 204.47818pt x 116.80878pt.
- [17pdfTeX warning (ext4): destination with the same identifier (name{figure.7}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.755 \break
-             <./plots/signature_jsim_meanError_from50.png> <./plots/signature_n
-Hash_k_meanSim_jenkinsFunc.png>] [18pdfTeX warning (ext4): destination with the
- same identifier (name{figure.8}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.760 \break
-            pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.9}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.760 \break
-            pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.10}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.760 \break
-            pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.11}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.760 \break
-            pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.12}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.760 \break
-             <./plots/signature_jsim_meanError_jenkinsFunc.png> <./plots/signat
-ure_nHash_k_meanTime_jenkinsFunc.png> <./plots/signature_jsim_meanError_from25_
-jenkinsFunc.png>]
-<./plots/sig_error_modular_vs_jenkinsFunc.png, id=293, 539.1342pt x 327.3831pt>
+g  used on input line 753.
+(pdftex.def)             Requested size: 426.0pt x 243.3537pt.
+ [18 <./plots/signature_jsim_meanError_from50.png> <./plots/signature_nHash_k_m
+eanSim_jenkinsFunc.png>] [19 <./plots/signature_jsim_meanError_jenkinsFunc.png>
+ <./plots/signature_nHash_k_meanTime_jenkinsFunc.png> <./plots/signature_jsim_m
+eanError_from25_jenkinsFunc.png>]
+<./plots/sig_error_modular_vs_jenkinsFunc.png, id=330, 539.1342pt x 327.3831pt>
 
 File: ./plots/sig_error_modular_vs_jenkinsFunc.png Graphic file (type png)
 <use ./plots/sig_error_modular_vs_jenkinsFunc.png>
 Package pdftex.def Info: ./plots/sig_error_modular_vs_jenkinsFunc.png  used on 
-input line 769.
+input line 771.
 (pdftex.def)             Requested size: 184.02911pt x 111.74837pt.
-<./plots/sig_error_modular_vs_jenkinsFunc_from25.png, id=294, 532.6299pt x 327.
+<./plots/sig_error_modular_vs_jenkinsFunc_from25.png, id=331, 532.6299pt x 327.
 3831pt>
 File: ./plots/sig_error_modular_vs_jenkinsFunc_from25.png Graphic file (type pn
 g)
 <use ./plots/sig_error_modular_vs_jenkinsFunc_from25.png>
 Package pdftex.def Info: ./plots/sig_error_modular_vs_jenkinsFunc_from25.png  u
-sed on input line 774.
+sed on input line 776.
 (pdftex.def)             Requested size: 184.02911pt x 113.11214pt.
-<./plots/sig_error_modular_vs_jenkinsFunc_from50.png, id=297, 532.6299pt x 327.
+<./plots/sig_error_modular_vs_jenkinsFunc_from50.png, id=332, 532.6299pt x 327.
 3831pt>
 File: ./plots/sig_error_modular_vs_jenkinsFunc_from50.png Graphic file (type pn
 g)
 <use ./plots/sig_error_modular_vs_jenkinsFunc_from50.png>
 Package pdftex.def Info: ./plots/sig_error_modular_vs_jenkinsFunc_from50.png  u
-sed on input line 781.
-(pdftex.def)             Requested size: 204.47818pt x 125.68071pt.
- [19pdfTeX warning (ext4): destination with the same identifier (name{figure.13
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.785 \break
-            pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.14}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.785 \break
-            pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.15}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.785 \break
-             <./plots/sig_error_modular_vs_jenkinsFunc.png> <./plots/sig_error_
-modular_vs_jenkinsFunc_from25.png> <./plots/sig_error_modular_vs_jenkinsFunc_fr
-om50.png>]
-<./plots/sig_time_modular_vs_jenkinsFunc.png, id=314, 539.1342pt x 327.3831pt>
+sed on input line 783.
+(pdftex.def)             Requested size: 426.0pt x 261.84189pt.
+ [20 <./plots/sig_error_modular_vs_jenkinsFunc.png> <./plots/sig_error_modular_
+vs_jenkinsFunc_from25.png>]
+<./plots/sig_time_modular_vs_jenkinsFunc.png, id=339, 539.1342pt x 327.3831pt>
 File: ./plots/sig_time_modular_vs_jenkinsFunc.png Graphic file (type png)
 <use ./plots/sig_time_modular_vs_jenkinsFunc.png>
 Package pdftex.def Info: ./plots/sig_time_modular_vs_jenkinsFunc.png  used on i
-nput line 793.
-(pdftex.def)             Requested size: 204.47818pt x 124.16708pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 807--808
+nput line 794.
+(pdftex.def)             Requested size: 426.0pt x 258.68475pt.
+ [21 <./plots/sig_error_modular_vs_jenkinsFunc_from50.png>]
+<./plots/lhs_time.png, id=345, 604.1772pt x 327.3831pt>
+File: ./plots/lhs_time.png Graphic file (type png)
+<use ./plots/lhs_time.png>
+Package pdftex.def Info: ./plots/lhs_time.png  used on input line 805.
+(pdftex.def)             Requested size: 426.0pt x 230.84007pt.
+ [22 <./plots/sig_time_modular_vs_jenkinsFunc.png> <./plots/lhs_time.png>]
+<./plots/lsh_t0.png, id=352, 381.67593pt x 237.88875pt>
+File: ./plots/lsh_t0.png Graphic file (type png)
+<use ./plots/lsh_t0.png>
+Package pdftex.def Info: ./plots/lsh_t0.png  used on input line 817.
+(pdftex.def)             Requested size: 426.0pt x 265.5261pt.
+<./plots/lsh_t02.png, id=353, 376.40625pt x 236.38312pt>
+File: ./plots/lsh_t02.png Graphic file (type png)
+<use ./plots/lsh_t02.png>
+Package pdftex.def Info: ./plots/lsh_t02.png  used on input line 823.
+(pdftex.def)             Requested size: 426.0pt x 267.54625pt.
+ [23 <./plots/lsh_t0.png>]
+<./plots/lsh_t042.png, id=359, 378.66469pt x 234.1247pt>
+File: ./plots/lsh_t042.png Graphic file (type png)
+<use ./plots/lsh_t042.png>
+Package pdftex.def Info: ./plots/lsh_t042.png  used on input line 829.
+(pdftex.def)             Requested size: 426.0pt x 263.39676pt.
+<./plots/lsh_t064.png, id=360, 382.42876pt x 237.88875pt>
+File: ./plots/lsh_t064.png Graphic file (type png)
+<use ./plots/lsh_t064.png>
+Package pdftex.def Info: ./plots/lsh_t064.png  used on input line 835.
+(pdftex.def)             Requested size: 426.0pt x 265.00702pt.
+ [24 <./plots/lsh_t02.png> <./plots/lsh_t042.png>]
+<./plots/lsh_t08.png, id=368, 383.93437pt x 239.39438pt>
+File: ./plots/lsh_t08.png Graphic file (type png)
+<use ./plots/lsh_t08.png>
+Package pdftex.def Info: ./plots/lsh_t08.png  used on input line 841.
+(pdftex.def)             Requested size: 426.0pt x 265.63957pt.
+<./plots/lsh_t10.png, id=369, 384.6872pt x 240.14719pt>
+File: ./plots/lsh_t10.png Graphic file (type png)
+<use ./plots/lsh_t10.png>
+Package pdftex.def Info: ./plots/lsh_t10.png  used on input line 847.
+(pdftex.def)             Requested size: 426.0pt x 265.95456pt.
+ [25 <./plots/lsh_t064.png> <./plots/lsh_t08.png>] [26 <./plots/lsh_t10.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 864--865
 \OML/cmm/m/it/12 <$\OT1/cmr/m/n/12 https://aerodatablog.wordpress.com/2017/11/2
 9/locality-sensitive-hashing-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 819--820
+Underfull \hbox (badness 10000) in paragraph at lines 876--877
 []\OT1/cmr/m/n/12 santhoshhari. \OT1/cmr/m/it/12 Loc-al-ity Sens-it-ive Hash-in
 g: Ap-plic-a-tion of Loc-al-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 819--820
+Underfull \hbox (badness 10000) in paragraph at lines 876--877
 \OT1/cmr/m/it/12 ity Sens-it-ive Hash-ing to Au-dio Fin-ger-print-ing \OT1/cmr/
 m/n/12 [on-line]. (n. d.).
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 819--820
+Underfull \hbox (badness 10000) in paragraph at lines 876--877
 \OML/cmm/m/it/12 <$\OT1/cmr/m/n/12 https://santhoshhari.github.io/Locality-Sens
 itive-Hashing/$\OML/cmm/m/it/12 >$\OT1/cmr/m/n/12 [Consulted:
  []
 
 
-Underfull \hbox (badness 4556) in paragraph at lines 822--823
+Underfull \hbox (badness 4556) in paragraph at lines 879--880
 []\OT1/cmr/m/n/12 Shikhar Gupta. \OT1/cmr/m/it/12 Loc-al-ity Sens-it-ive Hash-i
 ng: An ef-fect-ive way of re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 822--823
+Underfull \hbox (badness 10000) in paragraph at lines 879--880
 \OT1/cmr/m/it/12 du-cing the di-men-sion-al-ity of your data \OT1/cmr/m/n/12 [o
 n-line]. (June 29, 2018).
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 822--823
+Underfull \hbox (badness 10000) in paragraph at lines 879--880
 \OML/cmm/m/it/12 <$\OT1/cmr/m/n/12 https://towardsdatascience.com/understanding
 -locality-sensitive-hashing-
  []
 
-[20pdfTeX warning (ext4): destination with the same identifier (name{figure.16}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.826 \end{thebibliography}
-                            <./plots/sig_time_modular_vs_jenkinsFunc.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 828.
-
-[21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 828.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 885.
+[27]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 885.
  (Hashing.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 828.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 828.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 885.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 885.
 Package rerunfilecheck Info: File `Hashing.out' has not changed.
-(rerunfilecheck)             Checksum: 3ECC48FF23707345BC8AEF14E25B3F8C;1620.
+(rerunfilecheck)             Checksum: 153D6417CEC3D04E425C71FEE5EA0F82;2394.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 828.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 885.
  ) 
 Here is how much of TeX's memory you used:
- 9688 strings out of 492970
- 148454 string characters out of 3126150
- 263379 words of memory out of 3000000
- 13261 multiletter control sequences out of 15000+200000
+ 9736 strings out of 492970
+ 149490 string characters out of 3126150
+ 264853 words of memory out of 3000000
+ 13302 multiletter control sequences out of 15000+200000
  15111 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 33i,10n,31p,724b,499s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,10n,31p,650b,501s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmbx12.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmbxti10.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 
@@ -1088,9 +1006,9 @@ ers/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
 y10.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmti10.pfb><C:/Users/Xavier/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Hashing.pdf (22 pages, 1348479 bytes).
+Output written on Hashing.pdf (28 pages, 1453445 bytes).
 PDF statistics:
- 398 PDF objects out of 1000 (max. 8388607)
- 94 named destinations out of 1000 (max. 500000)
- 313 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 457 PDF objects out of 1000 (max. 8388607)
+ 87 named destinations out of 1000 (max. 500000)
+ 420 words of extra memory for PDF output out of 10000 (max. 10000000)
 
