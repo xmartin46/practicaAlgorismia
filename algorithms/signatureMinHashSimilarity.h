@@ -1,5 +1,10 @@
+#ifndef SIGMAT
+#define SIGMAT
+
+
 #include "constAndRand.h"
 #include "kShingles.h"
+#include <stdlib.h>
 using namespace std;
 
 bool IsPrime(int number) {
@@ -90,3 +95,5 @@ double signatureMinHashSimilarity (vector<vector<int>>& signatureMatrix, int doc
     return ((double)interseccio/(double)nHashFunctions);
 	//printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 }
+
+#endif

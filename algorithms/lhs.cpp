@@ -80,8 +80,6 @@ int main(int argc, char** argv){
 			string val = "";
 			for (int j = 0; j < r; ++j){
 				val += to_string(sm[band_it+j][d]) + "-";
-				//cout << sm[band_it+j][d] << " ";
-				//val = val*10 + sm[band_it+j][d];
 			}
 			//cout << "-> " << val << endl;
 			container[val].insert(d);
