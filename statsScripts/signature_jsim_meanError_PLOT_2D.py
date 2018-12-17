@@ -17,7 +17,7 @@ fig = plt.figure()
 ax = plt.axes()
 
 # Importing the dataset
-dt = pd.read_csv(path + '\\data\\sig_jsim_meanError.csv', sep='\s*,\s*')
+dt = pd.read_csv(path + '\\data\\sig_jsim_meanError_jenkinsFunc.csv', sep='\s*,\s*')
 
 # Plot the data
 hashFun = np.unique(dt.iloc[:, 0])
@@ -40,13 +40,13 @@ plt.legend(loc='upper right')
 ax.legend(bbox_to_anchor=(1, 1))
 
 # Set titles
-ax.set(title="Signature Matrix Approximation error compared to Jaccard Similarity", xlabel="shingles size (k)", ylabel="mean error (%)")
+ax.set(title="Signature Matrix Approximation error compared to Jaccard Similarity using Jenkins Hash Fun", xlabel="shingles size (k)", ylabel="mean error (%)")
 
 # Show the plot
 # plt.show()
 
 # Save the plot
-plt.savefig(path + '\\plots\\signature_jsim_meanError.png', bbox_inches='tight')
+plt.savefig(path + '\\plots\\signature_jsim_meanError_jenkinsFunc.png', bbox_inches='tight')
 
 # Clear and close the plot
 plt.clf()

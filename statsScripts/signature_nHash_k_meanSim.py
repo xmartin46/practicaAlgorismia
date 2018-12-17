@@ -4,13 +4,14 @@ martinPath = ''
 rogerPath = ''
 path = lacaPath
 
-file = open(path + '\\data\\signature_nHash_k_meanSim_DENSE.csv', 'w')
+file = open(path + '\\data\\signature_nHash_k_meanSim_jenkinsFunc.csv', 'w')
 file.write('NumberOfHashFunctions, k, JaccardSimilarity' + '\n')
 
 
 # n = number of hash functions applied to create signature matrix
 
-functs = [1, 25, 50] + [x for x in range(100, 1001, 50)]
+# functs = [1, 25, 50] + [x for x in range(100, 1001, 50)]
+functs = [1, 25, 50, 100, 250, 500, 750, 1000]
 for n in functs:
     print(str(n))
     numPair = 0

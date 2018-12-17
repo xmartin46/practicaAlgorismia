@@ -17,7 +17,7 @@ fig = plt.figure()
 ax = plt.axes(projection='3d')
 
 # Importing the dataset
-dt = pd.read_csv(path + '\\data\\signature_nHash_k_meanSim_DENSE.csv')
+dt = pd.read_csv(path + '\\data\\signature_nHash_k_meanSim_jenkinsFunc_DENSE.csv')
 
 # Plot the data
 x = dt.iloc[:, 1] # Shingles
@@ -40,7 +40,7 @@ plt.xticks([x * step for x in range(minRange, maxRange)])
 plt.tick_params(axis='x', which='major', labelsize=8)
 
 # Set titles
-ax.set_title("Signature Matrix Approximation")
+ax.set_title("Signature Matrix Approximation using Jenkins Hash Fun")
 ax.set_xlabel("shingle size (num chars)")
 ax.set_ylabel("num Hash Functions used")
 ax.set_zlabel("mean similarity of 5 doc pairs (%)")

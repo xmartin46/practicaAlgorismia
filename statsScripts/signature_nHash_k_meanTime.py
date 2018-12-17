@@ -4,7 +4,7 @@ martinPath = ''
 rogerPath = ''
 path = lacaPath
 
-file = open(path + '\\data\\signature_nHash_k_meanTime.csv', 'w')
+file = open(path + '\\data\\signature_nHash_k_meanTime_jenkinsFunc.csv', 'w')
 file.write('NumberOfHashFunctions, k, JaccardSimilarity' + '\n')
 
 
