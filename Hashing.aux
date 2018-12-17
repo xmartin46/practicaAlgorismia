@@ -26,12 +26,12 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}Jaccard Similarity}{1}{section.2}}
 \newlabel{fig:JaccardExample}{{2.1}{1}{}{exmp.2.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Shingling of Documents}{1}{section.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}k-Shingles}{1}{subsection.3.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}k-Shingles}{2}{subsection.3.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Compairing Similarity Using The Sets}{2}{section.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Matrix Representation}{2}{subsection.4.1}}
 \newlabel{fig:matrixRepresentation}{{4.1}{2}{}{exmp.4.1}{}}
 \newlabel{exmp:matrixRepresentation}{{4.1}{2}{}{exmp.4.1}{}}
-\newlabel{fig:typesValues}{{4.1}{2}{Matrix Representation}{exmp.4.1}{}}
+\newlabel{fig:typesValues}{{4.1}{3}{Matrix Representation}{exmp.4.1}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Time Complexity}{3}{subsubsection.4.1.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Space Complexity}{3}{subsubsection.4.1.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Minhashing}{3}{subsection.4.2}}
@@ -40,19 +40,67 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Optimizing the Time for Permutations}{4}{subsubsection.4.2.2}}
 \@writefile{toc}{\contentsline {paragraph}{\numberline {4.2.2.1}Hashing Functions}{5}{paragraph.4.2.2.1}}
 \@writefile{toc}{\contentsline {subparagraph}{\numberline {4.2.2.1.1}Modular Hashing}{5}{subparagraph.4.2.2.1.1}}
-\@writefile{toc}{\contentsline {subparagraph}{\numberline {4.2.2.1.2}Modular Hashing}{5}{subparagraph.4.2.2.1.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Locality Sensitive Hashing (LSH)}{5}{section.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Band partition}{5}{subsection.5.1}}
+\@writefile{toc}{\contentsline {subparagraph}{\numberline {4.2.2.1.2}Robert Jenkins' 96 bit Mix Function}{5}{subparagraph.4.2.2.1.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Locality Sensitive Hashing (LSH)}{6}{section.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Band partition}{6}{subsection.5.1}}
 \newlabel{fig:bandPartition}{{5.1}{6}{Band partition}{subsection.5.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Choice of \textit  {b} and \textit  {r} values}{6}{subsection.5.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Choice of \textit  {b} and \textit  {r} values}{7}{subsection.5.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Algorithms}{7}{section.6}}
 \newlabel{sec:ALG}{{6}{7}{Algorithms}{section.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Jaccard Similarity}{7}{subsection.6.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.1}k-Shingles}{7}{subsubsection.6.1.1}}
-\@writefile{toc}{\contentsline {paragraph}{\numberline {6.1.1.1}Cost}{8}{paragraph.6.1.1.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.2}Minhash Signatures}{8}{subsubsection.6.1.2}}
-\@writefile{toc}{\contentsline {paragraph}{\numberline {6.1.2.1}Cost}{9}{paragraph.6.1.2.1}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {6.1.1.1}Cost}{9}{paragraph.6.1.1.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.2}Minhash Signatures}{9}{subsubsection.6.1.2}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {6.1.2.1}Cost}{10}{paragraph.6.1.2.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}LSH}{10}{subsection.6.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Cost}{11}{subsubsection.6.2.1}}
-\bibcite{Cd94}{1}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Referencies}{12}{section.7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Cost}{12}{subsubsection.6.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Plots}{12}{section.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Jaccard Similarity}{12}{subsection.7.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.1}k-Shingles}{12}{subsubsection.7.1.1}}
+\newlabel{fig:jsim_k_sim.png}{{7.1.1}{13}{k-Shingles}{subsubsection.7.1.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Time to compute the Jaccard Similarity when varying the \textit  {k} value.}}{14}{figure.1}}
+\newlabel{Fig:jsim_k_time.png}{{1}{14}{Time to compute the Jaccard Similarity when varying the \textit {k} value}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Average time to compute the Jaccard Similarity of the Figure \ref  {Fig:jsim_k_time.png}.}}{14}{figure.2}}
+\newlabel{Fig:jsim_k_meanTime.png}{{2}{14}{Average time to compute the Jaccard Similarity of the Figure \ref {Fig:jsim_k_time.png}}{figure.2}{}}
+\newlabel{fig:jsim_spaces_k_sim.png}{{7.1.1}{14}{k-Shingles}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.2}Signature Matrix}{15}{subsubsection.7.1.2}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {7.1.2.1}Using Modular Hashing}{15}{paragraph.7.1.2.1}}
+\newlabel{fig:signature_nHash_k_meanSim.png}{{7.1.2.1}{15}{Using Modular Hashing}{paragraph.7.1.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Jaccard Similarity approximation varying the number of hash function and the size of the shingles.}}{16}{figure.3}}
+\newlabel{Fig:signature_nHash_k_meanSim3D.png}{{3}{16}{Jaccard Similarity approximation varying the number of hash function and the size of the shingles}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Average time to compute the Jaccard Similarity approximation varying the shingle sizes.}}{16}{figure.4}}
+\newlabel{Fig:signature_nHash_k_meanTime.png}{{4}{16}{Average time to compute the Jaccard Similarity approximation varying the shingle sizes}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Error between the Jaccard Similarity and the Jaccard Similarity approximated in the signature matrix.}}{16}{figure.5}}
+\newlabel{Fig:signature_jsim_meanError.png}{{5}{16}{Error between the Jaccard Similarity and the Jaccard Similarity approximated in the signature matrix}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The same than Figure \ref  {Fig:signature_jsim_meanError.png} but starting from nHashes = 25.}}{16}{figure.6}}
+\newlabel{Fig:signature_jsim_meanError_from25.png}{{6}{16}{The same than Figure \ref {Fig:signature_jsim_meanError.png} but starting from nHashes = 25}{figure.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The same than Figure \ref  {Fig:signature_jsim_meanError.png} but starting from nHashes = 50.}}{17}{figure.7}}
+\newlabel{Fig:signature_jsim_meanError_from50.png}{{7}{17}{The same than Figure \ref {Fig:signature_jsim_meanError.png} but starting from nHashes = 50}{figure.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {7.1.2.2}Using Robert Jenkins' 96 bit Mix Function}{17}{paragraph.7.1.2.2}}
+\newlabel{fig:signature_nHash_k_meanSim_jenkinsFunc.png}{{7.1.2.2}{17}{Using Robert Jenkins' 96 bit Mix Function}{paragraph.7.1.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Time to compute the Jaccard Similarity aproximation when varying the \textit  {k} value.}}{18}{figure.8}}
+\newlabel{Fig:signature_jsim_meanError_jenkinsFunc.png}{{8}{18}{Time to compute the Jaccard Similarity aproximation when varying the \textit {k} value}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Average time to compute the Jaccard Similarity aproximation varying the shingles sizes.}}{18}{figure.9}}
+\newlabel{Fig:jsim_k_meanTime.png}{{9}{18}{Average time to compute the Jaccard Similarity aproximation varying the shingles sizes}{figure.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Error between the Jaccard Similarity and the Jaccard Similarity approximated in the signature matrix.}}{18}{figure.10}}
+\newlabel{Fig:signature_jsim_meanError.png}{{10}{18}{Error between the Jaccard Similarity and the Jaccard Similarity approximated in the signature matrix}{figure.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces The same than Figure \ref  {Fig:signature_jsim_meanError.png} but starting from nHashes = 25.}}{18}{figure.11}}
+\newlabel{Fig:signature_jsim_meanError_from25_jenkinsFunc.png}{{11}{18}{The same than Figure \ref {Fig:signature_jsim_meanError.png} but starting from nHashes = 25}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces The same than Figure \ref  {Fig:signature_jsim_meanError.png} but starting from nHashes = 50.}}{18}{figure.12}}
+\newlabel{Fig:signature_jsim_meanError_from25_jenkinsFunc.png}{{12}{18}{The same than Figure \ref {Fig:signature_jsim_meanError.png} but starting from nHashes = 50}{figure.12}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {7.1.2.3}Modular Hashing vs. Robert Jenkins' 96 bit Mix Function}{19}{paragraph.7.1.2.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Diference between the error using the modular hashing and the one using the jenkins hashing.}}{19}{figure.13}}
+\newlabel{Fig:sig_error_modular_vs_jenkinsFunc.png}{{13}{19}{Diference between the error using the modular hashing and the one using the jenkins hashing}{figure.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces The same than Figure \ref  {Fig:sig_error_modular_vs_jenkinsFunc.png} but starting from nHashes = 25.}}{19}{figure.14}}
+\newlabel{Fig:sig_error_modular_vs_jenkinsFunc_from25.png}{{14}{19}{The same than Figure \ref {Fig:sig_error_modular_vs_jenkinsFunc.png} but starting from nHashes = 25}{figure.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces The same than Figure \ref  {Fig:sig_error_modular_vs_jenkinsFunc.png} but starting from nHashes = 50.}}{19}{figure.15}}
+\newlabel{Fig:sig_error_modular_vs_jenkinsFunc_from50.png}{{15}{19}{The same than Figure \ref {Fig:sig_error_modular_vs_jenkinsFunc.png} but starting from nHashes = 50}{figure.15}{}}
+\bibcite{The Best}{1}
+\bibcite{Bottom}{2}
+\bibcite{Wtf is this name}{3}
+\bibcite{Ma maaan}{4}
+\bibcite{Ma man agaaaain}{5}
+\bibcite{Second one}{6}
+\bibcite{The firsty one}{7}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Difference of the time between the modular function and the jenkins function.}}{20}{figure.16}}
+\newlabel{Fig:sig_time_modular_vs_jenkinsFunc.png}{{16}{20}{Difference of the time between the modular function and the jenkins function}{figure.16}{}}
