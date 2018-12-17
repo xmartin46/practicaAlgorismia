@@ -48,7 +48,7 @@ ax.set(title="LHS time for 20 document permutations", xlabel="shingles size (k)"
 # plt.show()
 
 # Save the plot
-plt.savefig(path + '\\plots\\lhs_time.png', bbox_inches='tight')
+plt.savefig(path + '\\plots\\lsh_time.png', bbox_inches='tight')
 
 # Clear and close the plot
 plt.clf()
