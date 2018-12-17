@@ -17,7 +17,7 @@ fig = plt.figure()
 ax = plt.axes()
 
 # Importing the dataset
-dt = pd.read_csv(path + '\\data\\signature_nHash_k_meanTime.csv', sep='\s*,\s*')
+dt = pd.read_csv(path + '\\data\\signature_nHash_k_meanTime_jenkinsFunc.csv', sep='\s*,\s*')
 
 # Plot the data
 hashFun = np.unique(dt.iloc[:, 0])
@@ -42,13 +42,13 @@ plt.legend(loc='upper right')
 ax.legend(bbox_to_anchor=(1, 1))
 
 # Set titles
-ax.set(title="Signature Matrix computation time for different Shingle sizes (k)", xlabel="shingles size (k)", ylabel="mean time of 5 doc pairs (ms)")
+ax.set(title="Signature Matrix computation time  using Jenkins Hash Fun", xlabel="shingles size (k)", ylabel="mean time of 5 doc pairs (ms)")
 
 # Show the plot
 # plt.show()
 
 # Save the plot
-plt.savefig(path + '\\plots\\signature_nHash_k_meanTime.png', bbox_inches='tight')
+plt.savefig(path + '\\plots\\signature_nHash_k_meanTime_jenkinsFunc.png', bbox_inches='tight')
 
 # Clear and close the plot
 plt.clf()
