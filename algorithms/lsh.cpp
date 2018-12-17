@@ -180,14 +180,15 @@ int main(int argc, char** argv){
         // Print time elapsed in s
 		printf("%.3f", (double)(clock() - tStart)/CLOCKS_PER_SEC);
     }
+    
     //NumCandidats
     cout << numCandidatePairs << ",";
-    //Falsos positius
-    cout << (numCandidatePairs - numTruePairs) << ",";
     //Encerts
     cout << numTruePairs << ",";
+    //Falsos positius
+    cout << max(0, (numCandidatePairs - numTruePairs)) << ",";
     //Falsos negatius
-    cout << numTrueCopies - numTruePairs << ","
+    cout << max(0, numTrueCopies - numTruePairs) << ",";
     /*
 	meanSimTrue /= numTruePairs;
 	meanSimFalse /= (double)(numCandidatePairs - numTruePairs);
