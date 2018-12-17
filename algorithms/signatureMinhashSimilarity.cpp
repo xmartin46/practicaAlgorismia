@@ -17,24 +17,24 @@ en t funcions de hash. La mesura de similitud de dos signatures a i b amb t comp
 int main(int argc, char** argv) {
 	// Default values
 	int k;
-	int nHashFunctions = 1000;
+	int nHashFunctions = 500;
 	bool measuringTime = false;
 	string filePath1 = "./20doc/13.txt";
 	string filePath2 = "./20doc/0.txt";
+	bool spaces = true;
 	if (argc > 1) {
 		k = stoi(argv[1]);
 		filePath1 = "./20doc/" + (string)argv[2] + ".txt";
 		filePath2 = "./20doc/" + (string)argv[3] + ".txt";
-		nHashFunctions = stoi(argv[5]);
+		nHashFunctions = stoi(argv[6]);
 		measuringTime = stoi(argv[4]);
-
+		spaces = stoi(argv[5]);
 	}
 	else {
 		cout << "Insert the k value to do the k-Shingling: ";
 		cin >> k;
 	}
 
-	bool spaces = true;
 	bool allLowercase = true;
 
 	clock_t tStart;
