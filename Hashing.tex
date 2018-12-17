@@ -66,6 +66,8 @@
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\usepackage{float}
 %--------------------------------------------------------------------------
 \title{Detection of/between similarity of documents with hashing}
 \author{Roger Vilaseca Darné, Xavier Lacasa Curto and Xavier Martín Ballesteros\\
@@ -75,7 +77,7 @@
 
 \begin{document}
 % Images
-\graphicspath{ {./images/} }
+\graphicspath{ {./images/}, {./plots/} }
 
 %\maketitle
 
@@ -115,6 +117,9 @@
 % Referència a una secció \ref{sec:nada}
 % Referència a una cita \cite{Cd94}.
 
+In this (practica) we are going to create differents algorithms to compute the difference between various documents in order to be able to detect if there may have been a possibility of copy any pair of the documents.
+To do it, we have started with a very basic algorithm that returns the Jaccard Similarity with two documents and we have finished obtaining a Locality-sensitive hashing algorithm that giving the paths of several documents will return which documents may have been copied. (All the algorithms are explained in the document).
+
 \section{Jaccard Similarity}
 The Jaccard Similarity, also known as Intersection Over Union (IOU), calculates the percentage of similarity between two sets.
 
@@ -142,8 +147,7 @@ In Figure \ref{fig:JaccardExample} we see two sets S and T. There are 3 elements
 
 \section{Shingling of Documents}
 
-Any pair of documents can be compared by watching the number of repeated strings they have.
-\underline{The more common strings, the more probable is that one is a duplicate from the other.}
+Any pair of documents can be compared by watching the number of repeated strings they have. The more common strings, the more probable is that one is a duplicate from the other.
 One way to represent a document as a set is to insert in the set each string that appears in it. If we do so, then duplicated documents that have reorganized the sentences or even the entire text will have plenty of common strings, and will be detected as duplicated.
 
 \subsection{k-Shingles}
@@ -160,7 +164,7 @@ and Jeffrey D. Ullman (2011), "k should be picked large enough that the probabil
 \section{Compairing Similarity Using The Sets}
 
 If we succeed in shingling the documents by using the \textit{k}-Shingling technique, we will only have to compare all pairs of documents using the Jaccard Similarity and say if there is similarity between them or not. 
-In order to do this, we have to store all the information in a data structure, for instance (\underline{e.g.}), a matrix. By doing this, we have two problems: time and space complexity. $<$= \textbf{Correcte que vagi aquí la úlima frase?}
+In order to do this, we have to store all the information in a data structure, for instance, a matrix. By doing this, we have two problems: time and space complexity.
 
 \subsection{Matrix Representation}
 
@@ -171,8 +175,6 @@ To represent the matrix, we will put the documents' sets in the columns and the 
     0,              & \text{otherwise}
 \end{dcases}
 \]
-
-¿For any pair of row \textit{r} and column \textit{c}, if the set in the colum \textit{c} has the element in the row \textit{r}, the matrix will have a 1 in the cell (\textit{r}, \textit{c}). Otherwise, the cell will have a 0.?
 
 \begin{exmp}
 For this example we will use two sets representing the words "Nadal" and "Nadia". Let k = 2 to form the k-Shingles.
@@ -195,7 +197,7 @@ In this type of matrices, for any pair of columns we can have 4 types of results
 	\includegraphics[width=2in]{typesValues}
 	\label{fig:typesValues}
 	
-	\textit{\underline{Figure \ref{fig:typesValues}}: Representation of the matrix with all the possible permutations.}
+	\textit{Figure \ref{fig:typesValues}: Representation of the matrix with all the possible permutations.}
 \end{center}
 
 Note that as the matrix is sparse, most of the rows will be of type \textit{a}. If we try to calculate the similarity between two sets $S_1$ and $S_2$ using the matrix and the Jaccard Similarity, we will have the following result:
@@ -208,7 +210,7 @@ Where Q(x) is the number of rows of type \textit{x}. Q(d) is the intersection of
 
 \subsubsection{Time Complexity}
 
-Imagine we have \textit{n} documents. Then, we have to compare each document with all the rest. Thus, the number of comparisons we have to do is $n*(n-1)/2$ which is equal to $O$($n^2$) ¿$omega$($n*log(n)$)? O potser és Theta de $n^2$?.
+Imagine we have \textit{n} documents. Then, we have to compare each document with all the rest. Thus, the number of comparisons we have to do is $n*(n-1)/2$ which is equal to $O$($n^2$).
 
 \begin{exmp}
 Suppose we have 1 million documents. The number of comparisons would be $5*10^{11}$ which is a huge number.
@@ -219,11 +221,9 @@ Suppose we have 1 million documents. The number of comparisons would be $5*10^{1
 
 \end{exmp}
 
-% No s'arregla la time complexity?
-
 \subsubsection{Space Complexity}
 
-In typical applications the matrix is sparse, which means that there are more 0s than 1s. ¿We can demonstrate this by calculating the \underline{probability} of an element of the set to belong to a document D.?
+In typical applications the matrix is sparse, which means that there are more 0s than 1s.
 
 If we take \textit{k} shingles, then the document have relatively few of the possible shingles.
 Another way to think about this is with the toys in Christmas Day. Kids would be the columns of the matrix and toys, the rows. Usually, kids would like to have a specific toy, which is very popular at that moment. Then, lots of toys would not be buyed for any kid.
@@ -257,7 +257,7 @@ With this technique, we can see that every time we do a permutation, we only occ
 As we mentioned before, the Jaccard Similarity in the matrix is equal to the number of rows of type \textit{d} divided by the number of rows of type \textit{b} + \textit{c} + \textit{d}. And that Similarity is preserved in the "signature matrix".
 
 \begin{proof}
-Look down through the \underline{permuted columns} $C_1$ and $C_2$ until we see a 1 in any of the two columns. Then, we can have a row of type \textit{b} or \textit{c}, where only one of the columns have a 1, or a row of type \textit{d}, where both columns have a 1 in it.
+Look down through the permuted columns $C_1$ and $C_2$ until we see a 1 in any of the two columns. Then, we can have a row of type \textit{b} or \textit{c}, where only one of the columns have a 1, or a row of type \textit{d}, where both columns have a 1 in it.
 If we find a row of type \textit{d}, then the minhash function will take the same row. Thus, $h(C_1) = h(C_2)$.
 Otherwise, we must have a row of type \textit{b} or \textit{c} and $h(C_1) \neq h(C_2)$.
 
@@ -271,7 +271,7 @@ P[h(C_1) = h(C_2)] = J(C_1, C_2)
 
 \subsubsection{Optimizing the Time for Permutations}
 
-As doing a set of permutation would be very expensive, but we can use a trick to simulate the \textit{n} permutations. We can use \textit{n} random hash functions that maps row numbers to as many buckets as the size of the rows of the matrix. We say that this is a trick because we are not doing a literal permutation, as we can have collisions using the hash functions but the point is that the probability of a collision with a large number \textit{k} for the shingling is very small. Thus, we can think of this new algorithm as a perfect permutation of the rows. The algorithm is the following:
+Doing a set of permutation would be very expensive, but we can use a trick to simulate the \textit{n} permutations. We can use \textit{n} random hash functions that maps row numbers to as many buckets as the size of the rows of the matrix. We say that this is a trick because we are not doing a literal permutation, as we can have collisions using the hash functions but the point is that the probability of a collision with a large number \textit{k} for the shingling is very small. Thus, we can think of this new algorithm as a perfect permutation of the rows. The algorithm is the following:
 
 \hfill
 
@@ -303,13 +303,39 @@ Every time we go to the next row, we first compute all the hash values using the
 
 We will present you now all the types of hashing functions we have used in the previous algorithm and in the algorithms in the Section \ref{sec:ALG}.
 
-\subparagraph{Modular Hashing}
+%A hash function is any function that converts a value to another value. We will fit this method in our algorithm to find the similarity between documents in the fastest way rather than making the calculus using the Jaccard Algorithm, computing a large number of hash functions all of the same type and then saving it in a matrix where we will know for each hash function and document wich is the smallest number that we have found.
+
+%In this algorith we have used these hash functions:
 
 \subparagraph{Modular Hashing}
+
+\hfill
+
+In this case we will recieve a key \textit{k}, a prime number \textit{p}, a random number modulus the number of shingles \textit{m} and the number of k-shingles \textit{z}.
+The result will be a number modulus the number of k-shingles of the document.
+
+modularHashFunction(k, p, m, z) = (k * p + m) mod z
+
+\hfill
+
+\begin{algorithmic}
+ \Require Four integers $k, p, m, z$
+ \Ensure An integer $h$
+ \State{return $(k * p + m)$ mod $z$}
+\end{algorithmic}
+
+\subparagraph{Robert Jenkins' 96 bit Mix Function}
+
+\hfill
+
+In this case we will recieve a prime number \textit{p}, a random number modulus the number of shingles \textit{m} and a key \textit{k}.
+We will compute the returning value \textit{h}, that will be found making a sequence of subtraction, exclusive-or, and bit shift.
+
+mix(p, m, k) = h
 
 \section{Locality Sensitive Hashing (LSH)}
 
-We have talked before about how to improve to space complexity, but we still have not introduced a technique to improve the time complexity.
+We have talked before about how to improve the space complexity, but we still have not introduced a technique to improve the time complexity.
 
 The general idea is that only a few pair of documents will have a high Jaccard Similarity. Thus, we need an algorithm that chooses the candidates that are more likely to be similar. The Locality Sensitive Hashing will help on this a lot.
 
@@ -565,32 +591,238 @@ The LSH algorithm has two parts. The first one calculates the best possible valu
    \end{itemize}
 \end{enumerate}
 
-\section{Referencies}
+\section{Plots}
 
-\url{https://towardsdatascience.com/understanding-locality-sensitive-hashing-49f6d1f6134}
+Tots ESTAN FETS AMB PYTHON! PELS EXPERIMENTS HEM TRIAT ALEATORIAMENT PARELLES DE DOCUMENTS DE 50 PARAULES PERMUTADES ALEATORIAMENT! CODI? <- APPENDIX? CADA PLOT AMB 5 MOSTRES
+\subsection{Jaccard Similarity}
 
+\subsubsection{k-Shingles}
 
-\url{https://santhoshhari.github.io/Locality-Sensitive-Hashing/}
+The following plot shows the evolution of the Jaccard Similarity when we vary the value of \textit{k}.
 
-\url{https://www.youtube.com/watch?v=96WOGPUgMfw}
+\begin{center}
+	\includegraphics[width=5in]{jsim_k_sim.png}
+	\label{fig:jsim_k_sim.png}
+	
+	\textit{Figure \ref{fig:jsim_k_sim.png}: Jaccard Similarity varying the \textit{k} value.}
+\end{center}
 
-\url{https://www.youtube.com/watch?v=_1D35bN95Go}
+As you can see, the Jaccard Similarity of the different pairs is very similar because all the documents are a random permutation of the same 50 words. You can see that because when the shingle size is equal to 1 (we only take the characters), the Jaccard Similarity is 100\%\footnote{Note that in a document with few words, it is very probable that not all the characters are included in the document.}.
 
-\url{https://medium.com/engineering-brainly/locality-sensitive-hashing-explained-304eb39291e4}
+Besides, it is important to remark the direction of the graphic. The bigger the shingle size, the lower Jaccard Similarity we get. This is because every time we increase the \textit{k} value, it is more likely that the substrings start to take some characters of the next word. Thus, the probability that two different documents have the same shingles decreases a lot. You can see that when the shingle size is bigger or equal than 6, we begin to have a very low Jaccard Similarity (less than 20 from \textit{k} = 7) because most of the substrings will have characters of the next words.
 
-\url{http://www.mit.edu/~andoni/LSH/}
+Now, we are going to represent the time cost of the same pair of documents when we vary the shingle size.
 
-\url{http://infolab.stanford.edu/~ullman/mmds/ch3.pdf}
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=.9\linewidth]{jsim_k_time.png}
+     \caption{Time to compute the Jaccard Similarity when varying the \textit{k} value.}\label{Fig:jsim_k_time.png}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=.9\linewidth]{jsim_k_meanTime.png}
+     \caption{Average time to compute the Jaccard Similarity of the Figure \ref{Fig:jsim_k_time.png}.}\label{Fig:jsim_k_meanTime.png}
+   \end{minipage}
+\end{figure}
 
-\url{https://aerodatablog.wordpress.com/2017/11/29/locality-sensitive-hashing-lsh/}
+If we focus on the time cost we can see that the time does not vary at all when we use different shingle sizes. This may be because the documents have the same number of words. Thus, the number of shingles for each document must be very similar to the others.
+
+We should also point that the time to compute the Jaccard Similarity of these pairs of documents is very small because the number of words is very small (50 words are very few compared to the number of words of an article).
+
+\begin{center}
+	\includegraphics[width=5in]{jsim_spaces_k_sim.png}
+	\label{fig:jsim_spaces_k_sim.png}
+	
+	\textit{Figure XXXXXXXXXXXXX: Time to compute the Jaccard Similarity when varying the \textit{k} value.}
+\end{center}
+
+In the following plot we can see the differences between the behaviour of the algorithm taking into account the spaces or not.
+The blue line (coutning spaces) shows that the Jaccard Similarity calculated counting the spaces in the documents is higher than not counting them (orange line). This is due to the difference between the k-shingles created in both algorithms, because if we consider the spaces then we will need a higher \textit{k} for the substring to start taking characters from the next word.
+
+From now on, we will use spaces to experiment with the documents in the following plots.
+
+We also have put the option to make all characters to lowercase or not. This does not affect on these documents, as all the characters are already in lowercase.
+
+\subsubsection{Signature Matrix}
+
+\paragraph{Using Modular Hashing}
+
+In the following plot, it is represented an approximation of the result of calculating the Jaccard Similarity using the signature matrix.
+
+\begin{center}
+	\includegraphics[width=5in]{signature_nHash_k_meanSim.png}
+	\label{fig:signature_nHash_k_meanSim.png}
+	
+	\textit{Figure XXXXXXXXXXXXXXXXX: Jaccard Similarity aproximation varying the shingle sizes.}
+\end{center}
+
+ The similarity between the documents is strictly related with the number of hashing functions that we use. When the number of hashing functions is a small value it is very different than the Jaccard Similarity, because the signature matrix has few rows and then, there are few chances that one row has the same hash values on two different columns. But when the number of hash functions increases, the functions are more alike to the Jaccard Similarity (Figure YYYYYYYYYYYYYYYYYYYYYYYY 7.1.1.1.1.1.1.1).
+ 
+ See that when the nHashes is 1, the Jaccard Similarity should only be 100 or 0 per cent, as there is only one row in the signature matrix, but remember that this plot is using the mean value of the result of computing the Jaccard Similarity of 5 pairs using the signature matrix.
+
+Now, we are going to focus on the number of hash functions.
+
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=.9\linewidth]{signature_nHash_k_meanSim3D.png}
+     \caption{Jaccard Similarity approximation varying the number of hash function and the size of the shingles.}\label{Fig:signature_nHash_k_meanSim3D.png}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=1.08\linewidth]{signature_nHash_k_meanTime.png}
+     \caption{Average time to compute the Jaccard Similarity approximation varying the shingle sizes.}\label{Fig:signature_nHash_k_meanTime.png}
+   \end{minipage}
+\end{figure}
+
+We can see in Figure \ref{Fig:signature_nHash_k_meanSim3D.png} that the plot form begins to stay stable from number of hash functions equal to 200 more or less. Furthermore, in Figure \ref{Fig:signature_nHash_k_meanTime.png} the time cost starts to increase a lot from number of hash function equal to 250.
+
+Thus, even though using more number of hash function would be better to calculate an approximation of the Jaccard Similarity, it is not usefull to do so because with 200 hash functions we compute a very similar value in less time.
+
+It is important to remark that in Figure \ref{Fig:signature_nHash_k_meanTime.png} the time stabilize near the \textit{k} equal to the average word length. FALTAAAAAAAAAAAAAAAAAAAAA DIR EL PERQUÈ CREIES QUE PASSA AIXÒ??????????? SI ÉS AIXÍ NO ESTIC MOLT SEGUR DE LA RESPOSTA XD.
+
+\hfill
+
+In Figures \ref{Fig:signature_jsim_meanError.png}, \ref{Fig:signature_jsim_meanError_from25.png} and \ref{Fig:signature_jsim_meanError_from50.png} there is represented how much is the error value obtained using the Jaccard Similarity and the Signature Matrix Approximation. Approximately we can arrive to the same conclusions as the ones that are before. The more number of hash functions, the less the error is.
+
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=.9\linewidth]{signature_jsim_meanError.png}
+     \caption{Error between the Jaccard Similarity and the Jaccard Similarity approximated in the signature matrix.}\label{Fig:signature_jsim_meanError.png}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=0.9\linewidth]{signature_jsim_meanError_from25.png}
+     \caption{The same than Figure \ref{Fig:signature_jsim_meanError.png} but starting from nHashes = 25.}\label{Fig:signature_jsim_meanError_from25.png}
+   \end{minipage}
+\end{figure}
+
+\begin{figure}
+\centering
+     \includegraphics[width=0.48\linewidth]{signature_jsim_meanError_from50.png}
+     \caption{The same than Figure \ref{Fig:signature_jsim_meanError.png} but starting from nHashes = 50.}\label{Fig:signature_jsim_meanError_from50.png}
+\end{figure}
+
+\break
+
+We have put the same plot three times so that you can see more closely the values of the mean error.
+
+\paragraph{Using Robert Jenkins' 96 bit Mix Function}
+
+We will show the same plots shown in the previous section. If we do not say anything about any plot, it means that it has the same description as the previous section.
+
+\begin{center}
+	\includegraphics[width=5in]{signature_nHash_k_meanSim_jenkinsFunc.png}
+	\label{fig:signature_nHash_k_meanSim_jenkinsFunc.png}
+	
+	\textit{Figure \ref{fig:signature_nHash_k_meanSim_jenkinsFunc.png}: Jaccard Similarity aproximation varying the \textit{k} value.}
+\end{center}
+
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=.9\linewidth]{signature_jsim_meanError_jenkinsFunc.png}
+     \caption{Time to compute the Jaccard Similarity aproximation when varying the \textit{k} value.}\label{Fig:signature_jsim_meanError_jenkinsFunc.png}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=.9\linewidth]{signature_nHash_k_meanTime_jenkinsFunc.png}
+     \caption{Average time to compute the Jaccard Similarity aproximation varying the shingles sizes.}\label{Fig:jsim_k_meanTime.png}
+   \end{minipage}
+\end{figure}
+
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=.9\linewidth]{signature_jsim_meanError.png}
+     \caption{Error between the Jaccard Similarity and the Jaccard Similarity approximated in the signature matrix.}\label{Fig:signature_jsim_meanError.png}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=0.9\linewidth]{signature_jsim_meanError_from25_jenkinsFunc.png}
+     \caption{The same than Figure \ref{Fig:signature_jsim_meanError.png} but starting from nHashes = 25.}\label{Fig:signature_jsim_meanError_from25_jenkinsFunc.png}
+   \end{minipage}
+\end{figure}
+
+\begin{figure}
+\centering
+     \includegraphics[width=0.48\linewidth]{signature_jsim_meanError_from25_jenkinsFunc.png}
+     \caption{The same than Figure \ref{Fig:signature_jsim_meanError.png} but starting from nHashes = 50.}\label{Fig:signature_jsim_meanError_from25_jenkinsFunc.png}
+\end{figure}
+
+\break
+\break
+
+The only difference we should say is that in the first plot, whe the number of hash functions is 1, the function is closer to the rest of number of hash functions, which is what we want.
+
+\break
+
+\paragraph{Modular Hashing vs. Robert Jenkins' 96 bit Mix Function}
+
+The following plots represent the error using the modular hashing minus the error using the jenkins hashing. If the line is in the positives Y, it means that the error using the modular hashing is greater than the error using the jenkins hashing, and viceversa.
+
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=.9\linewidth]{sig_error_modular_vs_jenkinsFunc.png}
+     \caption{Diference between the error using the modular hashing and the one using the jenkins hashing.}\label{Fig:sig_error_modular_vs_jenkinsFunc.png}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=0.9\linewidth]{sig_error_modular_vs_jenkinsFunc_from25.png}
+     \caption{The same than Figure \ref{Fig:sig_error_modular_vs_jenkinsFunc.png} but starting from nHashes = 25.}\label{Fig:sig_error_modular_vs_jenkinsFunc_from25.png}
+   \end{minipage}
+\end{figure}
+
+\begin{figure}
+\centering
+     \includegraphics[width=0.48\linewidth]{sig_error_modular_vs_jenkinsFunc_from50.png}
+     \caption{The same than Figure \ref{Fig:sig_error_modular_vs_jenkinsFunc.png} but starting from nHashes = 50.}\label{Fig:sig_error_modular_vs_jenkinsFunc_from50.png}
+\end{figure}
+
+\break
+
+We can see that the error using the modular hashing in Figures \ref{Fig:sig_error_modular_vs_jenkinsFunc.png}, \ref{Fig:sig_error_modular_vs_jenkinsFunc_from25.png} and \ref{Fig:sig_error_modular_vs_jenkinsFunc_from50.png} is greater most of the time, specially at the begining. Thus, the Jaccard Similarity approximation using the jenkins hashing is better than the one using the modular hashing.
+
+In the Figure \ref{Fig:sig_time_modular_vs_jenkinsFunc.png} we have represented the time cost using modular and jenkins hashing. If we are in the positive Y, the modular functions spends more time on the algorithm. But we see that it is the contrary: the jenkins hashing is the one that spends more time even though it has less error than the modular hashing.
+ 
+\begin{figure}
+\centering
+     \includegraphics[width=0.48\linewidth]{sig_time_modular_vs_jenkinsFunc.png}
+     \caption{Difference of the time between the modular function and the jenkins function.}\label{Fig:sig_time_modular_vs_jenkinsFunc.png}
+\end{figure}
+
 
 
 % Bibliografía.
 %-----------------------------------------------------------------
-\begin{thebibliography}{99}
-
-\bibitem{Cd94} Author, \emph{Title}, Editor, (year)
-
+\begin{thebibliography}{9}
+\bibitem{The Best} 
+Anand Rajaraman, Jure Leskovec and Jeffrey D. Ullman. 
+\textit{Mining of Massive Datasets}. Cambridge University Press. (December 30, 2011).
+ 
+ \bibitem{Bottom} 
+ cmhteixeira. \textit{Locality Sensitive Hashing (LSH)} [online]. (November 29, 2017). $<$https://aerodatablog.wordpress.com/2017/11/29/locality-sensitive-hashing-lsh/$>$[Consulted: December 12, 2018].
+ 
+ \bibitem{Wtf is this name}
+ Hubert Brylkowski. \textit{Locality sensitive hashing $-$LSH explained} [online]. (October 6, 2017). $<$https://medium.com/engineering-brainly/locality-sensitive-hashing-explained-304eb39291e4$>$[Consulted: December 15, 2018].
+ 
+ \bibitem{Ma maaan}
+ Jeffrey D. Ullman[Mining Massive Datasets]. (July 23, 2016). \textit{3 2 Minhashing 25 18}. $<$https://www.youtube.com/watch?v=96WOGPUgMfw$>$.
+ 
+ \bibitem{Ma man agaaaain}
+ Jeffrey D. Ullman[Mining Massive Datasets]. (July 23, 2016). \textit{3 3 Locality Sensitive Hashing 19 24}. $<$https://www.youtube.com/watch?v=\_1D35bN95Go$>$.
+ 
+ \bibitem{Second one}
+ santhoshhari. \textit{Locality Sensitive Hashing: Application of Locality Sensitive Hashing to Audio Fingerprinting} [online]. (n. d.). $<$https://santhoshhari.github.io/Locality-Sensitive-Hashing/$>$[Consulted: December 16, 2018].
+ 
+ \bibitem{The firsty one}
+  Shikhar Gupta. \textit{Locality Sensitive Hashing: An effective way of reducing the dimensionality of your data} [online]. (June 29, 2018). $<$https://towardsdatascience.com/understanding-locality-sensitive-hashing-49f6d1f6134$>$[Consulted: December 16, 2018]
+ 
+%\url{http://www.mit.edu/~andoni/LSH/} 
+ 
 \end{thebibliography}
 
 \end{document}
