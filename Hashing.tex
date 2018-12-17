@@ -73,7 +73,7 @@
 \author{Roger Vilaseca Darné, Xavier Lacasa Curto and Xavier Martín Ballesteros\\
   \small Algorithms\\
 }
-\date{1st December 2018}
+\date{10th December 2018}
 
 \begin{document}
 % Images
@@ -98,18 +98,18 @@
 	\vfill
 
 % Bottom of the page
-	{\large 1st December 2018}
+	{\large 10th December 2018}
 \end{titlepage}
 
 %\abstract{Esto es una plantilla simple para un articulo en \LaTeX.}
 
 %	*********************** ÍNDEX *********************
-%\setcounter{secnumdepth}{5}
-%\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
 
-%\newpage
-%  \tableofcontents
-%\newpage
+\newpage
+  \tableofcontents
+\newpage
 
 \section{Introduction}
 
@@ -117,8 +117,8 @@
 % Referència a una secció \ref{sec:nada}
 % Referència a una cita \cite{Cd94}.
 
-In this (practica) we are going to create differents algorithms to compute the difference between various documents in order to be able to detect if there may have been a possibility of copy any pair of the documents.
-To do it, we have started with a very basic algorithm that returns the Jaccard Similarity with two documents and we have finished obtaining a Locality-sensitive hashing algorithm that giving the paths of several documents will return which documents may have been copied. (All the algorithms are explained in the document).
+In this experiment we are going to create differents algorithms to compute the difference between various documents in order to be able to detect if there may have been a possibility of copy in any pair of the documents.
+To do it, we have started with a very basic algorithm that returns the Jaccard Similarity with two documents and we have finished obtaining a Locality-sensitive hashing algorithm that given the paths of several documents will return which documents may have been copied. (All the algorithms are explained in the document).
 
 \section{Jaccard Similarity}
 The Jaccard Similarity, also known as Intersection Over Union (IOU), calculates the percentage of similarity between two sets.
@@ -132,13 +132,13 @@ J(S, T) = \frac{\abs{S \cap T}}{\abs{S \cup T}}
 We can easily deduce that the more common words, the bigger the Jaccard Similarity, which means that it is more probable that one set is a duplicate of the other.
 
 \begin{exmp}
-In Figure \ref{fig:JaccardExample} we see two sets S and T. There are 3 elements in their intersection ("I", "love", "chocolate") and 6 in their union ("I", "love", "chocolate", "and", "pizza", "white"). Thus, J(S, T) = 3/6.
+In Figure 1 we see two sets S and T. There are 3 elements in their intersection ("I", "love", "chocolate") and 6 in their union ("I", "love", "chocolate", "and", "pizza", "white"). Thus, J(S, T) = 3/6.
 
 \begin{center}
 	\includegraphics[width=3in]{JaccardExample}
 	\label{fig:JaccardExample}
 	
-	Figure \ref{fig:JaccardExample}: Two sets with Jaccard Similarity 3/6.
+	Figure 1: Two sets with Jaccard Similarity 3/6.
 \end{center}
 
 % Falta dir què passa si hi ha poques paraules? Fals positiu...?
@@ -183,7 +183,7 @@ For this example we will use two sets representing the words "Nadal" and "Nadia"
 	\includegraphics[width=2in]{matrixRepresentation}
 	\label{fig:matrixRepresentation}
 	
-	Figure \ref{fig:matrixRepresentation}: Representation of the matrix with two sets S and T.
+	Figure 2: Representation of the matrix with two sets S and T.
 \end{center}
 
 \label{exmp:matrixRepresentation}
@@ -197,7 +197,7 @@ In this type of matrices, for any pair of columns we can have 4 types of results
 	\includegraphics[width=2in]{typesValues}
 	\label{fig:typesValues}
 	
-	\textit{Figure \ref{fig:typesValues}: Representation of the matrix with all the possible permutations.}
+	\textit{Figure 3: Representation of the matrix with all the possible permutations.}
 \end{center}
 
 Note that as the matrix is sparse, most of the rows will be of type \textit{a}. If we try to calculate the similarity between two sets $S_1$ and $S_2$ using the matrix and the Jaccard Similarity, we will have the following result:
@@ -243,7 +243,7 @@ In this example we will reuse the two sets of Example \ref{exmp:matrixRepresenta
 	\includegraphics[width=2in]{permutationMatrixSignature}
 	\label{fig:permutationMatrixSignature}
 	
-	Figure \ref{fig:permutationMatrixSignature}: Permutation of the matrix of Example \ref{exmp:matrixRepresentation}.
+	Figure 4: Permutation of the matrix of Example \ref{exmp:matrixRepresentation}.
 \end{center}
 
 In the first column, we can see that $h(S_1) = "da"$ and in the second one we see that $h(S_2) = "di"$.
@@ -300,6 +300,7 @@ Doing a set of permutation would be very expensive, but we can use a trick to si
 Every time we go to the next row, we first compute all the hash values using the row value as their input. Then, for each position in that row, if there is a 1 we compare the hashed value of that position with the value in the signature matrix for all the hash functions computed. In case that this new value is smaller we change the value of the signature matrix by this new one. Doing this, in the end we have the smallest possible number in each position of the signature matrix.
 
 \paragraph{Hashing Functions}
+\label{par:hF}
 
 We will present you now all the types of hashing functions we have used in the previous algorithm and in the algorithms in the Section \ref{sec:ALG}.
 
@@ -349,7 +350,7 @@ LSH will divide the signature matrix into \textit{b} bands of \textit{r} rows pe
 	\includegraphics[width=6in]{BandPartition}
 	\label{fig:bandPartition}
 	
-	Figure \ref{fig:bandPartition}: Band partition of a signature matrix and hashing the values of the rows of the first band int othe buckets.
+	Figure 5: Band partition of a signature matrix and hashing the values of the rows of the first band int othe buckets.
 \end{center}
 
 We can see that the set of rows of value "0143", from top to bottom, are hashed into the same bucket, and will be put as a candidate pair. However, the other two set of rows ("2130" and "1204") will not be hashed into the same bucket, and will not be put as a candidate pair (with this band).
@@ -368,6 +369,7 @@ and Jeffrey D. Ullman (2011), "a good aproximation to the threshold is $(1/b)^{1
 Having that r = nhashFunctions/b,
 
 \begin{equation}
+\label{fun:br}
 t \approx (\dfrac{1}{b})^{\dfrac{1}{r}} = (\dfrac{1}{b})^{\dfrac{b}{nhashFunctions}}
 \end{equation}
 
@@ -430,7 +432,7 @@ Once we have calculated the \textit{k}-Shingles, we need to compute the intersec
  \State{return \textit{union}}
 \end{algorithmic}
 
-As you can see, we visit only one set in each algorithm. The good thing is that finding if an element belongs to an unordered set or not is $O(1)$ (IN THE AVREAGE TIME?????). Thus, the time complexity for these two algorithms is $O(n)$, where \textit{n} is the size of the smallest unordered set\footnote{Note that we can change the set we are visiting by the other one. In the intersection, if $S_2$ is smaller than $S_1$, we can visit $S_2$. In the union, if $S_2$ is bigger than $S_1$, we can match the unordered set with $S_2$ and visit $S_1$.}, and the total time complexity is $O(n)$????????????????????, as inserting elements in an unordered set is $O(1)$ (IN THE AVREAGE TIME?????).
+As you can see, we visit only one set in each algorithm. The good thing is that finding if an element belongs to an unordered set or not is $O(1)$. Thus, the time complexity for these two algorithms is $O(n)$, where \textit{n} is the size of the smallest unordered set\footnote{Note that we can change the set we are visiting by the other one. In the intersection, if $S_2$ is smaller than $S_1$, we can visit $S_2$. In the union, if $S_2$ is bigger than $S_1$, we can match the unordered set with $S_2$ and visit $S_1$.}, and the total time complexity is $O(n)$, as inserting elements in an unordered set is $O(1)$.
 
 On the other hand, if we would have used the predefined functions \textit{set\_intersection} and \textit{set\_union}, we would have needed two ordered set, as it is a precondition of these two functions. Thus, the total cost would have been $O(n * log(n))$.
 
@@ -455,7 +457,7 @@ We know that implementing just k-Shingling is very expensive in terms of size an
  \Require Two sets $S_1$ and $S_2$
  \Ensure Returns an approximate Jaccard Similarity value between $S_1$ and $S_2$
  \State{unordered\_set union = $S_1 U S_2$}
- \State{matrix signatures = infinity?????????????????????? S'enten que és cada posició?}
+ \State{matrix signatures = infinity}
  \State{vector h = all the hash functions we will use}
  
   \For{each row $r$}                    
@@ -487,7 +489,7 @@ We know that implementing just k-Shingling is very expensive in terms of size an
 
 \hfill
 
-FALTA PARLAR DE LES HASH FUNCTIONS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+We use the hash functions that we introduced in section \ref{par:hF}. We also have tried to use MurmurHash and Multiplicative Hash as hashing functions but we have had some problem when using them.
 
 \paragraph{Cost}
 
@@ -508,9 +510,7 @@ Thus, the cost of this function is $O(r * (h + c * (h + 1))) = O(r * h + r * c *
 
 \subsection{LSH}
 
-BLA BLA BLA INTRODUCCIÓ
-
-The first thing we need to do in this algorithm is finding the right values for \textit{b}, number of bands, and \textit{r}, number of rows per band depending on the value of a \textit{threshold}. To do so, we need an algorithm that calculates the \textit{b} value \footnote{It is also possible to calculate the \textit{r} value and later divide \textit{nhashFunctions} by \textit{r} to get the \textit{b} value, but it is more difficult to calculate it.} that has the minimum error with the threshold. The error is calculated as the function FALTA FER REFERÊNCIA A AQUELLA FUNCTION minus the \textit{threshold}.
+The first thing we need to do in this algorithm is finding the right values for \textit{b}, number of bands, and \textit{r}, number of rows per band depending on the value of a \textit{threshold}. To do so, we need an algorithm that calculates the \textit{b} value \footnote{It is also possible to calculate the \textit{r} value and later divide \textit{nhashFunctions} by \textit{r} to get the \textit{b} value, but it is more difficult to calculate it.} that has the minimum error with the threshold. The error is calculated as the function (\ref{fun:br}) minus the \textit{threshold}.
 
 \hfill
 
@@ -572,9 +572,9 @@ Now that we have the best possible values for \textit{b} and \textit{r}, it is t
 
 \hfill
 
-At this moment, we have the list of pairs of candidates that we want with the threshold \textit{t}.jsfuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+At this moment, we have the list of pairs of candidates that we want with the threshold \textit{t}.
 
-The last thing we have to do is calculate the Jaccard Similarity between all the pairs of candidates of the list. As we have done an aproximation when calculating the values \textit{b} and \textit{r}, it is very probable that some pair of candidates have less Jaccard Similarity than \textit{t}. WATCH THE SECTION BLA BLA BLA TO SEE THE NUMBER OF FALSE POSITIVE AND NEGATIVES WE CAN REACH.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+The last thing we have to do is calculate the Jaccard Similarity between all the pairs of candidates of the list. As we have done an aproximation when calculating the values \textit{b} and \textit{r}, it is very probable that some pair of candidates have less Jaccard Similarity than \textit{t}.
 
 \subsubsection{Cost}
 
@@ -593,7 +593,8 @@ The LSH algorithm has two parts. The first one calculates the best possible valu
 
 \section{Plots}
 
-Tots ESTAN FETS AMB PYTHON! PELS EXPERIMENTS HEM TRIAT ALEATORIAMENT PARELLES DE DOCUMENTS DE 50 PARAULES PERMUTADES ALEATORIAMENT! CODI? <- APPENDIX? CADA PLOT AMB 5 MOSTRES
+All plots have been done using Python. For the experiments, we have choose random pairs of documents of 50 words permutet randomly. Each plot has been done using 5 pairs of documents as samples.
+
 \subsection{Jaccard Similarity}
 
 \subsubsection{k-Shingles}
@@ -604,7 +605,7 @@ The following plot shows the evolution of the Jaccard Similarity when we vary th
 	\includegraphics[width=5in]{jsim_k_sim.png}
 	\label{fig:jsim_k_sim.png}
 	
-	\textit{Figure \ref{fig:jsim_k_sim.png}: Jaccard Similarity varying the \textit{k} value.}
+	\textit{Figure 6: Jaccard Similarity varying the \textit{k} value.}
 \end{center}
 
 As you can see, the Jaccard Similarity of the different pairs is very similar because all the documents are a random permutation of the same 50 words. You can see that because when the shingle size is equal to 1 (we only take the characters), the Jaccard Similarity is 100\%\footnote{Note that in a document with few words, it is very probable that not all the characters are included in the document.}.
@@ -617,12 +618,13 @@ Now, we are going to represent the time cost of the same pair of documents when 
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=.9\linewidth]{jsim_k_time.png}
-     \caption{Time to compute the Jaccard Similarity when varying the \textit{k} value.}\label{Fig:jsim_k_time.png}
+     \textit{Figure 7: Time to compute the Jaccard Similarity when varying the \textit{k} value.}\label{Fig:jsim_k_time.png}
    \end{minipage}\hfill
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=.9\linewidth]{jsim_k_meanTime.png}
-     \caption{Average time to compute the Jaccard Similarity of the Figure \ref{Fig:jsim_k_time.png}.}\label{Fig:jsim_k_meanTime.png}
+     \textit{Figure 8: Average time to compute the Jaccard Similarity of the Figure 7.}
+     \label{Fig:jsim_k_meanTime.png}
    \end{minipage}
 \end{figure}
 
@@ -634,7 +636,7 @@ We should also point that the time to compute the Jaccard Similarity of these pa
 	\includegraphics[width=5in]{jsim_spaces_k_sim.png}
 	\label{fig:jsim_spaces_k_sim.png}
 	
-	\textit{Figure XXXXXXXXXXXXX: Time to compute the Jaccard Similarity when varying the \textit{k} value.}
+	\textit{Figure 9: Time to compute the Jaccard Similarity when varying the \textit{k} value.}
 \end{center}
 
 In the following plot we can see the differences between the behaviour of the algorithm taking into account the spaces or not.
@@ -654,10 +656,10 @@ In the following plot, it is represented an approximation of the result of calcu
 	\includegraphics[width=5in]{signature_nHash_k_meanSim.png}
 	\label{fig:signature_nHash_k_meanSim.png}
 	
-	\textit{Figure XXXXXXXXXXXXXXXXX: Jaccard Similarity aproximation varying the shingle sizes.}
+	\textit{Figure 10: Jaccard Similarity aproximation varying the shingle sizes.}
 \end{center}
 
- The similarity between the documents is strictly related with the number of hashing functions that we use. When the number of hashing functions is a small value it is very different than the Jaccard Similarity, because the signature matrix has few rows and then, there are few chances that one row has the same hash values on two different columns. But when the number of hash functions increases, the functions are more alike to the Jaccard Similarity (Figure YYYYYYYYYYYYYYYYYYYYYYYY 7.1.1.1.1.1.1.1).
+ The similarity between the documents is strictly related with the number of hashing functions that we use. When the number of hashing functions is a small value it is very different than the Jaccard Similarity, because the signature matrix has few rows and then, there are few chances that one row has the same hash values on two different columns. But when the number of hash functions increases, the functions are more alike to the Jaccard Similarity (Figure 6).
  
  See that when the nHashes is 1, the Jaccard Similarity should only be 100 or 0 per cent, as there is only one row in the signature matrix, but remember that this plot is using the mean value of the result of computing the Jaccard Similarity of 5 pairs using the signature matrix.
 
@@ -667,42 +669,42 @@ Now, we are going to focus on the number of hash functions.
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=.9\linewidth]{signature_nHash_k_meanSim3D.png}
-     \caption{Jaccard Similarity approximation varying the number of hash function and the size of the shingles.}\label{Fig:signature_nHash_k_meanSim3D.png}
+     \textit{Figure 11: Jaccard Similarity approximation varying the number of hash function and the size of the shingles.}\label{Fig:signature_nHash_k_meanSim3D.png}
    \end{minipage}\hfill
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=1.08\linewidth]{signature_nHash_k_meanTime.png}
-     \caption{Average time to compute the Jaccard Similarity approximation varying the shingle sizes.}\label{Fig:signature_nHash_k_meanTime.png}
+     \textit{Figure 12: Average time to compute the Jaccard Similarity approximation varying the shingle sizes.}\label{Fig:signature_nHash_k_meanTime.png}
    \end{minipage}
 \end{figure}
 
-We can see in Figure \ref{Fig:signature_nHash_k_meanSim3D.png} that the plot form begins to stay stable from number of hash functions equal to 200 more or less. Furthermore, in Figure \ref{Fig:signature_nHash_k_meanTime.png} the time cost starts to increase a lot from number of hash function equal to 250.
+We can see in Figure 11 that the plot form begins to stay stable from number of hash functions equal to 200 more or less. Furthermore, in Figure 12 the time cost starts to increase a lot from number of hash function equal to 250.
 
 Thus, even though using more number of hash function would be better to calculate an approximation of the Jaccard Similarity, it is not usefull to do so because with 200 hash functions we compute a very similar value in less time.
 
-It is important to remark that in Figure \ref{Fig:signature_nHash_k_meanTime.png} the time stabilize near the \textit{k} equal to the average word length. FALTAAAAAAAAAAAAAAAAAAAAA DIR EL PERQUÈ CREIES QUE PASSA AIXÒ??????????? SI ÉS AIXÍ NO ESTIC MOLT SEGUR DE LA RESPOSTA XD.
+It is important to remark that in Figure 12 the time stabilize near the \textit{k} equal to the average word length.
 
 \hfill
 
-In Figures \ref{Fig:signature_jsim_meanError.png}, \ref{Fig:signature_jsim_meanError_from25.png} and \ref{Fig:signature_jsim_meanError_from50.png} there is represented how much is the error value obtained using the Jaccard Similarity and the Signature Matrix Approximation. Approximately we can arrive to the same conclusions as the ones that are before. The more number of hash functions, the less the error is.
+In Figures 13, 14 and 15 there is represented how much is the error value obtained using the Jaccard Similarity and the Signature Matrix Approximation. Approximately we can arrive to the same conclusions as the ones that are before. The more number of hash functions, the less the error is.
 
 \begin{figure}[!htb]
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=.9\linewidth]{signature_jsim_meanError.png}
-     \caption{Error between the Jaccard Similarity and the Jaccard Similarity approximated in the signature matrix.}\label{Fig:signature_jsim_meanError.png}
+     \caption{Figure 13: Error between the Jaccard Similarity and the Jaccard Similarity approximated in the signature matrix.}\label{Fig:signature_jsim_meanError.png}
    \end{minipage}\hfill
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=0.9\linewidth]{signature_jsim_meanError_from25.png}
-     \caption{The same than Figure \ref{Fig:signature_jsim_meanError.png} but starting from nHashes = 25.}\label{Fig:signature_jsim_meanError_from25.png}
+     \textit{Figure 14: The same than Figure 13 but starting from nHashes = 25.}\label{Fig:signature_jsim_meanError_from25.png}
    \end{minipage}
 \end{figure}
 
 \begin{figure}
 \centering
-     \includegraphics[width=0.48\linewidth]{signature_jsim_meanError_from50.png}
-     \caption{The same than Figure \ref{Fig:signature_jsim_meanError.png} but starting from nHashes = 50.}\label{Fig:signature_jsim_meanError_from50.png}
+     \includegraphics[width=1\linewidth]{signature_jsim_meanError_from50.png}
+     \textit{Figure 15: The same than Figure 13 but starting from nHashes = 50.}\label{Fig:signature_jsim_meanError_from50.png}
 \end{figure}
 
 \break
@@ -717,19 +719,19 @@ We will show the same plots shown in the previous section. If we do not say anyt
 	\includegraphics[width=5in]{signature_nHash_k_meanSim_jenkinsFunc.png}
 	\label{fig:signature_nHash_k_meanSim_jenkinsFunc.png}
 	
-	\textit{Figure \ref{fig:signature_nHash_k_meanSim_jenkinsFunc.png}: Jaccard Similarity aproximation varying the \textit{k} value.}
+	\textit{Figure 16: Jaccard Similarity aproximation varying the \textit{k} value.}
 \end{center}
 
 \begin{figure}[!htb]
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=.9\linewidth]{signature_jsim_meanError_jenkinsFunc.png}
-     \caption{Time to compute the Jaccard Similarity aproximation when varying the \textit{k} value.}\label{Fig:signature_jsim_meanError_jenkinsFunc.png}
+     \textit{Figure 17: Time to compute the Jaccard Similarity aproximation when varying the \textit{k} value.}\label{Fig:signature_jsim_meanError_jenkinsFunc.png}
    \end{minipage}\hfill
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=.9\linewidth]{signature_nHash_k_meanTime_jenkinsFunc.png}
-     \caption{Average time to compute the Jaccard Similarity aproximation varying the shingles sizes.}\label{Fig:jsim_k_meanTime.png}
+     \textit{Figure 18: Average time to compute the Jaccard Similarity aproximation varying the shingles sizes.}\label{Fig:jsim_k_meanTime.png}
    \end{minipage}
 \end{figure}
 
@@ -737,19 +739,19 @@ We will show the same plots shown in the previous section. If we do not say anyt
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=.9\linewidth]{signature_jsim_meanError.png}
-     \caption{Error between the Jaccard Similarity and the Jaccard Similarity approximated in the signature matrix.}\label{Fig:signature_jsim_meanError.png}
+     \textit{Figure 19: Error between the Jaccard Similarity and the Jaccard Similarity approximated in the signature matrix.}\label{Fig:signature_jsim_meanError.png}
    \end{minipage}\hfill
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=0.9\linewidth]{signature_jsim_meanError_from25_jenkinsFunc.png}
-     \caption{The same than Figure \ref{Fig:signature_jsim_meanError.png} but starting from nHashes = 25.}\label{Fig:signature_jsim_meanError_from25_jenkinsFunc.png}
+     \textit{Figure 20: The same than Figure 19 but starting from nHashes = 25.}\label{Fig:signature_jsim_meanError_from25_jenkinsFunc.png}
    \end{minipage}
 \end{figure}
 
 \begin{figure}
 \centering
-     \includegraphics[width=0.48\linewidth]{signature_jsim_meanError_from25_jenkinsFunc.png}
-     \caption{The same than Figure \ref{Fig:signature_jsim_meanError.png} but starting from nHashes = 50.}\label{Fig:signature_jsim_meanError_from25_jenkinsFunc.png}
+     \includegraphics[width=1\linewidth]{signature_jsim_meanError_from25_jenkinsFunc.png}
+     \textit{Figure 21: The same than Figure 19 but starting from nHashes = 50.}\label{Fig:signature_jsim_meanError_from25_jenkinsFunc.png}
 \end{figure}
 
 \break
@@ -767,37 +769,92 @@ The following plots represent the error using the modular hashing minus the erro
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=.9\linewidth]{sig_error_modular_vs_jenkinsFunc.png}
-     \caption{Diference between the error using the modular hashing and the one using the jenkins hashing.}\label{Fig:sig_error_modular_vs_jenkinsFunc.png}
+     \textit{Figure 22: Diference between the error using the modular hashing and the one using the jenkins hashing.}\label{Fig:sig_error_modular_vs_jenkinsFunc.png}
    \end{minipage}\hfill
    \begin{minipage}{0.48\textwidth}
      \centering
      \includegraphics[width=0.9\linewidth]{sig_error_modular_vs_jenkinsFunc_from25.png}
-     \caption{The same than Figure \ref{Fig:sig_error_modular_vs_jenkinsFunc.png} but starting from nHashes = 25.}\label{Fig:sig_error_modular_vs_jenkinsFunc_from25.png}
+     \textit{Figure 23: The same than Figure 22 but starting from nHashes = 25.}\label{Fig:sig_error_modular_vs_jenkinsFunc_from25.png}
    \end{minipage}
 \end{figure}
 
 \begin{figure}
 \centering
-     \includegraphics[width=0.48\linewidth]{sig_error_modular_vs_jenkinsFunc_from50.png}
-     \caption{The same than Figure \ref{Fig:sig_error_modular_vs_jenkinsFunc.png} but starting from nHashes = 50.}\label{Fig:sig_error_modular_vs_jenkinsFunc_from50.png}
+     \includegraphics[width=1\linewidth]{sig_error_modular_vs_jenkinsFunc_from50.png}
+     \textit{Figure 24: The same than Figure 22 but starting from nHashes = 50.}\label{Fig:sig_error_modular_vs_jenkinsFunc_from50.png}
 \end{figure}
 
 \break
 
-We can see that the error using the modular hashing in Figures \ref{Fig:sig_error_modular_vs_jenkinsFunc.png}, \ref{Fig:sig_error_modular_vs_jenkinsFunc_from25.png} and \ref{Fig:sig_error_modular_vs_jenkinsFunc_from50.png} is greater most of the time, specially at the begining. Thus, the Jaccard Similarity approximation using the jenkins hashing is better than the one using the modular hashing.
+We can see that the error using the modular hashing in Figures 22, 23 and 24 is greater most of the time, specially at the begining. Thus, the Jaccard Similarity approximation using the jenkins hashing is better than the one using the modular hashing.
 
-In the Figure \ref{Fig:sig_time_modular_vs_jenkinsFunc.png} we have represented the time cost using modular and jenkins hashing. If we are in the positive Y, the modular functions spends more time on the algorithm. But we see that it is the contrary: the jenkins hashing is the one that spends more time even though it has less error than the modular hashing.
+In the Figure 25 we have represented the time cost using modular and jenkins hashing. If we are in the positive Y, the modular functions spends more time on the algorithm. But we see that it is the contrary: the jenkins hashing is the one that spends more time even though it has less error than the modular hashing.
  
-\begin{figure}
+\begin{center}
+     \includegraphics[width=1\linewidth]{sig_time_modular_vs_jenkinsFunc.png}
+     \textit{Figure 25: Difference of the time between the modular function and the jenkins function.}\label{Fig:sig_time_modular_vs_jenkinsFunc.png}
+\end{center}
+
+\subsubsection{LSH}
+
+For these set of plots, we are going to use 500 hash function, even tough we know that 200 would be enough.
+
+The following plot shows the mean time spent running the LSH algorithm and also the time that we need to compute all the candidate pairs without using LSH.
+
+\begin{center}
+     \includegraphics[width=1\linewidth]{lhs_time.png}
+     \textit{Figure 26: Difference of the time between the modular function and the jenkins function.}\label{Fig:lhs_time.png}
+\end{center}
+
+The ideal plot would be the one where all the lines are below the discontinuous one. Then, using any value for the threshold, we could compute the copied pairs using LSH faster than without using it.
+
+However, we see that this is not happening in the plot. This is because 20 documents are not big enough to be faster using LSH.
+
+Following this, there are plots shown to ilustrate the LSH algorithm performance according to various thresholds.
+
+\begin{center}
 \centering
-     \includegraphics[width=0.48\linewidth]{sig_time_modular_vs_jenkinsFunc.png}
-     \caption{Difference of the time between the modular function and the jenkins function.}\label{Fig:sig_time_modular_vs_jenkinsFunc.png}
-\end{figure}
+     \includegraphics[width=1\linewidth]{lsh_t0.png}
+     \textit{Figure 27: Average number of candidate pairs, number of copy pairs detected, false positives and false negatives with threshold = 0.0.}\label{Fig:lsh_t0.png}
+\end{center}
 
+\begin{center}
+\centering
+     \includegraphics[width=1\linewidth]{lsh_t02.png}
+     \textit{Figure 28: Average number of candidate pairs, number of copy pairs detected, false positives and false negatives with threshold = 0.2.}\label{Fig:lsh_t02.png}
+\end{center}
 
+\begin{center}
+\centering
+     \includegraphics[width=1\linewidth]{lsh_t042.png}
+     \textit{Figure 29: Average number of candidate pairs, number of copy pairs detected, false positives and false negatives with threshold = 0.42.}\label{Fig:lsh_t042.png}
+\end{center}
+
+\begin{center}
+\centering
+     \includegraphics[width=1\linewidth]{lsh_t064.png}
+     \textit{Figure 30: Average number of candidate pairs, number of copy pairs detected, false positives and false negatives with threshold = 0.64.}\label{Fig:lsh_t064.png}
+\end{center}
+
+\begin{center}
+\centering
+     \includegraphics[width=1\linewidth]{lsh_t08.png}
+     \textit{Figure 31: Average number of candidate pairs, number of copy pairs detected, false positives and false negatives with threshold = 0.80.}\label{Fig:lsh_t080.png}
+\end{center}
+
+\begin{center}
+\centering
+     \includegraphics[width=1\linewidth]{lsh_t10.png}
+     \textit{Figure 32: Average number of candidate pairs, number of copy pairs detected, false positives and false negatives with threshold = 1.0.}\label{Fig:lsh_t10.png}
+\end{center}
+
+We can see that the higher threshold value, the lower the shingle size has to be, in order for pairs to be detected as copies. In general, we start to see a decrease in copies detected from shingle size = 5, which could be related to the fact that the average word size is 5.84.
+
+\break
 
 % Bibliografía.
 %-----------------------------------------------------------------
+\newpage
 \begin{thebibliography}{9}
 \bibitem{The Best} 
 Anand Rajaraman, Jure Leskovec and Jeffrey D. Ullman. 
