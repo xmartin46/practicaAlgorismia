@@ -1,5 +1,5 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Jaccard Index}{}% 2
+\BOOKMARK [1][-]{section.2}{Jaccard Similarity}{}% 2
 \BOOKMARK [1][-]{section.3}{Shingling of Documents}{}% 3
 \BOOKMARK [2][-]{subsection.3.1}{k-Shingles}{section.3}% 4
 \BOOKMARK [1][-]{section.4}{Compairing Similarity Using The Sets}{}% 5
@@ -7,11 +7,15 @@
 \BOOKMARK [3][-]{subsubsection.4.1.1}{Time Complexity}{subsection.4.1}% 7
 \BOOKMARK [3][-]{subsubsection.4.1.2}{Space Complexity}{subsection.4.1}% 8
 \BOOKMARK [2][-]{subsection.4.2}{Minhashing}{section.4}% 9
-\BOOKMARK [3][-]{subsubsection.4.2.1}{Preserving the Jaccard Index}{subsection.4.2}% 10
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Preserving the Jaccard Similarity}{subsection.4.2}% 10
 \BOOKMARK [3][-]{subsubsection.4.2.2}{Optimizing the Time for Permutations}{subsection.4.2}% 11
 \BOOKMARK [1][-]{section.5}{Locality Sensitive Hashing \(LSH\)}{}% 12
-\BOOKMARK [1][-]{section.6}{Algorithms}{}% 13
-\BOOKMARK [2][-]{subsection.6.1}{Jaccard Similarity}{section.6}% 14
-\BOOKMARK [3][-]{subsubsection.6.1.1}{k-Shingles}{subsection.6.1}% 15
-\BOOKMARK [3][-]{subsubsection.6.1.2}{Minhash Signatures}{subsection.6.1}% 16
-\BOOKMARK [1][-]{section.7}{Referencies}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{Band partition}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.2}{Choice of b and r values}{section.5}% 14
+\BOOKMARK [1][-]{section.6}{Algorithms}{}% 15
+\BOOKMARK [2][-]{subsection.6.1}{Jaccard Similarity}{section.6}% 16
+\BOOKMARK [3][-]{subsubsection.6.1.1}{k-Shingles}{subsection.6.1}% 17
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Minhash Signatures}{subsection.6.1}% 18
+\BOOKMARK [2][-]{subsection.6.2}{LSH}{section.6}% 19
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Cost}{subsection.6.2}% 20
+\BOOKMARK [1][-]{section.7}{Referencies}{}% 21
