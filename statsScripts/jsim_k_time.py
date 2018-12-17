@@ -9,7 +9,7 @@ pairsFile = open(path + '\\algorithms\\pairsOfDocsSelec.txt', 'r')
 file = open(path + '\\data\\jsim_meanTime.csv', 'w')
 file.write('k, Time elapsed' + '\n')
 
-npairs = 0
+
 finTimes = [0 for n in range(16)]
 for pairs in pairsFile.readlines():
 
