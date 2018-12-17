@@ -1,7 +1,7 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \babel@toc {british}{}
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}
-\contentsline {section}{\numberline {2}Jaccard Index}{3}{section.2}
+\contentsline {section}{\numberline {2}Jaccard Similarity}{3}{section.2}
 \contentsline {section}{\numberline {3}Shingling of Documents}{3}{section.3}
 \contentsline {subsection}{\numberline {3.1}k-Shingles}{3}{subsection.3.1}
 \contentsline {section}{\numberline {4}Compairing Similarity Using The Sets}{4}{section.4}
@@ -9,5 +9,20 @@
 \contentsline {subsubsection}{\numberline {4.1.1}Time Complexity}{5}{subsubsection.4.1.1}
 \contentsline {subsubsection}{\numberline {4.1.2}Space Complexity}{5}{subsubsection.4.1.2}
 \contentsline {subsection}{\numberline {4.2}Minhashing}{5}{subsection.4.2}
-\contentsline {section}{\numberline {5}Locality Sensitive Hashing (LSH)}{5}{section.5}
-\contentsline {subsection}{\numberline {5.1}Referencies}{5}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {4.2.1}Preserving the Jaccard Similarity}{6}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Optimizing the Time for Permutations}{6}{subsubsection.4.2.2}
+\contentsline {paragraph}{\numberline {4.2.2.1}Hashing Functions}{7}{paragraph.4.2.2.1}
+\contentsline {subparagraph}{\numberline {4.2.2.1.1}Modular Hashing}{7}{subparagraph.4.2.2.1.1}
+\contentsline {subparagraph}{\numberline {4.2.2.1.2}Modular Hashing}{7}{subparagraph.4.2.2.1.2}
+\contentsline {section}{\numberline {5}Locality Sensitive Hashing (LSH)}{7}{section.5}
+\contentsline {subsection}{\numberline {5.1}Band partition}{7}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Choice of \textit {b} and \textit {r} values}{8}{subsection.5.2}
+\contentsline {section}{\numberline {6}Algorithms}{9}{section.6}
+\contentsline {subsection}{\numberline {6.1}Jaccard Similarity}{9}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}k-Shingles}{9}{subsubsection.6.1.1}
+\contentsline {paragraph}{\numberline {6.1.1.1}Cost}{10}{paragraph.6.1.1.1}
+\contentsline {subsubsection}{\numberline {6.1.2}Minhash Signatures}{10}{subsubsection.6.1.2}
+\contentsline {paragraph}{\numberline {6.1.2.1}Cost}{11}{paragraph.6.1.2.1}
+\contentsline {subsection}{\numberline {6.2}LSH}{12}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Cost}{13}{subsubsection.6.2.1}
+\contentsline {section}{\numberline {7}Referencies}{14}{section.7}
