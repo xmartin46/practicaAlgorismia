@@ -1,1 +1,1 @@
-brg
+ax.legend(bbox_to_anchor=(1, 1))

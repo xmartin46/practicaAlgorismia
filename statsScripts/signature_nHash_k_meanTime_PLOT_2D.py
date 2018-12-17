@@ -17,7 +17,7 @@ fig = plt.figure()
 ax = plt.axes()
 
 # Importing the dataset
-dt = pd.read_csv(path + '\\data\\signature_nHash_k_meanSim.csv', sep='\s*,\s*')
+dt = pd.read_csv(path + '\\data\\signature_nHash_k_meanTime.csv', sep='\s*,\s*')
 
 # Plot the data
 hashFun = np.unique(dt.iloc[:, 0])
@@ -33,17 +33,22 @@ maxRange = int(np.max(rows.iloc[:, 1]))+1
 plt.xticks([x for x in range(0, maxRange, 1)])
 # ax.xaxis.set_major_locator(ticker.MultipleLocator(base=0.5))
 
+# Add marker at average word size
+ax.axvline(x=5.84, linestyle='--', linewidth=1, color='darkred', label='average word length (5.84)', alpha=0.75)
+
 # Add legend
 plt.legend(loc='upper right')
+# Move legend so that it doesn't block the plot
+ax.legend(bbox_to_anchor=(1, 1))
 
 # Set titles
-ax.set(title="Signature Matrix Approximation for different Shingle sizes (k)", xlabel="shingles size (k)", ylabel="mean similarity of 5 doc pairs (%)")
+ax.set(title="Signature Matrix computation time for different Shingle sizes (k)", xlabel="shingles size (k)", ylabel="mean time of 5 doc pairs (ms)")
 
 # Show the plot
 # plt.show()
 
 # Save the plot
-plt.savefig(path + '\\plots\\signature_nHash_k_meanSim.png', bbox_inches='tight')
+plt.savefig(path + '\\plots\\signature_nHash_k_meanTime.png', bbox_inches='tight')
 
 # Clear and close the plot
 plt.clf()
