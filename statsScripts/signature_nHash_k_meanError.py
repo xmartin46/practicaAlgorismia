@@ -1,4 +1,6 @@
 import subprocess
+import pandas as pd
+import numpy as np
 lacaPath = 'D:\\code\\practicaAlgorismia'
 martinPath = ''
 rogerPath = ''
@@ -9,29 +11,20 @@ path = lacaPath
 # n = number of hash functions applied to create signature matrix
 
 # Importing the dataset
-dtJS = pd.read_csv(path + '\\data\\signature_nHash_k_meanSim.csv', sep='\s*,\s*')
+dtJS = pd.read_csv(path + '\\data\\jsim_k_meanSim.csv', sep='\s*,\s*')
 dtSig = pd.read_csv(path + '\\data\\signature_nHash_k_meanSim.csv', sep='\s*,\s*')
-functs = [1, 25, 50] + [x for x in range(100, 1001, 50)]
-for n in functs:
-    print(str(n))
-    numPair = 0
-    pairsFile = open(path + '\\algorithms\\pairsOfDocsSelec.txt', 'r')
-    sims = [0 for n in range(16)]
-    for pairs in pairsFile.readlines():
 
-        pairs = pairs.rstrip('\n').split(" ")
-        # k = size of shingles
-        for k in range(16):
-            out = subprocess.check_output([path + '\\algorithms\\signatureMinHashSimilarity.exe', str(k), str(pairs[0]), str(pairs[1]), str(0), str(1), str(n)])
-            sims[k] += float(out.decode("utf-8"))
-            if numPair == 4:
-                sims[k] /= 5
-                out = str(n) + ', ' + str(k) + ', ' + str(sims[k])
-                file.write(out + '\n')
-        numPair += 1
-    pairsFile.close()
-file.close()
+# Plot the data
+hashFun = np.unique(dtSig.iloc[:, 0])
+for n in hashFun:
+    for k in range(16):
+        rowInd = dtSig.index[(dtSig['NumberOfHashFunctions'] == n) & (dtSig['k'] == k)]
+        rowJS = dtJS.index[dtJS['k'] == k]
+        aprox = float(dtSig.loc[rowInd, 'JaccardSimilarity'])
+        exact = float(dtJS.loc[rowJS, 'JaccardSimilarity'])
+        dtSig.loc[rowInd, 'error'] = abs(aprox-exact)
 
+dtSig.to_csv(path + '\\data\\sig_jsim_meanError.csv', encoding='utf-8', index=False)
 
 
 
