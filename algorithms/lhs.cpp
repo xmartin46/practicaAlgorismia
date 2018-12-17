@@ -11,33 +11,82 @@
 
 using namespace std;
 
+unordered_map<int, unordered_set<int>> getTrueCopies(vector<string>& fileNames, int k, bool spaces, bool allLowercase, double threshold) {
+    string path = "./20doc/";
+    int nDocs = fileNames.size();
+
+	vector<unordered_set<string>> shingles(nDocs);
+
+	for (int i = 0; i < nDocs; ++i) {
+		shingles[i] = kShingleString(path + fileNames[i], k, spaces, allLowercase);
+	}
+    unordered_map<int, unordered_set<int>> trueCopies;
+    for (int i = 0; i < nDocs; ++i) {
+        for (int j = i; j < nDocs; ++j) {
+            double sim = jaccardSimilarity(shingles[i], shingles[j]);
+            if (sim >= threshold) {
+                trueCopies[i].insert(j);
+            }
+        }
+    }
+    return trueCopies;
+}
+
 int main(int argc, char** argv){
 	// demenar la matriu
 	int k;
-	int nHashFunctions;
-	bool measureTime;
-	double threshold = 0.20;
+	int nHashFunctions = 500;
+	bool measuringTime = false;
+    bool spaces = true;
+	bool allLowercase = true;
+	double threshold = 0.42;
 	if (argc > 1) {
 		k = stoi(argv[1]);
-		nHashFunctions = stoi(argv[2]);
-		measureTime = stoi(argv[3]);
-		threshold = stoi(argv[4]);
+		measuringTime = stoi(argv[2]);
+		spaces = stoi(argv[3]);
+        nHashFunctions = stoi(argv[4]);
+        threshold = stoi(argv[5]);
 	}
 	else {
 		cout << "Insert the k value to do the k-Shingling: ";
 		cin >> k;
-		// Default value for number of hash functions
-		// Simulating permutations
-		nHashFunctions = 200;
-		measureTime = false;
 	}
 
-	bool spaces = true;
-	bool allLowercase = true;
+	
 	string pathString = "./20doc/";
 	const char *path = pathString.c_str();
 	vector<string> fileNames = list_dir(path);
 
+    clock_t tStart;
+
+
+    /*
+	if (measuringTime) {
+		tStart = clock();
+	}
+    unordered_map<int, unordered_set<int>> trueCopies = getTrueCopies(fileNames, k, spaces, allLowercase, threshold);
+
+    int numTrueCopies = 0;
+    for (auto s : trueCopies) {
+        for (auto i : s.second) {
+            ++numTrueCopies;
+        }
+    }
+    if (measuringTime) {
+        // Print time elapsed in s
+		printf("%.3f", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+    }
+    else {
+        cout << numTrueCopies << endl;
+    }
+    */
+
+
+    if (measuringTime) {
+        tStart = clock();
+    }
+
+    
 	int nDocs = fileNames.size();
 
 	vector<unordered_set<string>> shingles(nDocs);
@@ -70,7 +119,7 @@ int main(int argc, char** argv){
 
 	int r = nhashFunctions / b;
 	
-	cout << b << "    " << r << endl;
+	//cout << b << "    " << r << endl;
 	
 	unordered_map<string, unordered_set<int>> container;
 	unordered_map<int, unordered_set<int>> similardoc;
@@ -127,6 +176,13 @@ int main(int argc, char** argv){
 			++it2;
 		}
 	}
+
+    if (measuringTime) {
+        // Print time elapsed in s
+		printf("%.3f", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+    }
+
+    /*
 	meanSimTrue /= numTruePairs;
 	meanSimFalse /= (double)(numCandidatePairs - numTruePairs);
 	int numPossiblePairs = (nDocs*(nDocs-1))/2;
@@ -140,4 +196,5 @@ int main(int argc, char** argv){
 	cout << "meanSim of TruePairs: " << meanSimTrue * 100 << "%" << endl; 
 	cout << "meanSim of FalsePositivePairs: " << meanSimFalse * 100 << "%" << endl; 
 	cout << endl;
+    */
 }

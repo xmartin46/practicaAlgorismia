@@ -69,8 +69,8 @@ vector<vector<int>> signatureMatrix (vector<unordered_set<T>>& documents, int nH
 		for (int n = 0; n < ndocuments; n++) {
 			if (documents[n].find(*it) != documents[i].end()) {
 				for (int j = 0; j < nHashFunctions; j++) {
-					//int value = modularHashFunction(i, hashFunctions[0][j], hashFunctions[1][j], z);
-					int value = mix(hashFunctions[0][j], hashFunctions[1][j], i);
+					int value = modularHashFunction(i, hashFunctions[0][j], hashFunctions[1][j], z);
+					//int value = mix(hashFunctions[0][j], hashFunctions[1][j], i);
 					if (value < signatureMatrix[j][n]) {
 						signatureMatrix[j][n] = value;
 					}
