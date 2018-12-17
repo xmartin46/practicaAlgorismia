@@ -168,6 +168,7 @@ int main(int argc, char** argv){
 			if (sim >= threshold) {
 				meanSimTrue += sim;
 				++numTruePairs;
+                cout << fileNames[it.first] << "   is a copy of   " << fileNames[*it2] << endl;
 			}
 			else {
 				meanSimFalse += sim;
@@ -180,7 +181,9 @@ int main(int argc, char** argv){
         // Print time elapsed in s
 		printf("%.3f", (double)(clock() - tStart)/CLOCKS_PER_SEC);
     }
-    
+
+
+    /*
     //NumCandidats
     cout << numCandidatePairs << ",";
     //Encerts
@@ -189,6 +192,7 @@ int main(int argc, char** argv){
     cout << max(0, (numCandidatePairs - numTruePairs)) << ",";
     //Falsos negatius
     cout << max(0, numTrueCopies - numTruePairs);
+    */
     /*
 	meanSimTrue /= numTruePairs;
 	meanSimFalse /= (double)(numCandidatePairs - numTruePairs);
