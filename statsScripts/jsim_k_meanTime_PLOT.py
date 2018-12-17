@@ -32,7 +32,7 @@ maxRange = int(np.max(x))+1
 plt.xticks([x * step for x in range(0, maxRange)])
 
 # Set "tick" frequency in y axis
-plt.yticks([x for x in range(0, 15)])
+plt.yticks([x for x in range(0, 20)])
 
 # Set titles
 ax.set(title="Average (of 5) Time to compute Jaccard Similarity", xlabel="shingle size (num chars)", ylabel="mean time of 5 pairs of docs (ms)")
