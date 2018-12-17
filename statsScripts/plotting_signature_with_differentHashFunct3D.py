@@ -17,7 +17,7 @@ fig = plt.figure()
 ax = plt.axes(projection='3d')
 
 # Importing the dataset
-dt = pd.read_csv(path + '\\data\\signature_nHashFun_k_sim.csv')
+dt = pd.read_csv(path + '\\data\\signature_nHash_k_meanSim_DENSE.csv')
 
 # Plot the data
 x = dt.iloc[:, 1] # Shingles
@@ -37,13 +37,13 @@ plt.xticks([x * step for x in range(minRange, maxRange)])
 # ax.xaxis.set_major_locator(ticker.MultipleLocator(base=0.5))
 
 # We change the fontsize of minor ticks label 
-plt.tick_params(axis='x', which='major', labelsize=5)
+plt.tick_params(axis='x', which='major', labelsize=8)
 
 # Set titles
 ax.set_title("Signature Matrix Approximation")
 ax.set_xlabel("shingle size (num chars)")
 ax.set_ylabel("num Hash Functions used")
-ax.set_zlabel("similarity (%)")
+ax.set_zlabel("mean similarity of 5 doc pairs (%)")
 
 # Show the plot
 

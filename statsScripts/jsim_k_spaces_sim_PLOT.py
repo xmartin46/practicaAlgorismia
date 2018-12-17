@@ -16,14 +16,14 @@ dt = pd.read_csv(path + '\\data\\jsim_yesSpaces_k_meanSim.csv')
 # Plot the data
 x = dt.iloc[:, 0]
 y = dt.iloc[:, 1]
-ax.plot(x, y, label='similarity (with spaces)', alpha=1.0)
+ax.plot(x, y, label='similarity (with spaces)', alpha=0.75)
 
 # Importing the spaces dataset
 dt = pd.read_csv(path + '\\data\\jsim_noSpaces_k_meanSim.csv')
 # Plot the data
 x = dt.iloc[:, 0]
 y = dt.iloc[:, 1]
-ax.plot(x, y, label='similarity (with NO spaces)', alpha=1.0)
+ax.plot(x, y, label='similarity (with NO spaces)', alpha=0.75)
 
 # Add marker at average word size
 ax.axvline(x=5.84, linestyle='--', linewidth=1, color='darkred', label='average word length (5.84)', alpha=0.75)
