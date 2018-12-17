@@ -6,7 +6,7 @@ rogerPath = ''
 path = lacaPath
 
 file = open(path + '\\data\\jsim_k_meanSim.csv', 'w')
-file.write('k, Jaccard Similarity' + '\n')
+file.write('k, JaccardSimilarity' + '\n')
 
 pairsFile = open(path + '\\algorithms\\pairsOfDocsSelec.txt', 'r')
 sims = [0 for x in range(16)]
