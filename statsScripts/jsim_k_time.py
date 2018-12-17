@@ -6,12 +6,14 @@ rogerPath = ''
 path = lacaPath
 
 pairsFile = open(path + '\\algorithms\\pairsOfDocsSelec.txt', 'r')
+file = open(path + '\\data\\jsim_meanTime.csv', 'w')
+file.write('k, Time elapsed' + '\n')
 
+npairs = 0
+finTimes = [0 for n in range(16)]
 for pairs in pairsFile.readlines():
 
     pairs = pairs.rstrip('\n').split(" ")
-    file = open(path + '\\data\\jsim_time_' + str(pairs[0]) + '_' + str(pairs[1]) + '.csv', 'w')
-    file.write('k, Time elapsed' + '\n')
 
     times = [0 for n in range(16)]
 
@@ -25,10 +27,14 @@ for pairs in pairsFile.readlines():
 
             if numRep == 4:
                 times[k] /= 5
-                out = str(k) + ', ' + str(times[k])
-                file.write(out + '\n')
+                finTimes[k] += times[k]
+    
+for k in range(16):
+    finTimes[k] /= 5
+    out = str(k) + ', ' + str(finTimes[k])
+    file.write(out + '\n')
 
-    file.close()
+file.close()
 pairsFile.close()
 
 
