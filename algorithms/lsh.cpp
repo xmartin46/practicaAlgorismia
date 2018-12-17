@@ -45,13 +45,12 @@ int main(int argc, char** argv){
 		measuringTime = stoi(argv[2]);
 		spaces = stoi(argv[3]);
         nHashFunctions = stoi(argv[4]);
-        threshold = stoi(argv[5]);
+        threshold = stof(argv[5]);
 	}
 	else {
 		cout << "Insert the k value to do the k-Shingling: ";
 		cin >> k;
 	}
-
 	
 	string pathString = "./20doc/";
 	const char *path = pathString.c_str();
@@ -63,6 +62,8 @@ int main(int argc, char** argv){
 	if (measuringTime) {
 		tStart = clock();
 	}
+    // Get all pairs that are considered copies without using lsh, just brute force
+    // So that we can compare later
     unordered_map<int, unordered_set<int>> trueCopies = getTrueCopies(fileNames, k, spaces, allLowercase, threshold);
 
     int numTrueCopies = 0;
@@ -94,7 +95,6 @@ int main(int argc, char** argv){
 		shingles[i] = kShingleString(path + fileNames[i], k, spaces, allLowercase);
 	}
 	
-
 	vector<vector<int>> sm = signatureMatrix(shingles, nHashFunctions);
 	
 	int b = 1;
@@ -188,7 +188,7 @@ int main(int argc, char** argv){
     //Falsos positius
     cout << max(0, (numCandidatePairs - numTruePairs)) << ",";
     //Falsos negatius
-    cout << max(0, numTrueCopies - numTruePairs) << ",";
+    cout << max(0, numTrueCopies - numTruePairs);
     /*
 	meanSimTrue /= numTruePairs;
 	meanSimFalse /= (double)(numCandidatePairs - numTruePairs);
